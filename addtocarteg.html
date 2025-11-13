@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shein Clone — Product Page (Updated)</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  /* Reset */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html,body { height:100%; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background:#fff;
+    color:#111;
+    -webkit-font-smoothing:antialiased;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    overflow-x:hidden;
+  }
+
+  /* Page container */
+  .page {
+    width:1200px;
+    max-width:calc(100% - 40px);
+    display:flex;
+    gap:28px;
+    align-items:flex-start;
+    position:relative;
+  }
+
+  /* Breadcrumbs - full line */
+  .breadcrumbs {
+    width:100%;
+    font-size:12px;
+    color:#9a9a9a;
+    margin-bottom:10px;
+  }
+
+  /* Left gallery column */
+  .gallery {
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+
+  .thumbs {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:70px;
+    flex-shrink:0;
+  }
+  .thumbs button {
+    border:1px solid transparent;
+    padding:4px;
+    background:transparent;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .thumbs button.active { border-color:#111; padding:3px; }
+  .thumbs img { width:100%; height:88px; object-fit:cover; display:block; border-radius:4px; }
+
+  /* Main image frame */
+  .main-frame {
+    width:640px;
+    height:760px;
+    border:1px solid #e6e6e6;
+    background:#fff;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border-radius:6px;
+  }
+  .main-frame img { width:100%; height:100%; object-fit:cover; -webkit-user-drag:none; user-select:none; }
+
+  /* Arrows */
+  .arrow {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:46px; height:46px;
+    border-radius:6px; border:none;
+    background:rgba(255,255,255,0.95);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    z-index:10;
+  }
+  .arrow:hover { background:#111; color:#fff; }
+  .arrow.left { left:12px; }
+  .arrow.right { right:12px; }
+
+  .badge { position:absolute; bottom:14px; left:14px; background:linear-gradient(90deg,#f0e6ff,#f6f0ff); color:#622aff; padding:8px 12px; border-radius:6px; font-weight:600; font-size:13px; }
+
+  /* Right details column */
+  .details { width:440px; display:flex; flex-direction:column; gap:8px; }
+
+  .title-area { display:flex; gap:12px; align-items:flex-start; }
+  .title-block { flex:1; }
+  .title { font-size:20px; font-weight:700; line-height:1.2; }
+  .title-extra { display:flex; gap:8px; margin-top:6px; align-items:center; }
+  .share-btn { margin-left:6px; color:#2b7ae4; text-decoration:none; font-size:16px; }
+
+  /* SKU + Rating row: horizontal */
+  .sku-rating-row { display:flex; gap:10px; align-items:center; margin-top:6px; }
+  .sku { font-size:12px; color:#9a9a9a; }
+  .rating { margin-left:auto; display:flex; gap:8px; align-items:center; color:#f2b01e; font-weight:700; font-size:13px; }
+
+  .price-row { display:flex; gap:12px; align-items:center; margin-top:8px; }
+  .price-now { font-size:22px; color:#111; font-weight:800; }
+  .price-old { font-size:14px; color:#8a8a8a; text-decoration:line-through; }
+  .bestseller { margin-top:6px; display:inline-flex; gap:8px; align-items:center; background:#fff3e0; color:#b85b00; padding:8px 10px; border-radius:4px; border:1px solid #f1d6b5; font-weight:700; font-size:13px; }
+
+  /* border under bestseller (like screenshot) */
+  .bestseller-container { border-bottom:1px solid #ececec; padding-bottom:10px; margin-bottom:6px; }
+
+  /* color swatches (small thumbnails) */
+  .color-row { margin-top:8px; display:flex; align-items:center; gap:12px; }
+  .color-label { font-size:14px; color:#222; }
+  .color-thumbs { display:flex; gap:8px; flex-wrap:wrap; margin-left:6px; }
+  .c-thumb { width:52px; height:64px; border:1px solid #e0e0e0; border-radius:6px; overflow:hidden; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#fff; }
+  .c-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .c-thumb.active { outline:3px solid rgba(0,0,0,0.12); transform:translateY(-3px); }
+
+  /* Size: dropdown ABOVE buttons */
+  .size-area { margin-top:12px; }
+  .size-label { font-size:14px; color:#222; margin-bottom:8px; display:block; }
+  .size-select { margin-bottom:10px; }
+  .size-select select { padding:9px 10px; width:160px; border:1px solid #ddd; border-radius:4px; }
+
+  .size-buttons { display:flex; gap:8px; flex-wrap:wrap; }
+  .size-btn { padding:9px 14px; border-radius:22px; background:#fff; border:1px solid #ddd; cursor:pointer; font-weight:700; }
+  .size-btn.selected { background:#111; color:#fff; border-color:#111; }
+
+  /* size helpers (icons left) */
+  .size-helpers { display:flex; gap:18px; align-items:center; margin-top:8px; }
+  .size-helpers a { color:#2b7ae4; text-decoration:none; font-size:13px; display:flex; gap:8px; align-items:center; }
+
+  .not-your-size { margin-top:8px; color:#2b7ae4; text-decoration:none; font-size:13px; }
+
+  /* actions */
+  .actions { margin-top:14px; display:flex; gap:12px; align-items:center; }
+  .btn-add { background:#111; color:#fff; padding:14px 18px; border:none; border-radius:6px; font-weight:800; cursor:pointer; flex:1; font-size:15px; }
+  .fav-btn { width:54px; height:54px; border-radius:6px; border:1px solid #ddd; background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:20px; }
+
+  .points { font-size:13px; color:#7a7a7a; margin-top:6px; }
+
+  /* shipping card with icon */
+  .shipping-card { margin-top:14px; border:1px solid #ececec; padding:12px; border-radius:6px; background:#fff; font-size:14px; color:#333; display:flex; gap:12px; align-items:flex-start; }
+  .ship-icon { width:42px; height:42px; border-radius:6px; background:#f6f6f6; display:flex; align-items:center; justify-content:center; font-size:18px; color:#2b7ae4; flex-shrink:0; }
+  .ship-text { font-size:14px; color:#333; }
+
+  /* accordion */
+  .accordion { margin-top:14px; border-top:1px solid #f3f3f3; padding-top:12px; }
+  .acc-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; cursor:pointer; }
+  .acc-row h5 { font-size:14px; color:#222; }
+  .acc-content { display:none; color:#6a6a6a; font-size:13px; line-height:1.4; padding-bottom:8px; }
+
+  .meta-links { margin-top:10px; color:#7a7a7a; font-size:13px; }
+
+  /* responsive */
+  @media (max-width: 1100px) { .main-frame { width:520px; height:680px; } .page { gap:18px; } }
+  @media (max-width: 920px) {
+    .page { flex-direction:column; align-items:center; gap:18px; }
+    .thumbs { flex-direction:row; width:100%; order:1; overflow:auto; padding-bottom:8px; gap:8px; }
+    .thumbs img { height:100px; }
+    .main-frame { width:760px; height:700px; }
+    .details { width:100%; max-width:760px; order:2; }
+    .gallery { order:0; }
+  }
+  @media (max-width: 680px) {
+    body { padding:12px; }
+    .page { width:100%; max-width:100%; padding-bottom:30px; }
+    .main-frame { width:100%; height:420px; }
+    .thumbs img { height:88px; width:68px; }
+    .btn-add { width:100%; }
+    .actions { flex-direction:column; align-items:stretch; }
+    .size-select select { width:100%; }
+    .size-helpers { flex-direction:column; align-items:flex-start; gap:6px; }
+  }
+  @media (max-width:400px) { .main-frame { height:360px; } }
+
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+
+<div class="page" role="main">
+
+  <!-- Breadcrumbs full line -->
+  <div style="flex-basis:100%; margin-bottom:12px;">
+    <div class="breadcrumbs">
+      Home / Women Apparel / Women Clothing / Women Tops, Blouses & Tee / Women T-Shirts / Rina Fox Ladies' Contrast Color Turndown Collar Long Sleeve Casual T-Shirt With Knight Print Fall Cloth For Women, Christmas
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery" aria-label="Product gallery">
+    <div class="thumbs" id="thumbs">
+      <button data-index="0" class="active" aria-label="thumb 1"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" alt="thumb1"></button>
+      <button data-index="1" aria-label="thumb 2"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/09/11/53/17575552687c208421a16716e3b44e887e3987e7f6_thumbnail_220x293.webp" alt="thumb2"></button>
+      <button data-index="2" aria-label="thumb 3"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" alt="thumb3"></button>
+      <button data-index="3" aria-label="thumb 4"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/09/11/53/17575552687c208421a16716e3b44e887e3987e7f6_thumbnail_220x293.webp" alt="thumb4"></button>
+    </div>
+
+    <div class="main-frame" id="mainFrame" tabindex="0" aria-label="Main product image">
+      <button class="arrow left" id="prev" aria-label="previous image"><i class="fa-solid fa-chevron-left"></i></button>
+      <img id="mainImg" src="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" alt="Main product image">
+      <button class="arrow right" id="next" aria-label="next image"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="badge">Rina Fox</div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="details" aria-label="Product details">
+
+    <div class="title-area">
+      <div class="title-block">
+        <div class="title">Rina Fox Ladies' Contrast Color Turndown Collar Long Sleeve Casual T-Shirt</div>
+
+        <!-- title extra: share icon placed here -->
+        <div class="title-extra">
+          <a href="#" class="share-btn" title="Share / Open">
+            <i class="fa-solid fa-up-right-from-square"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKU and Rating row (horizontal) -->
+    <div class="sku-rating-row">
+      <div class="sku">SKU: sz25061830808458833</div>
+      <div class="rating" aria-hidden="true">
+        <span><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
+        <span style="font-size:13px;color:#6a6a6a;">(1000+ Reviews)</span>
+      </div>
+    </div>
+
+    <!-- Price and bestseller under it with bottom border -->
+    <div class="price-row">
+      <div class="price-now">$11.70</div>
+      <div class="price-old">$16.00</div>
+    </div>
+
+    <div class="bestseller-container">
+      <div class="bestseller"><i class="fa-solid fa-medal"></i> #4 Bestseller in Embroidery Women T-Shirts</div>
+    </div>
+
+    <!-- Color section -->
+    <div class="color-row">
+      <div class="color-label">Color: <strong>Navy Blue</strong></div>
+      <div style="margin-left:auto;"><a href="#" style="font-size:13px;color:#2b7ae4;text-decoration:none;">Large Image</a></div>
+    </div>
+
+    <div class="color-thumbs" id="colorThumbs" style="margin-top:6px;">
+      <div class="c-thumb active" data-img="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" title="Navy Blue"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" alt="color1"></div>
+      <div class="c-thumb" data-img="https://img.ltwebstatic.com/v4/j/pi/2025/09/11/53/17575552687c208421a16716e3b44e887e3987e7f6_thumbnail_220x293.webp" title="Black"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/09/11/53/17575552687c208421a16716e3b44e887e3987e7f6_thumbnail_220x293.webp" alt="color2"></div>
+      <div class="c-thumb" data-img="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" title="White"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/10/15/df/1760530640ed77ad405fa509a1b9885a2d96ec20c7_thumbnail_220x293.webp" alt="color3"></div>
+    </div>
+
+    <!-- Size: dropdown above buttons -->
+    <div class="size-area">
+      <div class="size-label">Size</div>
+
+      <div class="size-select">
+        <select id="sizeSelect" aria-label="Size select">
+          <option value="">MX Size</option>
+          <option value="CH (S)">CH (S)</option>
+          <option value="M (M)">M (M)</option>
+          <option value="G (L)">G (L)</option>
+          <option value="XG (XL)">XG (XL)</option>
+        </select>
+      </div>
+
+      <div class="size-buttons" id="sizeButtons">
+        <button class="size-btn" data-size="CH (S)">CH (S)</button>
+        <button class="size-btn" data-size="M (M)">M (M)</button>
+        <button class="size-btn" data-size="G (L)">G (L)</button>
+        <button class="size-btn" data-size="XG (XL)">XG (XL)</button>
+      </div>
+
+      <!-- Size guide and Check My Size icons — left aligned -->
+      <div class="size-helpers">
+        <a href="#" title="Size Guide"><i class="fa-solid fa-ruler"></i> Size Guide</a>
+        <a href="#" title="Check My Size"><i class="fa-solid fa-user-check"></i> Check My Size</a>
+      </div>
+
+      <a href="#" class="not-your-size">Not your size? Tell me your size</a>
+    </div>
+
+    <!-- Actions: Add to cart + favorite -->
+    <div class="actions">
+      <button class="btn-add" id="addCart">ADD TO CART</button>
+      <button class="fav-btn" id="favBtn" title="Add to favourites"><i class="fa-regular fa-heart" id="favIcon"></i></button>
+    </div>
+
+    <div class="points">Earn up to <strong>11 SHEIN Points</strong> calculated at checkout</div>
+
+    <!-- Shipping card with icon -->
+    <div class="shipping-card">
+      <div class="ship-icon"><i class="fa-solid fa-truck"></i></div>
+      <div class="ship-text">
+        <strong>Delivery to Pakistan</strong><br>
+        Free express shipping on orders over $69. Estimated delivery: <strong>03/12/2025 - 10/12/2025</strong>.
+      </div>
+    </div>
+
+    <!-- Accordion -->
+    <div class="accordion">
+      <div class="acc-row" data-acc="desc"><h5>Description</h5><div class="plus">+</div></div>
+      <div class="acc-content" id="desc">Pullovers, contrast binding, pleated detail, collared neckline, soft fabric — comfortable for everyday wear.</div>
+
+      <div class="acc-row" data-acc="sizefit"><h5>Size & Fit</h5><div class="plus">+</div></div>
+      <div class="acc-content" id="sizefit">Model is 5'8" wearing size S. See size guide for measurements.</div>
+
+      <div class="acc-row" data-acc="about"><h5>About Store</h5><div class="plus">+</div></div>
+      <div class="acc-content" id="about">Trendy apparel store — fast shipping and easy returns.</div>
+    </div>
+
+    <div class="meta-links">
+      <a href="#">Description</a> • <a href="#">Size & Fit</a> • <a href="#">Shipping & Returns</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* ---------- Gallery: hover preview, click lock, arrows ---------- */
+  const thumbButtons = Array.from(document.querySelectorAll('#thumbs button'));
+  const mainImg = document.getElementById('mainImg');
+  let currentIndex = 0;
+
+  function setActiveThumb(idx) {
+    thumbButtons.forEach(b => b.classList.remove('active'));
+    if (thumbButtons[idx]) thumbButtons[idx].classList.add('active');
+  }
+  setActiveThumb(currentIndex);
+
+  thumbButtons.forEach((btn, idx) => {
+    const img = btn.querySelector('img');
+    btn.addEventListener('mouseenter', () => { if (img && img.src) mainImg.src = img.src; });
+    btn.addEventListener('mouseleave', () => {
+      const locked = thumbButtons[currentIndex].querySelector('img');
+      if (locked && locked.src) mainImg.src = locked.src;
+    });
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      currentIndex = idx;
+      if (img && img.src) mainImg.src = img.src;
+      setActiveThumb(currentIndex);
+      if (window.innerWidth < 700) document.getElementById('mainFrame').scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + thumbButtons.length) % thumbButtons.length;
+    const img = thumbButtons[currentIndex].querySelector('img');
+    if (img && img.src) mainImg.src = img.src;
+    setActiveThumb(currentIndex);
+  });
+  document.getElementById('next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % thumbButtons.length;
+    const img = thumbButtons[currentIndex].querySelector('img');
+    if (img && img.src) mainImg.src = img.src;
+    setActiveThumb(currentIndex);
+  });
+
+  mainImg.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') document.getElementById('prev').click(); if (e.key === 'ArrowRight') document.getElementById('next').click(); });
+  window.addEventListener('resize', () => { const locked = thumbButtons[currentIndex].querySelector('img'); if (locked && locked.src) mainImg.src = locked.src; });
+
+  /* ---------- Color selection ---------- */
+  const colorThumbs = document.querySelectorAll('.c-thumb');
+  colorThumbs.forEach(ct => ct.addEventListener('click', () => {
+    colorThumbs.forEach(x => x.classList.remove('active'));
+    ct.classList.add('active');
+    const img = ct.dataset.img;
+    if (img) { mainImg.src = img; }
+  }));
+
+  /* ---------- Size buttons & dropdown sync ---------- */
+  const sizeBtns = document.querySelectorAll('.size-btn');
+  const sizeSelect = document.getElementById('sizeSelect');
+  function clearSizes(){ sizeBtns.forEach(b => b.classList.remove('selected')); }
+  sizeBtns.forEach(b => { b.addEventListener('click', () => { clearSizes(); b.classList.add('selected'); sizeSelect.value = b.dataset.size; }); });
+  sizeSelect.addEventListener('change', () => { clearSizes(); const v = sizeSelect.value; sizeBtns.forEach(b => { if (b.dataset.size === v) b.classList.add('selected'); }); });
+
+  /* ---------- Favourite toggle ---------- */
+  const favBtn = document.getElementById('favBtn');
+  const favIcon = document.getElementById('favIcon');
+  let fav = false;
+  favBtn.addEventListener('click', () => { fav = !fav; favIcon.className = fav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'; favIcon.style.color = fav ? '#e63946' : '#111'; });
+
+  /* ---------- Accordion ---------- */
+  document.querySelectorAll('.acc-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const id = row.dataset.acc;
+      const content = document.getElementById(id);
+      const isOpen = content.style.display === 'block';
+      document.querySelectorAll('.acc-content').forEach(c => c.style.display = 'none');
+      document.querySelectorAll('.acc-row .plus').forEach(p => p.textContent = '+');
+      if (!isOpen) { content.style.display = 'block'; row.querySelector('.plus').textContent = '-'; }
+    });
+  });
+
+  /* ---------- Add to cart demo ---------- */
+  document.getElementById('addCart').addEventListener('click', () => {
+    const selected = Array.from(sizeBtns).find(b => b.classList.contains('selected'))?.dataset.size || sizeSelect.value;
+    if (!selected) { alert('Please select a size first.'); return; }
+    alert('Added to cart — size: ' + selected);
+  });
+</script>
+
+</body>
+</html>
