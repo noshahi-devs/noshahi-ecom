@@ -3,7 +3,7 @@
           background-color: #F6F6F6;
         }
 
-        /* header uper badge   open*/
+        /* header uper badge   open*/ 
         .info-bar {
           background-color: #faf2e7;
           display: flex;
@@ -1171,26 +1171,26 @@
         .row-circles {
           display: flex;
           justify-content: center;
-          gap: 10px;
+          gap: 15px;
           flex-wrap: nowrap;
-          margin-top: -20px;
-          padding: 15px;
+          margin-top: -22px;
+          padding: 10px;
         }
 
         .circle {
-          width: 130px;
-          height: 130px;
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
           text-align: center;
-          margin: 10px;
+          margin: 16px;
           position: relative;
           margin-bottom: 30px;
           transition: transform 0.3s ease;
         }
 
         .circle img {
-          width: 130px;
-          height: 130px;
+          width: 120px;
+          height: 120px;
           border-radius: 50%;
           display: block;
           margin: 0 auto;
@@ -1215,13 +1215,13 @@
         /* Arrows */
         .arrow {
           position: absolute;
-          top: 50%;
+          top: 45%;
           transform: translateY(-50%);
           background: rgba(255, 255, 255, 0.9);
           border: none;
           border-radius: 50%;
-          width: 45px;
-          height: 45px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1229,6 +1229,7 @@
           cursor: pointer;
           transition: all 0.3s ease;
           z-index: 10;
+          border: 1px solid #ccc;
         }
 
         .arrow:hover {
@@ -1243,17 +1244,17 @@
         }
 
         .arrow i {
-          font-size: 20px;
+          font-size: 15px;
         }
 
         .arrow.prev {
-          left: 10px;
-          margin-left: 60px;
+          left: 6px;
+          margin-left: 30px;
         }
 
         .arrow.next {
-          right: 10px;
-          margin-right: 60px;
+          right: 6px;
+          margin-right: 30px;
         }
 
         /* deal-section */
@@ -1263,16 +1264,16 @@
           justify-content: space-between;
           flex-wrap: wrap;
           gap: 20px;
-          width: 90%;
+          width: 85%;
           margin: 40px auto;
         }
-
+        
         .deal-card {
           background: #fff;
           border-radius: 10px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           width: 32%;
-          padding: 15px;
+          padding: 10px;
           transition: transform 0.3s ease;
         }
 
@@ -1338,7 +1339,8 @@
 
         .product-tag {
           color: #7aabdc;
-          font-size: 0.9rem;
+          font-size: 1rem;
+          margin-top: -10px;
         }
 
         .deal-product-img {
@@ -1363,6 +1365,7 @@
 
         .product-price-text {
           text-align: left;
+          margin-top: -10px;
           color: #ee662c;
           font-size: 15px;
         }
