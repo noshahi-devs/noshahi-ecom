@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHEIN Cart - Empty</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="css/emptycart.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- Logo -->
+    <link rel="icon" href="images/logo.png" type="image/x-icon">    
+</head>
+<body>
+    <!-- empty-cart-section -->
+    <div class="empty-cart-section">
+        <div class="top-header">
+        <div class="header-left">
+            <span class="logo">SHEIN</span>
+
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                Ship to Twnhs, 2841 E Waltann Ln Unit 1
+            </div>
+        </div>
+
+        <div class="secure-checkout">
+            <i class="fas fa-lock"></i>
+            Secure Checkout
+        </div>
+    </div>
+
+    <div class="breadcrumb-container">
+        <div class="breadcrumb">
+            <span class="active-step">Cart</span> > Place Order > Pay > Order Complete
+        </div>
+    </div>
+
+    <div class="empty-content">
+        <div class="empty-cart-icon">
+            <img src="images/emptycart.PNG" alt="">
+        </div>
+
+        <div class="empty-message">YOUR CART IS EMPTY</div>
+
+        <button class="shop-button" onclick="handleShopNowClick()">SHOP NOW</button>
+    </div>
+    </div>
+    <!-- empty-cart-section end -->
+     <!-- card product -->
+  <div class="container py-4">
+     <h4 class="recommend-title">You Might Like to Fill it With</h4>
+
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/fd28afabdc76b8d9bd940a15fba8aa30.png_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/9fd9d4fa40859fce529df9671bf0fec4.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">EMERY ROSE 2pcs Plus Size Casual Outfit for Women</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.17</span>
+                <span class="discount">-24%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://m.media-amazon.com/images/I/41BRti3K0xL._AC_SR300,300_.jpg" class="product-img main-img" alt="">
+          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/eeb9867a-7802-4c23-8a43-5f082c652385.__AC_SR200,225___.jpg" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Floral Print Tiered Ruched Elastic Waist Skirt</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$9.63</span>
+                <span class="discount">-20%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/38084a45b7465132e8b832ae00c6d871.png_200x200q80.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/8ab82c09bc79b0cfc1cd3e560609c26a.jpg_200x200q80.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Coolane Women's Summer Streetwear Top</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$7.40</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div> 
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/9c9c1513-537a-4f64-baf5-de334c0053b4.__AC_SR200,225___.jpg" class="product-img main-img" alt="">
+          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f70ffd7d-40e3-4fa8-ad8f-a9d714554e0e.__AC_SR200,225___.jpg" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Serisse Women's Fashionable Elegant Sweater</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.80</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/33e08f9e6f2d73aa8226c3f596b10eae.jpg_200x200q80.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/0169222a2cecccb2b50c9a09edb1bc08.jpg_200x200q80.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Fashionable Solid Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$10.47</span>
+                <span class="discount">-19%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/5320fa2c12bb7775e9cd254944e5a7fa.png_200x200q90.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/75120349388ffd355ab569a3710e785a.png_200x200q50s150.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$15.47</span>
+                <span class="discount">-30%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container py-4">    
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/18ad028bc5a5a923ba8d5cb1a2cf1542.jpg_200x200q80.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/8b48d02124994c850f632d1dcad40c3d.png_200x200q80.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">EMERY ROSE 2pcs Plus Size Casual Outfit for Women</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.17</span>
+                <span class="discount">-24%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/b9d012c7650c78606b17a460f1bdc95c.jpg_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/b28b4b696e61a3f7e0f6e687b875cf6a.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Floral Print Tiered Ruched Elastic Waist Skirt</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$9.63</span>
+                <span class="discount">-20%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/bf89ac77374ae918bf6155aed930a063.png_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/d7f8c7750e4381ed92a20bcec73d61b1.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Coolane Women's Summer Streetwear Top</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$7.40</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/8b9a7d96ce1536bc2d17df838a0bce0a.jpg_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/75705fa9f916df31ad1697aae458f822.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Serisse Women's Fashionable Elegant Sweater</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.80</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/25e16482-8d75-4e22-a685-6ec6cd586484.__CR0,0,1464,600_PT0_SX1464_V1___.jpg" class="product-img main-img" alt="">
+          <img src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/3bfebddc-0b0a-4d7f-abe5-0c0147c85702.__CR0,0,1464,600_PT0_SX1464_V1___.jpg" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Fashionable Solid Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$10.47</span>
+                <span class="discount">-19%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/5320fa2c12bb7775e9cd254944e5a7fa.png_200x200q90.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/75120349388ffd355ab569a3710e785a.png_200x200q50s150.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$15.47</span>
+                <span class="discount">-30%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container py-4">    
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/1eca5bb9f974712fc1571de0c2e8fbfc.jpg_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/424100f1184f192045165a43fb825ec0.png_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">EMERY ROSE 2pcs Plus Size Casual Outfit for Women</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.17</span>
+                <span class="discount">-24%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/6ecfb68c41ba994975fb81a4335a508f.jpg_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/5573f3045bbef8d012894ddd9494e838.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Floral Print Tiered Ruched Elastic Waist Skirt</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$9.63</span>
+                <span class="discount">-20%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/5474bbcd3a4c964238139643b13b25ef.jpg_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/g/kf/S338c4adf085545a4b80c35f73fb65f59L.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Coolane Women's Summer Streetwear Top</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$7.40</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/373e1e6098078067422221868eb3d1fd.png_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/97890a6b243674400ba7bbd7c6067eaa.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Serisse Women's Fashionable Elegant Sweater</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$19.80</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/71863c0497fb4a277e809fb7c715dadd.png_200x200q75.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/ba07964debc3cf22f68cb2a5f3f3fb31.jpg_200x200q75.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Fashionable Solid Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$10.47</span>
+                <span class="discount">-19%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col-6 col-md-4 col-lg-2-4 col-xl-2">
+        <div class="card product-card">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/5320fa2c12bb7775e9cd254944e5a7fa.png_200x200q90.avif" class="product-img main-img" alt="">
+          <img src="https://img.drz.lazcdn.com/static/pk/p/75120349388ffd355ab569a3710e785a.png_200x200q50s150.avif" class="product-img hover-img" alt="">
+          <div class="card-body">
+            <div class="product-title">Color Casual Loose Pants</div>
+            <div class="price-row">
+              <div>
+                <span class="price">$15.47</span>
+                <span class="discount">-30%</span>
+              </div>
+              <button class="cart-btn"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- view more btn -->
+   <div class="container text-center my-5">
+    <button class="view-more-btn">
+      View More <i class="fa-solid fa-angle-down"></i>
+    </button>
+  </div>
+
+    <script>
+        function handleShopNowClick() {
+            alert("Noshahi E-Commerce shopping page...");
+        }
+    </script>
+
+   
+</body>
+</html>

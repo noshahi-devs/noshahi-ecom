@@ -17,9 +17,9 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
 
-  </style>
+  </style>    
 
-</head>
+</head> 
 
 <body>
   <!-- header uper badge  -->
@@ -96,10 +96,11 @@
           </div>
         </div>
         <div class="cart-wrapper">
-          <i class="fas fa-shopping-cart"></i>
+          <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
 
           <div class="cart-tooltip-box">
             <div class="tooltip-content">
+              <img src="images/emptycart.PNG" alt="emptycard">
               <p>Shopping cart is Empty</p>
               <a href="#">Go to Shop</a>
             </div>
@@ -234,30 +235,44 @@
 
     <!-- CENTER CAROUSEL -->
     <div id="mainCarousel" class="carousel slide mx-2 w-70" data-bs-ride="carousel">
-      <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
-        <div class="carousel-item active">
-          <img
-            src="//img.ltwebstatic.com/v4/j/ccc/2025/11/03/58/1762155583c146f503ee533d6553053feeaf6d8a86_thumbnail_1456x.webp"
-            class="d-block w-100" alt="Banner 1">
-        </div>
-        <div class="carousel-item">
-          <img src="//img.ltwebstatic.com/v4/g/ccc/2025/11/12/10/1762929244ecc2afaeab8f081e088a18ddba9ce7d1.webp"
-            class="d-block w-100" alt="Banner 2">
-        </div>
-        <div class="carousel-item">
-          <img
-            src="//img.ltwebstatic.com/v4/j/ccc/2025/11/10/df/176276134710240bd8a601ffd28d0c4e74351984cd_thumbnail_782x.webp"
-            class="d-block w-100" alt="Banner 3">
-        </div>
-      </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
+    <div class="carousel-item active">
+      <img
+        src="//img.ltwebstatic.com/v4/j/ccc/2025/11/03/58/1762155583c146f503ee533d6553053feeaf6d8a86_thumbnail_1456x.webp"
+        class="d-block w-100" alt="Banner 1">
     </div>
+
+    <div class="carousel-item">
+      <img
+        src="//img.ltwebstatic.com/v4/g/ccc/2025/11/12/10/1762929244ecc2afaeab8f081e088a18ddba9ce7d1.webp"
+        class="d-block w-100" alt="Banner 2">
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="//img.ltwebstatic.com/v4/j/ccc/2025/11/10/df/176276134710240bd8a601ffd28d0c4e74351984cd_thumbnail_782x.webp"
+        class="d-block w-100" alt="Banner 3">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+
+</div>
+
 
     <!-- RIGHT SIDE CARDS -->
     <div class="side-cards d-flex flex-column gap-3">
