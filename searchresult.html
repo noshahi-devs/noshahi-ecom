@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce Website Search Result</title>
+
+    <!-- head icon -->
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/searchresult.css">
+   </head>
+
+<body>
+    <!--=============== Header Open =============== -->
+    <header class="noshahi-header">
+        <div class="header-top">
+            <div class="logo">
+                NOSHAHI
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="header-icons">
+                <!-- USER MENU -->
+                <div class="user-menu-wrapper">
+                    <a href="signup.html" class="user-icon">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <div class="user-tooltip-box">
+                        <a href="#">
+                            <p class="user-name">sharjeelnoshahi</p>
+                        </a>
+                        <a href="#">
+                            <p>Shein Club</p>
+                        </a>
+                        <a href="#">
+                            <p>SHEIN Saver</p>
+                        </a>
+                        <a href="#">
+                            <p>My Profile</p>
+                        </a>
+                        <a href="#">
+                            <p>My Orders</p>
+                        </a>
+                        <a href="#">
+                            <p>My Message</p>
+                        </a>
+                        <a href="#">
+                            <p>My Coupons <span style="color:red;">●</span></p>
+                        </a>
+                        <a href="#">
+                            <p>My Points</p>
+                        </a>
+                        <a href="#">
+                            <p>Recently Viewed</p>
+                        </a>
+                        <a href="#">
+                            <p>More Services</p>
+                        </a>
+                        <hr>
+                        <a href="#">
+                            <p>Switch Accounts</p>
+                        </a>
+                        <a href="#">
+                            <p>Sign Out</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- CART -->
+                <div class="cart-wrapper">
+                    <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="cart-tooltip-box">
+                        <div class="tooltip-content">
+                            <img src="images/emptycart.PNG" alt="">
+                            <p>Shopping cart is Empty</p>
+                            <a href="index.html">Go to Shop</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- WISHLIST / MESSAGE -->
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#"><i class="far fa-comment-dots"></i></a>
+                <!-- GLOBE -->
+                <div class="currency-menu-wrapper">
+                    <a href="#"><i class="fas fa-globe"></i></a>
+                    <div class="currency-tooltip-box">
+                        <div class="tooltip-section">
+                            <p class="section-title">
+                                Currency
+                            </p>
+                            <select>
+                                <option value="USD">$ USD</option>
+                                <option value="EUR">€ EUR</option>
+                                <option value="GBP">£ GBP</option>
+                                <option value="JPY">¥ JPY</option>
+                            </select>
+                        </div>
+                        <div class="tooltip-section">
+                            <p class="section-title">
+                                Language
+                            </p>
+                            <div class="language-options">
+                                <span class="active">English</span>
+                                <span>Español</span>
+                            </div>
+                        </div>
+                        <a href="index.html" class="international-link">
+                            International Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-relative">
+            <button class="scroll-btn left"><i class="fa-solid fa-chevron-left"></i></button>
+            <nav class="noshahi-navbar d-flex align-items-center" id="categoryNavbar">
+                <ul class="navbar-nav flex-row mx-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Categories <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-column">
+                                <a href="#">New In</a>
+                                <a href="#">Sale</a>
+                                <a href="#">Women Clothing</a>
+                                <a href="#">Kids</a>
+                                <a href="#">Curve</a>
+                                <a href="#">Men Clothing</a>
+                                <a href="#">Shoes</a>
+                                <a href="#">Underwear & Sleepwear</a>
+                                <a href="#">Home & Kitchen</a>
+                                <a href="#">Jewelry & Accessories</a>
+                                <a href="#">Beauty & Health</a>
+                                <a href="#">Baby & Maternity</a>
+                                <a href="#">Bags & Luggage</a>
+                                <a href="#">Sports & Outdoors</a>
+                                <a href="#">Home Textiles</a>
+                                <a href="#">Cell Phones & Accessories</a>
+                                <a href="#">Electronics</a>
+                                <a href="#">Toys & Games</a>
+                                <a href="#">Tools & Home Improvement</a>
+                                <a href="#">Office & School Supplies</a>
+                                <a href="#">Pet Supplies</a>
+                                <a href="#">Appliances</a>
+                                <a href="#">Automotive</a>
+                                <a href="#">Books & Magazine</a>
+                                <a href="#">Food & Beverages</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="#">New In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sale</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Women Clothing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kids</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Curve</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Men Clothing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shoes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Underwear & Sleepwear</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home & Kitchen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jewelry & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Beauty & Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Baby & Maternity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Bags & Luggage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sports & Outdoors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Textiles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cell Phones & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Electronics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Toys & Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tools & Home Improvement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Office & School Supplies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pet Supplies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Appliances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Automotive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Books & Magazine</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Food & Beverages</a></li>
+                </ul>
+            </nav>
+            <button class="scroll-btn right"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </header>
+    <!--======= Header Close ======= -->
+
+    <!--======= sidebar&maincontent open ======= -->
+    <div class="profile-container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar-section">
+            <div class="searching">
+                <p>Search results for<span><b><i>“Jeans”</i></b></span></p>
+            </div>
+            <div class="sidebar">
+
+                <div class="filter-header">
+                    <h2>Filter</h2>
+                    <span id="clearAll" class="clear-all">Clear All</span>
+                </div>
+
+                <!-- Selected Filters -->
+                <div id="selectedFilters"></div>
+                <hr>             
+                <!-- RADIO SECTION 1 -->
+                <div class="menu-section" id="menu1">
+                    <h3>Category<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li>
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Women Jeans" data-type="radio">
+                                <span>Women Jeans</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Plus Size Jeans" data-type="radio">
+                                <span>Plus Size Jeans</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Men Jeans" data-type="radio">
+                                <span>Men Jeans</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Women Pants" data-type="radio">
+                                <span>Women Pants</span>
+                            </label>
+                        </li>
+                        <li>
+                            <div class="viewmore">
+                                <span><i class="fas fa-plus"></i> View More</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CHECKBOX SECTION Type -->
+                <div class="menu-section" id="menu2">
+                    <h3>Type<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Skinny"
+                                    data-type="checkbox"><span>Skinny</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Straight Leg"
+                                    data-type="checkbox"><span>Straight Leg</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Flare Leg"
+                                    data-type="checkbox"><span>Flare Leg</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Wide Leg"
+                                    data-type="checkbox"><span>Wide Leg</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Tapered/Carrot"
+                                    data-type="checkbox"><span>Tapered/Carrot</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Jogger"
+                                    data-type="checkbox"><span>Jogger</span></label></li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Jeans Style-->
+                <div class="menu-section" id="menu2">
+                    <h3>Jeans Style<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Bootcut"
+                                    data-type="checkbox"><span>Bootcut</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Mom Fit"
+                                    data-type="checkbox"><span>Mom Fit</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Curvy"
+                                    data-type="checkbox"><span>Curvy</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Cargo Pants"
+                                    data-type="checkbox"><span>Cargo Pants</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Baggy"
+                                    data-type="checkbox"><span>Baggy</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Boyfriend Fit"
+                                    data-type="checkbox"><span>Boyfriend Fit</span></label></li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Fobric Elasticity-->
+                <div class="menu-section" id="menu2">
+                    <h3>Fabric Elasticity<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Non-Stretch"
+                                    data-type="checkbox"><span>Non-Stretch</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="High Stretc"
+                                    data-type="checkbox"><span>High Stretch</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Slight Stretch"
+                                    data-type="checkbox"><span>Slight Stretch</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Medium Stretch"
+                                    data-type="checkbox"><span>Medium Stretch</span></label></li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Waist Line-->
+                <div class="menu-section" id="menu2">
+                    <h3>Waist Line<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="High Waist"
+                                    data-type="checkbox"><span>High Waist</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Natural(Mid Waist)"
+                                    data-type="checkbox"><span>Natural(Mid Waist)</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Low Waist"
+                                    data-type="checkbox"><span>Low Waist</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Ultra High Waist"
+                                    data-type="checkbox"><span>Ultra High Waist</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Ultra Low Waist"
+                                    data-type="checkbox"><span>Ultra Low Waist</span></label></li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Length-->
+                <div class="menu-section" id="menu2">
+                    <h3>Length<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Long"
+                                    data-type="checkbox"><span>Long</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Cropped"
+                                    data-type="checkbox"><span>Cropped</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Capris"
+                                    data-type="checkbox"><span>Capris</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Extra Long"
+                                    data-type="checkbox"><span>Extra Long</span></label></li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Color-->
+                <h3 class="filter-title">
+                    Color <span><i class="fa fa-minus"></i></span>
+                </h3>
+                <div class="options">
+                    <div class="color-colun-left">
+                        <label class="color-item">
+                            <span class="dot blue"></span>
+                            <span class="color-name">Blue</span>
+                            <input type="checkbox" value="Blue">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot grey"></span>
+                            <span class="color-name">Grey</span>
+                            <input type="checkbox" value="Grey">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot pink"></span>
+                            <span class="color-name">Pink</span>
+                            <input type="checkbox" value="Pink">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot red"></span>
+                            <span class="color-name">Red</span>
+                            <input type="checkbox" value="Red">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot white"></span>
+                            <span class="color-name">White</span>
+                            <input type="checkbox" value="White">
+                        </label>
+                    </div>
+
+                    <div class="color-colun-right">
+                        <label class="color-item">
+                            <span class="dot brown"></span>
+                            <span class="color-name">Brown</span>
+                            <input type="checkbox" value="Brown">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot green"></span>
+                            <span class="color-name">Green</span>
+                            <input type="checkbox" value="Green">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot multi"></span>
+                            <span class="color-name">Multi</span>
+                            <input type="checkbox" value="Multi">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot khaki"></span>
+                            <span class="color-name">Khaki</span>
+                            <input type="checkbox" value="Khaki">
+                        </label>
+
+                        <label class="color-item">
+                            <span class="dot black"></span>
+                            <span class="color-name">Black</span>
+                            <input type="checkbox" value="Black">
+                        </label>
+                    </div>
+                </div>
+                <!-- CHECKBOX SECTION Size-->
+                <h3 class="filter-title">
+                    Size <span><i class="fa fa-minus"></i></span>
+                </h3>
+                <div class="options size-checkbox">
+                    <div class="chose-size">
+                        <div class="size-colun-left">
+                            <ul>
+                                <li><label class="item-option"><input type="checkbox" value="XXS"
+                                            data-type="checkbox"><span>XXS</span></label></li>
+                                <li><label class="item-option"><input type="checkbox" value="S"
+                                            data-type="checkbox"><span>S</span></label></li>
+                                <li><label class="item-option"><input type="checkbox" value="L"
+                                            data-type="checkbox"><span>L</span></label></li>
+                            </ul>
+                        </div>
+
+                        <div class="size-colun-right">
+                            <ul>
+                                <li><label class="item-option"><input type="checkbox" value="XS"
+                                            data-type="checkbox"><span>XS</span></label></li>
+                                <li><label class="item-option"><input type="checkbox" value="M"
+                                            data-type="checkbox"><span>M</span></label></li>
+                                <li><label class="item-option"><input type="checkbox" value="XL"
+                                            data-type="checkbox"><span>XL</span></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="viewmore">
+                        <span><i class="fas fa-plus"></i> View More</span>
+                    </div>
+                </div>
+                <!-- CHECKBOX SECTION  Details-->
+                <div class="menu-section" id="menu2">
+                    <h3>Details<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Drawstring"
+                                    data-type="checkbox"><span>Drawstring</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Raw Hem"
+                                    data-type="checkbox"><span>Raw Hem</span></label></li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Chain" data-type="checkbox">
+                                <span>Chain</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Fringe" data-type="checkbox">
+                                <span>Fringe</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Cut Out" data-type="checkbox">
+                                <span>Cut Out</span>
+                            </label>
+                        </li>
+                        <li>
+                            <div class="viewmore">
+                                <span><i class="fas fa-plus"></i> View More</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Pattern Type-->
+                <div class="menu-section" id="menu2">
+                    <h3>Pattern Type<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Floral" data-type="checkbox">
+                                <span>Floral</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Plain" data-type="checkbox">
+                                <span>Plain</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="Flame" data-type="checkbox">
+                                <span>Flame</span>
+                            </label>
+                        </li>
+                        <li><label class="item-option"><input type="checkbox" value="Graphic"
+                                    data-type="checkbox"><span>Graphic</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Camo"
+                                    data-type="checkbox"><span>Camo</span></label></li>
+                        <li>
+                            <label class="item-option">
+                                <input type="checkbox" value="All Over Print" data-type="checkbox">
+                                <span>All Over Print</span>
+                            </label>
+                        </li>
+                        <li>
+                            <div class="viewmore">
+                                <span><i class="fas fa-plus"></i> View More</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- CHECKBOX SECTION Fit Type-->
+                <div class="menu-section" id="menu2">
+                    <h3>Fit Type<span><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><label class="item-option"><input type="checkbox" value="Skinny"
+                                    data-type="checkbox"><span>Skinny</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Loose"
+                                    data-type="checkbox"><span>Loose</span></label></li>
+                        <li><label class="item-option"><input type="checkbox" value="Regular Fit"
+                                    data-type="checkbox"><span>Regular Fit</span></label></li>
+                    </ul>
+                </div>
+                <!-- PRICE RANGE -->
+                <div class="container" style="max-width: 500px;">
+                    <h6 class="fw-bold">Price Range (USD)</h6>
+                    <div class="d-flex justify-content-between">
+                        <span id="min-label">$0</span>
+                        <span id="max-label">$6062</span>
+                    </div>
+                    <div class="range-slider mt-3">
+                        <div class="slider-track"></div>
+                        <input type="range" id="min-range" min="0" max="6062" value="0">
+                        <input type="range" id="max-range" min="0" max="6062" value="6062">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <h1>Main Content Area</h1>
+            <p>Radio button selection will NOT change this content.</p>
+            <p>You can put your own sections or forms here.</p>
+        </div>
+
+    </div>
+    <!--======= sidebar&maincontent close ======= -->
+
+
+
+    <!-- FIXED JS -->
+    <script src="js/searchresult.js"></script>
+
+
+</body>
+
+</html>
