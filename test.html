@@ -1,1 +1,126 @@
-Adeel is testing
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body { font-family: Arial; margin:0; padding:0; display:flex; }
+
+    /* Sidebar */
+    .sidebar {
+        width: 200px;
+        background: #f3f3f3;
+        height: 100vh;
+        padding: 10px 0;
+    }
+    .sidebar-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .sidebar-item.active {
+        background: black;
+        color: white;
+    }
+
+    /* Main Section */
+    .main {
+        flex: 1;
+        padding: 20px;
+    }
+
+    /* Top Menu Tabs */
+    .top-tabs {
+        display: flex;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+    }
+    .tab {
+        padding: 12px 20px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    .tab.active {
+        border-bottom: 3px solid black;
+        font-weight: bold;
+    }
+
+    /* Pages */
+    .page {
+        display: none;
+        font-size: 20px;
+    }
+    .page.active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-item" data-id="1">Item 1</div>
+    <div class="sidebar-item" data-id="2">Item 2</div>
+    <div class="sidebar-item" data-id="3">Item 3</div>
+</div>
+
+<!-- MAIN SECTION -->
+<div class="main">
+
+    <!-- TOP MENU TABS -->
+    <div class="top-tabs">
+        <div class="tab" data-id="1">Item 1</div>
+        <div class="tab" data-id="2">Item 2</div>
+        <div class="tab" data-id="3">Item 3</div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <div id="page1" class="page active">This is content of Item 1</div>
+    <div id="page2" class="page">This is content of Item 2</div>
+    <div id="page3" class="page">This is content of Item 3</div>
+
+</div>
+
+<script>
+    // Click Event For Both Sidebar And Tabs
+    function activate(id) {
+        // REMOVE ACTIVE FROM SIDEBAR
+        document.querySelectorAll(".sidebar-item")
+            .forEach(i => i.classList.remove("active"));
+
+        // ACTIVE SIDEBAR
+        document.querySelector(`.sidebar-item[data-id="${id}"]`)
+            .classList.add("active");
+
+        // REMOVE ACTIVE FROM TABS
+        document.querySelectorAll(".tab")
+            .forEach(i => i.classList.remove("active"));
+
+        // ACTIVE TAB
+        document.querySelector(`.tab[data-id="${id}"]`)
+            .classList.add("active");
+
+        // CHANGE PAGE CONTENT
+        document.querySelectorAll(".page")
+            .forEach(p => p.classList.remove("active"));
+
+        document.querySelector("#page" + id).classList.add("active");
+    }
+
+    // Both click listeners use same logic
+    document.querySelectorAll(".sidebar-item").forEach(item => {
+        item.addEventListener("click", function () {
+            activate(this.dataset.id);
+        });
+    });
+
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", function () {
+            activate(this.dataset.id);
+        });
+    });
+
+    // Default Load
+    activate(1);
+</script>
+
+</body>
+</html>

@@ -332,4 +332,17 @@
         minRange.addEventListener("input", updateRangeLabels);
         maxRange.addEventListener("input", updateRangeLabels);
 
-       
+
+        //view more hidden
+
+        document.getElementById("viewMoreBtn").addEventListener("click", function () {
+    let hiddenItems = document.querySelectorAll("#menuList .hidden-item");
+
+    hiddenItems.forEach(item => {
+        item.style.display = "block";
+    });
+
+    // View More button hide kar do
+    this.style.display = "none";
+});
+

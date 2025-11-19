@@ -17,7 +17,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/searchresult.css">
-   </head>
+</head>
 
 <body>
     <!--=============== Header Open =============== -->
@@ -207,11 +207,11 @@
 
                 <!-- Selected Filters -->
                 <div id="selectedFilters"></div>
-                <hr>             
+                <hr>
                 <!-- RADIO SECTION 1 -->
                 <div class="menu-section" id="menu1">
                     <h3>Category<span><i class="fas fa-minus"></i></span></h3>
-                    <ul>
+                    <ul id="menuList">
                         <li>
                             <label class="item-option">
                                 <input type="radio" name="menu1" value="Women Jeans" data-type="radio">
@@ -230,20 +230,37 @@
                                 <span>Men Jeans</span>
                             </label>
                         </li>
-                        <li>
+                        <li class="hidden-item">
                             <label class="item-option">
                                 <input type="radio" name="menu1" value="Women Pants" data-type="radio">
                                 <span>Women Pants</span>
                             </label>
                         </li>
+                        <li class="hidden-item">
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Women Jeans" data-type="radio">
+                                <span>Women Jeans</span>
+                            </label>
+                        </li>
+                        <li class="hidden-item">
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Pants" data-type="radio">
+                                <span>Pants</span>
+                            </label>
+                        </li>
+                        <li class="hidden-item">
+                            <label class="item-option">
+                                <input type="radio" name="menu1" value="Men Jeans" data-type="radio">
+                                <span>Men Jeans</span>
+                            </label>
+                        </li>
                         <li>
-                            <div class="viewmore">
+                            <div class="viewmore" id="viewMoreBtn">
                                 <span><i class="fas fa-plus"></i> View More</span>
                             </div>
                         </li>
                     </ul>
                 </div>
-
                 <!-- CHECKBOX SECTION Type -->
                 <div class="menu-section" id="menu2">
                     <h3>Type<span><i class="fas fa-minus"></i></span></h3>
@@ -407,21 +424,59 @@
                                             data-type="checkbox"><span>S</span></label></li>
                                 <li><label class="item-option"><input type="checkbox" value="L"
                                             data-type="checkbox"><span>L</span></label></li>
+                                <li>
+                                    <ul id="hidecol1-size">
+                                        <li>
+                                            <label class="item-option"><input type="checkbox" value="25"
+                                                    data-type="checkbox"><span>25</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="item-option"><input type="checkbox" value="27"
+                                                    data-type="checkbox"><span>27</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="item-option"><input type="checkbox" value="29"
+                                                    data-type="checkbox"><span>29</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="item-option"><input type="checkbox" value="31"
+                                                    data-type="checkbox"><span>31</span></label>
+                                        </li>
+                                        <li>
+                                            <label class="item-option"><input type="checkbox" value="33"
+                                                    data-type="checkbox"><span>33</span></label>
+                                        </li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="size-colun-right">
-                            <ul>
+                            <ul id="size-list-more">
                                 <li><label class="item-option"><input type="checkbox" value="XS"
                                             data-type="checkbox"><span>XS</span></label></li>
                                 <li><label class="item-option"><input type="checkbox" value="M"
                                             data-type="checkbox"><span>M</span></label></li>
                                 <li><label class="item-option"><input type="checkbox" value="XL"
                                             data-type="checkbox"><span>XL</span></label></li>
+                                <li>
+                                    <ul id="hidecol2-size">
+                                        <li><label class="item-option"><input type="checkbox" value="XXL"
+                                                    data-type="checkbox"><span>XXL</span></label></li>
+                                        <li><label class="item-option"><input type="checkbox" value="24"
+                                                    data-type="checkbox"><span>24</span></label></li>
+                                        <li><label class="item-option"><input type="checkbox" value="26"
+                                                    data-type="checkbox"><span>26</span></label></li>
+                                        <li><label class="item-option"><input type="checkbox" value="28"
+                                                    data-type="checkbox"><span>28</span></label></li>
+                                        <li><label class="item-option"><input type="checkbox" value="30"
+                                                    data-type="checkbox"><span>30</span></label></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="viewmore">
+                    <div class="viewmore" id="viewMoreBtn-size">
                         <span><i class="fas fa-plus"></i> View More</span>
                     </div>
                 </div>
@@ -452,7 +507,29 @@
                             </label>
                         </li>
                         <li>
-                            <div class="viewmore">
+                            <ul id="hide-details">
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Split" data-type="checkbox">
+                                        <span>Split</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Button Front" data-type="checkbox">
+                                        <span>Button Front</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Zipper" data-type="checkbox">
+                                        <span>Zipper</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="viewmore" id="viewMoreBtn-details">
                                 <span><i class="fas fa-plus"></i> View More</span>
                             </div>
                         </li>
@@ -491,7 +568,29 @@
                             </label>
                         </li>
                         <li>
-                            <div class="viewmore">
+                            <ul id="hide-pattern">
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Zebra Strip" data-type="checkbox">
+                                        <span>Zebra Strip</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Plants" data-type="checkbox">
+                                        <span>Plants</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="item-option">
+                                        <input type="checkbox" value="Tropical" data-type="checkbox">
+                                        <span>Tropical</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="viewmore" id="viewMoreBtn-pattern">
                                 <span><i class="fas fa-plus"></i> View More</span>
                             </div>
                         </li>
@@ -510,7 +609,7 @@
                     </ul>
                 </div>
                 <!-- PRICE RANGE -->
-                <div class="container" style="max-width: 500px;">
+                <div class="flex-container mt-3" style="max-width: 500px;">
                     <h6 class="fw-bold">Price Range (USD)</h6>
                     <div class="d-flex justify-content-between">
                         <span id="min-label">$0</span>
@@ -539,7 +638,36 @@
 
     <!-- FIXED JS -->
     <script src="js/searchresult.js"></script>
+    <script>
+        // view more size checkbox
+        const btn = document.getElementById("viewMoreBtn-size");
+        const morecol1 = document.getElementById("hidecol1-size");
+        const morecol2 = document.getElementById("hidecol2-size");
 
+        btn.addEventListener("click", function () {
+            morecol1.style.display = "block";
+            morecol2.style.display = "block";
+            btn.style.display = "none";
+        });
+
+        // view more details checkbox
+        const btn2 = document.getElementById("viewMoreBtn-details");
+        const more = document.getElementById("hide-details");
+
+        btn2.addEventListener("click", function () {
+            more.style.display = "block";
+            btn2.style.display = "none";
+        });
+
+        //view more pattern type checkbox
+        const btn3 = document.getElementById("viewMoreBtn-pattern");
+        const morepattern = document.getElementById("hide-pattern");
+
+        btn3.addEventListener("click", function () {
+            morepattern.style.display = "block";
+            btn3.style.display = "none";
+        });
+    </script>
 
 </body>
 

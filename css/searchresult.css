@@ -474,6 +474,26 @@ body {
   cursor: pointer;
 }
 
+.hidden-item {
+    display: none;
+}
+
+#hidecol1-size {
+    display: none;
+}
+
+#hidecol2-size {
+    display: none;
+}
+
+#hide-details {
+    display: none;
+}
+
+#hide-pattern {
+    display: none;
+}
+
 .searching {
   margin-left: 10px;
   padding-left: 40px;
@@ -884,6 +904,11 @@ input[type=range]::-webkit-slider-thumb {
   list-style-type: none;
   padding: 0%;
   margin: 0%;
+}
+
+/* range control */
+.container{
+  margin: 0;
 }
 
 /* Remove only scrollbar arrows (NOT the scrollbar) */
