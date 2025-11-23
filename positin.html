@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sticky Sidebar + Footer Sync</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:Arial;
+    }
+
+    /* -------------------------------- HEADER ------------------------------ */
+    header{
+        background:#2c3e50;
+        color:#fff;
+        padding:20px;
+        font-size:22px;
+        text-align:center;
+        position:sticky;
+        top:0;
+        z-index:10;
+        transition:0.4s ease;
+    }
+
+    .hide{
+        transform:translateY(-100%); /* header upar chala jaye */
+    }
+
+    /* -------------------------------- LAYOUT ------------------------------ */
+    .wrapper{
+        display:flex;
+        width:100%;
+        min-height:100vh;
+    }
+
+    /* -------------------------------- SIDEBAR ----------------------------- */
+    .sidebar{
+        width:260px;
+        background:#34495e;
+        color:white;
+        padding:20px;
+        height:fit-content;
+
+        /* STICKY until footer appears */
+        position:sticky;
+        top:20px;
+        max-height:calc(100vh - 40px); 
+        overflow-y:auto;
+        transition:0.3s;
+    }
+
+    .sidebar.not-sticky{
+        position:relative;   /* footer aa jaye → sticky ختم */
+        top:auto;
+    }
+
+    /* -------------------------------- CONTENT ----------------------------- */
+    .content{
+        flex:1;
+        padding:25px;
+        background:#ecf0f1;
+    }
+
+    .box{
+        background:white;
+        padding:20px;
+        margin-bottom:20px;
+        border-radius:8px;
+        box-shadow:0 0 3px rgba(0,0,0,0.1);
+    }
+
+    /* -------------------------------- FOOTER ------------------------------ */
+    footer{
+        background:#2c3e50;
+        color:white;
+        padding:30px;
+        text-align:center;
+        margin-top:40px;
+    }
+</style>
+</head>
+<body>
+
+<header id="header">My Header</header>
+
+<div class="wrapper">
+
+    <div class="sidebar" id="sidebar">
+        <h3>Sidebar</h3>
+        <p>Yeh apni jagah stick rahega...</p>
+        <div class="box">Menu 1</div>
+        <div class="box">Menu 2</div>
+        <div class="box">Menu 3</div>
+        <div class="box">Menu 4</div>
+        <div class="box">Menu 5</div>
+        <div class="box">Menu 6</div>
+        <div class="box">Menu 7</div>
+        <div class="box">Menu 8</div>
+        <div class="box">Menu 9</div>
+    </div>
+
+    <div class="content">
+        <h2>Main Content</h2>
+        <p>Page scroll yahan se control ho raha hai...</p>
+
+        <!-- Long Page Content -->
+        <div class="box">Section 1</div>
+        <div class="box">Section 2</div>
+        <div class="box">Section 3</div>
+        <div class="box">Section 4</div>
+        <div class="box">Section 5</div>
+        <div class="box">Section 6</div>
+        <div class="box">Section 7</div>
+        <div class="box">Section 8</div>
+        <div class="box">Section 9</div>
+        <div class="box">Section 10</div>
+        <div class="box">Section 11</div>
+        <div class="box">Section 12</div>
+    </div>
+
+</div>
+
+<footer id="footer">This is Footer — Jab content khatam ho tab aata hai</footer>
+
+<script>
+    const sidebar = document.getElementById("sidebar");
+    const footer = document.getElementById("footer");
+
+    window.addEventListener("scroll", () => {
+        let sidebarBottom = sidebar.getBoundingClientRect().bottom;
+        let footerTop = footer.getBoundingClientRect().top;
+
+        // If sidebar is touching the footer → remove sticky
+        if (sidebarBottom >= footerTop){
+            sidebar.classList.add("not-sticky");
+        } else {
+            sidebar.classList.remove("not-sticky");
+        }
+    });
+
+    let lastScroll = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+        let current = window.scrollY;
+
+        if(current > lastScroll){
+            header.classList.add("hide");   // scroll down → hide header
+        }else{
+            header.classList.remove("hide"); // scroll up → show header
+        }
+
+        lastScroll = current;
+    });
+</script>
+
+</body>
+</html>
