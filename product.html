@@ -2,1015 +2,910 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E-Commerce Website Header & Footer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
 
-  <!-- head icon -->
-  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- head icon -->
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Font Awesome for icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <!-- css -->
-   <link rel="stylesheet" href="css/product.css">
-  <style>
-    /* ----------------------------------------------------------------- */
-    /* GENERAL STYLES */
-    /* ----------------------------------------------------------------- */
-    body{
-        font-family: Arial, sans-serif;
-        margin:0;
-        padding:0;
-        display:flex;
-        justify-content:center;
-        padding-top:20px;
-        background:#fff;
-    }
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <!-- css -->
+    <link rel="stylesheet" href="css/product.css">
 
-    .container{
-        width:1200px;
-        display:flex;
-        gap:30px;
-        position:relative;
-    }
-
-    /* LEFT COLUMN - Contains Images AND Reviews */
-    .left-column {
-        width: 580px; 
-        display: flex;
-        flex-direction: column;
-        gap: 30px; 
-    }
-
-    /* IMAGE SECTION */
-    .image-box{
-        display:flex;
-        gap:10px;
-    }
-
-    .thumbnails{
-        display:flex;
-        flex-direction:column;
-        gap:10px;
-    }
-
-    .thumb{
-        width:70px;
-        height:110px;
-        object-fit:cover;
-        border:2px solid transparent;
-        cursor:pointer;
-        transition:0.2s;
-        background-color: #f0f0f0; 
-        box-shadow: 0 0 5px rgba(0,0,0,0.1); 
-    }
-    .thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-
-    .thumb.active{
-        border:2px solid #000;
-    }
-
-    .main-image{
-        width:500px;
-        height:700px;
-        object-fit:cover;
-        border:1px solid #ddd;
-        background-color: #e0e0e0;
-        display: block;
-    }
-    
-    .image-placeholder {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 10px;
-        color: #555;
-        border: 1px solid #ccc;
-    }
-
-
-    /* RIGHT SIDE - Product Info */
-    .product-info-column{
-        display:flex;
-        flex-direction:column;
-        width:420px;
-    }
-    
-    .right-box{
-        /* Product details container */
-    }
-
-    /* ----------------------------------------------------------------- */
-    /* TITLE AND SHARE BUTTON STYLES */
-    /* ----------------------------------------------------------------- */
-
-    .title-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start; 
-        margin-bottom: 5px;
-    }
-
-    .title{
-        font-size:16px;
-        font-weight:600;
-        line-height:1.3;
-        flex-grow: 1; 
-        padding-right: 15px;
-    }
-
-    .share-container {
-        position: relative;
-        cursor: pointer;
-        z-index: 20; 
-        margin-top: 2px;
-    }
-    
-    .share-icon {
-        width: 30px; 
-        height: 30px; 
-        display: flex; 
-        justify-content: center;
-        align-items: center;
-        font-size: 18px; 
-        color: #000;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        background: #f8f8f8;
-        transition: background 0.2s;
-        box-sizing: border-box; 
-    }
-
-    .share-container:hover .share-icon {
-        background: #e0e0e0;
-    }
-
-    .share-popup {
-        position: absolute;
-        top: 100%; 
-        right: 0;
-        
-        display: flex;
-        flex-direction: row; 
-        gap: 8px; 
-        
-        padding: 8px; 
-        background: white;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        border-radius: 5px;
-        
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s, visibility 0.3s;
-    }
-
-    .share-container:hover .share-popup {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .social-link { 
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        width: 35px; 
-        height: 35px;
-        padding: 0; 
-        border-radius: 3px;
-        text-decoration: none;
-        color: #333; 
-        transition: background 0.2s;
-    }
-    .social-link:hover {
-        background: #f0f0f0;
-    }
-
-    .social-icon-fa { 
-        font-size: 20px; 
-    }
-
-    /* Specific colors for Font Awesome icons */
-    .social-icon-fa.twitter { color: #1DA1F2; }
-    .social-icon-fa.pinterest { color: #BD081C; }
-    .social-icon-fa.facebook { color: #4267B2; }
-    
-    /* ----------------------------------------------------------------- */
-    /* PRICE AND KLARNA STYLES */
-    /* ----------------------------------------------------------------- */
-    
-    .sku{
-        font-size:12px;
-        color:#777;
-        margin-bottom:5px;
-    }
-
-    .klarna-box{
-        background:#f5f5f5;
-        font-size:12px;
-        margin: 15px 0 25px auto; 
-        border-radius:3px;
-        line-height:1.4;
-        width: fit-content;
-        padding: 5px 10px;
-    }
-    .klarna-text{
-        display: inline-block;
-        margin-right: 5px;
-    }
-    .klarna-logo{
-        font-style: italic;
-        font-weight: bold;
-        color: #000;
-        background-color: #f7b1c3;
-        padding: 0 4px;
-        border-radius: 2px;
-        font-size: 10px;
-    }
-
-    .price-container {
-        display: flex;
-        align-items: flex-end; 
-        gap: 15px;
-        margin-top: 10px; 
-        padding-bottom: 0; 
-    }
-    
-    .price-now {
-        font-size: 32px;
-        font-weight: bold;
-        color: #E60B0A; 
-        line-height: 1; 
-    }
-    
-    .price-old-and-discount {
-        display: flex; 
-        align-items: flex-end;
-        gap: 10px; 
-        line-height: 1;
-    }
-    
-    .price-old {
-        font-size: 14px; 
-        color: #999;
-        text-decoration: line-through;
-    }
-    
-    .discount-box {
-        font-size: 14px; 
-        font-weight: bold;
-        color: #000; 
-        border: none;
-        padding: 0;
-    }
-    
-    /* ----------------------------------------------------------------- */
-    /* COLOR, SIZE, QUANTITY STYLES (UPDATED FOR LARGE IMAGE LINK AND SIZE BUTTONS) */
-    /* ----------------------------------------------------------------- */
-    
-    .section-title{
-        font-weight:bold;
-        margin:10px 0 8px;
-    }
-    .section-title.color-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .large-image-link {
-        font-size: 12px;
-        font-weight: normal;
-        color: #0000FF; 
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-
-    /* Color thumbnails */
-    .color-list{
-        display:flex;
-        gap:10px;
-        margin-bottom:20px;
-    }
-    .color-item{
-        width:60px;
-        height:80px;
-        border:2px solid transparent;
-        cursor:pointer;
-        position: relative;
-        box-shadow: 0 0 5px rgba(0,0,0,0.1); 
-    }
-    .color-item.active{
-        border:2px solid black;
-    }
-    .color-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        background-color: #ddd; /* fallback for empty src */
-    }
-    .hot-tag {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: #ff5500;
-        color: white;
-        font-size: 10px;
-        padding: 1px 4px;
-        border-radius: 0 0 0 5px;
-        font-weight: bold;
-    }
-
-    /* Size buttons (UPDATED FOR 5-1 ROW LAYOUT) */
-    .sizes{
-        display:flex;
-        gap:10px;
-        margin-bottom:10px; 
-        flex-wrap:wrap; /* Allows items to wrap to the next line */
-        /* Adjusted width to force 5 items per row */
-        max-width: 300px; 
-    }
-
-    .size-btn{
-        width:45px; 
-        height:30px; 
-        border:1px solid #ddd;
-        border-radius:20px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        cursor:pointer;
-        font-size:14px;
-        transition:0.2s;
-    }
-    .size-btn:hover{
-        border-color:black;
-    }
-    .size-btn.active{
-        border-color:black;
-        font-weight:bold;
-        background:#f2f2f2;
-    }
-
-    .size-links {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .size-guide, .tell-me-size {
-        font-size: 13px;
-        color: #000;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
-    .arrow-icon {
-        margin-left: 5px;
-        font-size: 10px;
-    }
-
-    /* Quantity Selector */
-    .quantity-selector {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .qty-box {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-    .qty-btn {
-        background: #f8f8f8;
-        border: none;
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    .qty-input {
-        width: 30px;
-        text-align: center;
-        border: none;
-        outline: none;
-        height: 35px;
-    }
-
-    .add-cart-section {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .add-cart{
-        flex-grow: 1;
-        height:55px;
-        background:black;
-        color:white;
-        border:none;
-        border-radius:5px;
-        font-size:18px;
-        cursor:pointer;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .add-cart-discount {
-        font-size: 10px;
-        font-weight: normal;
-        margin-top: -5px;
-    }
-
-    .wishlist-btn {
-        width: 55px;
-        height: 55px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background: white;
-        cursor: pointer;
-        font-size: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* FLOATING RIGHT TOOLS */
-    .right-float-tools {
-        position: fixed;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .float-tool {
-        width: 40px;
-        height: 40px;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        font-size: 18px;
-        color: #000;
-        position: relative;
-    }
-    .float-tool:last-child {
-        margin-top: 150px;
-        border-radius: 50%;
-    }
-
-
-    /* ----------------------------------------------------------------- */
-    /* CUSTOMER REVIEWS SECTION */
-    /* ----------------------------------------------------------------- */
-    .reviews-section {
-        width: 100%; 
-    }
-
-    .reviews-header {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .rating-summary {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .rating-number {
-        font-size: 40px;
-        font-weight: bold;
-        margin-right: 15px;
-    }
-
-    .stars {
-        color: gold;
-        font-size: 20px;
-        margin-bottom: 5px;
-        display: inline-block;
-        letter-spacing: 2px;
-    }
-
-    .customer-review-policy {
-        font-size: 12px;
-        color: #777;
-        cursor: pointer;
-    }
-    .customer-review-policy i {
-        margin-left: 5px;
-    }
-
-    .fit-bar-container {
-        margin-top: 15px;
-        margin-bottom: 20px;
-    }
-
-    .fit-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
-        font-size: 12px;
-    }
-
-    .fit-label {
-        width: 90px;
-        color: #777;
-        text-align: left;
-        margin-right: 10px;
-    }
-
-    .fit-bar-wrapper {
-        flex-grow: 1;
-        height: 5px;
-        background: #f2f2f2;
-        display: flex;
-        border-radius: 3px;
-        overflow: hidden;
-    }
-
-    .fit-bar.small { background: #999; }
-    .fit-bar.true-to-size { background: #000; }
-    .fit-bar.large { background: #999; }
-
-    .fit-percentage {
-        width: 30px;
-        text-align: right;
-        font-weight: normal;
-        margin-left: 10px;
-    }
-
-    .all-reviews-nav {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 10px;
-        font-size: 14px;
-        font-weight: bold;
-    }
-    .all-reviews-nav div {
-        cursor: pointer;
-    }
-    .all-reviews-nav div.active {
-        border-bottom: 2px solid black;
-        padding-bottom: 10px;
-    }
-
-
-    .review-filters {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .filter-dropdown {
-        padding: 8px 15px;
-        border: 1px solid #ddd;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 13px;
-        background: white;
-    }
-
-    .review-tags {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .review-tag {
-        padding: 5px 10px;
-        border: 1px solid #ddd;
-        border-radius: 20px;
-        font-size: 12px;
-        cursor: pointer;
-    }
-    .review-tag.active {
-        background: #000;
-        color: white;
-        border-color: #000;
-    }
-
-    .review-detail {
-        border-top: 1px solid #eee;
-        padding: 15px 0;
-    }
-
-    .review-date {
-        font-size: 12px;
-        color: #777;
-        margin-bottom: 10px;
-    }
-
-    .review-stars {
-        color: gold;
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .review-metadata {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px 15px;
-        margin-top: 10px;
-        font-size: 12px;
-    }
-    .meta-item {
-        color: #777;
-    }
-    .meta-value {
-        font-weight: bold;
-        color: #000;
-    }
-
-    .review-body {
-        margin-top: 10px;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-    
-    .review-body img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        margin-top: 10px;
-        margin-right: 10px;
-        border: 1px solid #ddd;
-        float: left;
-    }
-    
-    .review-actions {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 12px;
-        color: #777;
-        margin-top: 10px;
-    }
-    .helpful-btn {
-        margin-left: 10px;
-        cursor: pointer;
-        font-weight: bold;
-        color: #000;
-    }
-
-</style>
 </head>
+
 <body>
-
-<div class="container">
-
-    <div class="left-column">
-        
-        <div class="image-box">
-            <div class="thumbnails">
-                <div class="thumb active">
-                    <img src="images/1.avif" alt="Denim Pants Thumbnail 1">
+    <header class="noshahi-header" id="header">
+        <div class="header-top">
+            <div class="logo">
+                NOSHAHI
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="header-icons">
+                <!-- USER MENU -->
+                <div class="user-menu-wrapper">
+                    <a href="signup.html" class="user-icon">
+                        <i class="far fa-user"></i>
+                    </a>
+                    <div class="user-tooltip-box">
+                        <a href="#">
+                            <p class="user-name">sharjeelnoshahi</p>
+                        </a>
+                        <a href="#">
+                            <p>Shein Club</p>
+                        </a>
+                        <a href="#">
+                            <p>SHEIN Saver</p>
+                        </a>
+                        <a href="#">
+                            <p>My Profile</p>
+                        </a>
+                        <a href="#">
+                            <p>My Orders</p>
+                        </a>
+                        <a href="#">
+                            <p>My Message</p>
+                        </a>
+                        <a href="#">
+                            <p>My Coupons <span style="color:red;">●</span></p>
+                        </a>
+                        <a href="#">
+                            <p>My Points</p>
+                        </a>
+                        <a href="#">
+                            <p>Recently Viewed</p>
+                        </a>
+                        <a href="#">
+                            <p>More Services</p>
+                        </a>
+                        <hr>
+                        <a href="#">
+                            <p>Switch Accounts</p>
+                        </a>
+                        <a href="#">
+                            <p>Sign Out</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="thumb">
-                    <img src="images/2.avif" alt="Denim Pants Thumbnail 2">
+                <!-- CART -->
+                <div class="cart-wrapper">
+                    <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <div class="cart-tooltip-box">
+                        <div class="tooltip-content">
+                            <img src="images/emptycart.PNG" alt="">
+                            <p>Shopping cart is Empty</p>
+                            <a href="index.html">Go to Shop</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="thumb">
-                    <img src="images/3.avif" alt="Denim Pants Thumbnail 3">
-                </div>
-                <div class="thumb">
-                    <img src="images/4.avif" alt="Denim Pants Thumbnail 4">
-                </div>
-                <div class="thumb">
-                    <img src="images/1.avif" alt="Denim Pants Thumbnail 5">
-                </div>
-                <div class="thumb">
-                    <img src="images/3.avif" alt="Denim Pants Thumbnail 6">
+                <!-- WISHLIST / MESSAGE -->
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#"><i class="far fa-comment-dots"></i></a>
+                <!-- GLOBE -->
+                <div class="currency-menu-wrapper">
+                    <a href="#"><i class="fas fa-globe"></i></a>
+                    <div class="currency-tooltip-box">
+                        <div class="tooltip-section">
+                            <p class="section-title">
+                                Currency
+                            </p>
+                            <select>
+                                <option value="USD">$ USD</option>
+                                <option value="EUR">€ EUR</option>
+                                <option value="GBP">£ GBP</option>
+                                <option value="JPY">¥ JPY</option>
+                            </select>
+                        </div>
+                        <div class="tooltip-section">
+                            <p class="section-title">
+                                Language
+                            </p>
+                            <div class="language-options">
+                                <span class="active">English</span>
+                                <span>Español</span>
+                            </div>
+                        </div>
+                        <a href="index.html" class="international-link">
+                            International Site
+                        </a>
+                    </div>
                 </div>
             </div>
-            <img id="mainImage" class="main-image" 
-                 src="images/1.avif" 
-                 alt="Main Product Image - Black Denim">
         </div>
-        
-        <!-- <div class="reviews-section">
-            <div class="reviews-header">Customer Reviews</div>
-
-            <div class="rating-summary">
-                <div class="rating-number">4.62</div>
-                <div>
-                    <div class="stars">★★★★☆</div>
-                    <div class="customer-review-policy">Customer Review Policy <i class="fas fa-question-circle">?</i></div>
-                </div>
-            </div>
-
-            <div class="fit-bar-container">
-                <div class="fit-row">
-                    <div class="fit-label">Small</div>
-                    <div class="fit-bar-wrapper">
-                        <div class="fit-bar small" style="width: 10%;"></div>
+        <div class="position-relative">
+            <button class="scroll-btn left"><i class="fa-solid fa-chevron-left"></i></button>
+            <nav class="noshahi-navbar d-flex align-items-center" id="categoryNavbar">
+                <ul class="navbar-nav flex-row mx-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#">Categories <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-column">
+                                <a href="#">New In</a>
+                                <a href="#">Sale</a>
+                                <a href="#">Women Clothing</a>
+                                <a href="#">Kids</a>
+                                <a href="#">Curve</a>
+                                <a href="#">Men Clothing</a>
+                                <a href="#">Shoes</a>
+                                <a href="#">Underwear & Sleepwear</a>
+                                <a href="#">Home & Kitchen</a>
+                                <a href="#">Jewelry & Accessories</a>
+                                <a href="#">Beauty & Health</a>
+                                <a href="#">Baby & Maternity</a>
+                                <a href="#">Bags & Luggage</a>
+                                <a href="#">Sports & Outdoors</a>
+                                <a href="#">Home Textiles</a>
+                                <a href="#">Cell Phones & Accessories</a>
+                                <a href="#">Electronics</a>
+                                <a href="#">Toys & Games</a>
+                                <a href="#">Tools & Home Improvement</a>
+                                <a href="#">Office & School Supplies</a>
+                                <a href="#">Pet Supplies</a>
+                                <a href="#">Appliances</a>
+                                <a href="#">Automotive</a>
+                                <a href="#">Books & Magazine</a>
+                                <a href="#">Food & Beverages</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="#">New In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sale</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Women Clothing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kids</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Curve</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Men Clothing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shoes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Underwear & Sleepwear</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home & Kitchen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jewelry & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Beauty & Health</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Baby & Maternity</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Bags & Luggage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sports & Outdoors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Textiles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cell Phones & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Electronics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Toys & Games</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tools & Home Improvement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Office & School Supplies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pet Supplies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Appliances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Automotive</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Books & Magazine</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Food & Beverages</a></li>
+                </ul>
+            </nav>
+            <button class="scroll-btn right"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </header>
+    <div class="product-container">
+        <div class="breadcrub">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Women Apparel</a></li>
+                    <li class="breadcrumb-item"><a href="#">Women Clothing</a></li>
+                    <li class="breadcrumb-item"><a href="#">Women Denim</a></li>
+                    <li class="breadcrumb-item"><a href="#">Women Jeans</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Plain Ripped Skinny Pocket Casual Versatile
+                        Denim Jeans</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="left-column">
+                <div class="image-box">
+                    <div class="thumbnails">
+                        <div class="thumb active">
+                            <img src="images/card_3.jpg" alt="Denim Pants Thumbnail 1">
+                        </div>
+                        <div class="thumb">
+                            <img src="images/2.webp" alt="Denim Pants Thumbnail 2">
+                        </div>
+                        <div class="thumb">
+                            <img src="images/3.webp" alt="Denim Pants Thumbnail 3">
+                        </div>
+                        <div class="thumb">
+                            <img src="images/4.webp" alt="Denim Pants Thumbnail 4">
+                        </div>
+                        <div class="thumb">
+                            <img src="images/1.webp" alt="Denim Pants Thumbnail 5">
+                        </div>
+                        <div class="thumb">
+                            <img src="images/card_4.webp" alt="Denim Pants Thumbnail 6">
+                        </div>
                     </div>
-                    <div class="fit-percentage">10%</div>
-                </div>
-                <div class="fit-row">
-                    <div class="fit-label">True to Size</div>
-                    <div class="fit-bar-wrapper">
-                        <div class="fit-bar true-to-size" style="width: 70%;"></div>
-                    </div>
-                    <div class="fit-percentage">70%</div>
-                </div>
-                <div class="fit-row">
-                    <div class="fit-label">Large</div>
-                    <div class="fit-bar-wrapper">
-                        <div class="fit-bar large" style="width: 20%;"></div>
-                    </div>
-                    <div class="fit-percentage">20%</div>
-                </div>
-            </div>
-
-            <div class="all-reviews-nav">
-                <div class="active">All Reviews</div>
-                <div>Image (50)</div>
-            </div>
-
-            <div class="review-filters">
-                <select class="filter-dropdown">
-                    <option>Rating</option>
-                </select>
-                <select class="filter-dropdown">
-                    <option>Filter by product (color or size)</option>
-                </select>
-                <select class="filter-dropdown">
-                    <option>All</option>
-                </select>
-                <select class="filter-dropdown">
-                    <option>Sort by</option>
-                </select>
-                <select class="filter-dropdown">
-                    <option>Recommend</option>
-                </select>
-            </div>
-
-            <div class="review-tags">
-                <div class="review-tag active">Love the Design</div>
-                <div class="review-tag active">True to Picture</div>
-                <div class="review-tag">Nice Material</div>
-            </div>
-
-            <div class="review-detail">
-                <div class="review-date">***9 Nov 2025</div>
-                <div class="review-stars">★★★★★</div>
-
-                <div class="review-metadata">
-                    <span class="meta-item">Overall Fit: <span class="meta-value">True to Size</span></span>
-                    <span class="meta-item">Size: <span class="meta-value">S</span></span>
-                    <span class="meta-item">Color: <span class="meta-value">Black</span></span>
-                </div>
-
-                <div class="review-body">
-                    came very fast and just like the picture
-                </div>
-                <div class="review-actions">
-                    Helpful: (2)
-                    <span class="helpful-btn">👍</span>
-                </div>
-            </div>
-            
-            <div class="review-detail">
-                <div class="review-date">***20 Nov 2025</div>
-                <div class="review-stars">★★★★★</div>
-
-                <div class="review-metadata">
-                    <span class="meta-item">Overall Fit: <span class="meta-value">Too Loose</span></span>
-                    <span class="meta-item">Size: <span class="meta-value">XL</span></span>
-                    <span class="meta-value">Color: <span class="meta-value">Light Wash</span></span>
-                </div>
-
-                <div class="review-body">
-                    <img src="images/2.avif" 
-                         alt="Customer review image"
-                         style="width: 100px; height: 100px; margin-right: 10px; float: left; border: 1px solid #ccc; font-size: 10px;">
-                    i really like the cut of the denim
-                </div>
-                <div style="clear: both;"></div>
-                <div class="review-actions">
-                    Helpful: (0)
-                    <span class="helpful-btn">👍</span>
-                </div>
-            </div>
-            
-        </div> -->
-    </div>
-
-
-    <div class="product-info-column">
-        
-        <div class="right-box">
-
-            <div class="title-row">
-                <div class="title">
-                    Women's Mid Rise Straight Leg Denim Pants - Non Stretch Classic Washed Button Fly Zipper Closure
-                </div>
-                
-                <div class="share-container">
-                    <span class="share-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </span>
-                    <div class="share-popup">
-                        <a href="https://twitter.com/intent/tweet?url=YOUR_PRODUCT_URL&text=Check%20out%20this%20product%21" target="_blank" class="social-link">
-                            <i class="fab fa-twitter social-icon-fa twitter"></i>
-                        </a>
-                        <a href="https://pinterest.com/pin/create/button/?url=YOUR_PRODUCT_URL&media=YOUR_IMAGE_URL&description=YOUR_PRODUCT_DESCRIPTION" target="_blank" class="social-link">
-                            <i class="fab fa-pinterest social-icon-fa pinterest"></i>
-                        </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PRODUCT_URL" target="_blank" class="social-link">
-                            <i class="fab fa-facebook-f social-icon-fa facebook"></i>
-                        </a>
+                    <div class="main-image">
+                        <img id="mainImage" src="images/card_5.webp" alt="Main Product Image - Black Denim">
                     </div>
                 </div>
             </div>
-            
-            <div class="sku">SKU: S225090998294825844</div>
+            <div class="product-info-column">
+                <div class="right-box">
+                    <div class="title-row">
+                        <div class="title">
+                            Women's Mid Rise Straight Leg Denim Pants - Non Stretch Classic Washed Button Fly Zipper
+                        </div>
 
-            <div class="price-container">
-                <div class="price-now">$17.85</div>
-                <div class="price-old-and-discount">
-                    <div class="price-old">$27.00</div>
-                    <div class="discount-box">-34%</div>
+                        <div class="share-container">
+                            <span class="share-icon">
+                                <a href="#" class="share-btn" title="Share / Open">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </span>
+                            <div class="share-popup">
+                                <a href="https://twitter.com/intent/tweet?url=YOUR_PRODUCT_URL&text=Check%20out%20this%20product%21"
+                                    target="_blank" class="social-link">
+                                    <i class="fab fa-twitter social-icon-fa twitter"></i>
+                                </a>
+                                <a href="https://pinterest.com/pin/create/button/?url=YOUR_PRODUCT_URL&media=YOUR_IMAGE_URL&description=YOUR_PRODUCT_DESCRIPTION"
+                                    target="_blank" class="social-link">
+                                    <i class="fab fa-pinterest social-icon-fa pinterest"></i>
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PRODUCT_URL" target="_blank"
+                                    class="social-link">
+                                    <i class="fab fa-facebook-f social-icon-fa facebook"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sku">
+                        <span>SKU: S225090998294825844 </span>
+                        <i class="fa-solid fa-clone"></i>
+                        <div class="rating" aria-hidden="true">
+                            <span style="color: rgb(246, 210, 9);">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </span>
+                            <span style="font-size:13px;color:#6a6a6a;">(1000+ Reviews)</span>
+                        </div>
+                    </div>
+
+                    <div class="price-container">
+                        <div class="price-now"><span>$</span>17.85</div>
+                        <div class="price-old-and-discount">
+                            <div class="price-old">$27.00</div>
+                            <div class="discount-box">-34%</div>
+                        </div>
+                    </div>
+
+                    <div class="klarna-box">
+                        <span class="klarna-text">Pay now, in 4 payments of $4.46, or pay over time with monthly<br>
+                            financing.<span class="klarna-logo">Klarna</span>
+                            <i class="fa-regular fa-circle-question"></i>
+                        </span>
+                    </div>
+                    <div class="hr">
+                        <hr>
+                    </div>
+                    <div class="section-title color-title">
+                        Color: Black
+                        <span class="large-image-link">Large Image</span>
+                    </div>
+
+                    <div class="color-list">
+                        <div class="color-item active">
+                            <img src="images/1.webp" alt="Black">
+                        </div>
+                        <div class="color-item">
+                            <img src="images/2.webp" alt="Light Wash">
+                            <span class="hot-tag">HOT</span>
+                        </div>
+                        <div class="color-item">
+                            <img src="images/3.webp" alt="Light Wash">
+                            <span class="hot-tag">HOT</span>
+                        </div>
+                        <div class="color-item">
+                            <img src="images/4.webp" alt="Light Wash">
+                        </div>
+                    </div>
+
+                    <!-- Size: dropdown above buttons -->
+                    <div class="size-area">
+                        <div class="size-label">Size</div>
+
+                        <div class="size-select">
+                            <select id="sizeSelect" aria-label="Size select">
+                                <option value="">MX Size</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+
+                        <div class="size-buttons" id="sizeButtons">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                        </div>
+                        <a href="#" class="not-your-size">Not your size? Tell me your size</a>
+                    </div>
+
+                    <div class="quantity-selector">
+                        <div class="section-title" style="margin: 0;">Qty:</div>
+                        <div class="qty-box">
+                            <button class="qty-btn">-</button>
+                            <input type="text" class="qty-input" value="1" readonly>
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+
+                    <div class="add-cart-section">
+                        <button class="add-cart">
+                            ADD TO CART
+                            <span class="add-cart-discount">34% off discount</span>
+                        </button>
+                        <button class="wishlist-btn">♡</button>
+                    </div>
+
+                    <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
+                        <p>Shipping & Returns</p>
+                        <p>Free Shipping Orders Over $50.00</p>
+                        <p>Delivery: Standard Shipping (5-8 business days)</p>
+                    </div>
+
                 </div>
             </div>
-            
-            <div class="klarna-box">
-                <span class="klarna-text">Pay now, in 4 payments of $4.46, or pay over time with monthly financing.</span>
-                <span class="klarna-logo">Klarna</span>
-            </div>
-            <div class="section-title color-title">
-                Color: Black
-                <span class="large-image-link">Large Image</span>
-            </div>
-
-            <div class="color-list">
-                <div class="color-item active">
-                    <img src="images/1.avif" alt="Black">
-                </div>
-                <div class="color-item">
-                    <img src="images/2.avif" alt="Light Wash">
-                    <span class="hot-tag">HOT</span>
-                </div>
-                <div class="color-item">
-                     <img src="images/3.avif" alt="Light Wash">
-                    <span class="hot-tag">HOT</span>
-                </div>
-                <div class="color-item">
-                     <img src="images/4.avif" alt="Light Wash">
-                </div>
-            </div>
-
-            <div class="section-title">Size</div>
-
-            <div class="sizes">
-                <div class="size-btn">XS</div>
-                <div class="size-btn active">S</div>
-                <div class="size-btn">M</div>
-                <div class="size-btn">L</div>
-                <div class="size-btn">XL</div>
-                <div class="size-btn">XXL</div>
-            </div>
-
-            <div class="size-links">
-                <div class="size-guide">Size Guide</div>
-                <div class="tell-me-size">Not your size? <span>Tell me your size</span> <span class="arrow-icon">></span></div>
-            </div>
-
-            <div class="quantity-selector">
-                <div class="section-title" style="margin: 0;">Qty:</div>
-                <div class="qty-box">
-                    <button class="qty-btn">-</button>
-                    <input type="text" class="qty-input" value="1" readonly>
-                    <button class="qty-btn">+</button>
-                </div>
-            </div>
-
-            <div class="add-cart-section">
-                <button class="add-cart">
-                    ADD TO CART
-                    <span class="add-cart-discount">34% off discount</span>
-                </button>
-                <button class="wishlist-btn">♡</button>
-            </div>
-
-            <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
-                <p>Shipping & Returns</p>
-                <p>Free Shipping Orders Over $50.00</p>
-                <p>Delivery: Standard Shipping (5-8 business days)</p>
-            </div>
-
         </div>
     </div>
-    
-    <div class="right-float-tools">
-        <div class="float-tool red-dot">🛒</div>
-        <div class="float-tool">↑</div>
-    </div>
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row ms-5">
+
+                <!-- COMPANY INFO -->
+                <div class=" row-link col-md-1 col-sm-6 mb-4">
+                    <h6>Company Info</h6>
+                    <a href="#">About Noshahi</a>
+                    <a href="#">Social Responsibility</a>
+                    <a href="#">Careers</a>
+                </div>
+
+                <!-- HELP & SUPPORT -->
+                <div class=" row-link col-md-1 col-sm-6 mb-4">
+                    <h6>Help & Support</h6>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Refund</a>
+                    <a href="#">How To Order</a>
+                    <a href="#">How To Track</a>
+                    <a href="#">Size Guide</a>
+                    <a href="#">Noshahi VIP</a>
+                </div>
+
+                <!-- CUSTOMER CARE -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <h6>Customer Care</h6>
+                    <a href="#">Contact us</a>
+                    <a href="#">Payment Method</a>
+                    <a href="#">Bonus Point</a>
+                    <a href="#">FAQ</a>
+                </div>
+
+                <!-- SUBSCRIBE & SOCIAL -->
+                <div class="col-md-3 col-sm-6 social-icons">
+                    <h6>Find Us On App</h6>
+                    <div class="social-icon mb-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-apple"></i></a>
+                        <a href="#"><i class="fab fa-android"></i></a>
+                    </div>
+
+                    <!-- subscribe-container -->
+                    <div class="subscribe-container">
+                        <h3><b>SIGN UP FOR Noshahi STYLE NEWS</b></h3>
+
+                        <div class="subscribe-group subscribe-group-email">
+                            <input type="email" placeholder="Your Email Address">
+                            <button>Subscribe</button>
+                        </div>
+                        <div class="subscribe-group">
+                            <div class="phone-input">
+                                <select>
+                                    <option value="+92">PK +92</option>
+                                    <option value="+93">Afghanistan +93</option>
+                                    <option value="+355">Albania +355</option>
+                                    <option value="+213">Algeria +213</option>
+                                    <option value="+376">Andorra +376</option>
+                                    <option value="+244">Angola +244</option>
+                                    <option value="+1-268">Antigua and Barbuda +1-268</option>
+                                    <option value="+54">Argentina +54</option>
+                                    <option value="+374">Armenia +374</option>
+                                    <option value="+61">Australia +61</option>
+                                    <option value="+43">Austria +43</option>
+                                    <option value="+994">Azerbaijan +994</option>
+                                    <option value="+1-242">Bahamas +1-242</option>
+                                    <option value="+973">Bahrain +973</option>
+                                    <option value="+880">Bangladesh +880</option>
+                                    <option value="+1-246">Barbados +1-246</option>
+                                    <option value="+375">Belarus +375</option>
+                                    <option value="+32">Belgium +32</option>
+                                    <option value="+501">Belize +501</option>
+                                    <option value="+229">Benin +229</option>
+                                    <option value="+975">Bhutan +975</option>
+                                    <option value="+591">Bolivia +591</option>
+                                    <option value="+387">Bosnia and Herzegovina +387</option>
+                                    <option value="+267">Botswana +267</option>
+                                    <option value="+55">Brazil +55</option>
+                                    <option value="+673">Brunei +673</option>
+                                    <option value="+359">Bulgaria +359</option>
+                                    <option value="+226">Burkina Faso +226</option>
+                                    <option value="+257">Burundi +257</option>
+                                    <option value="+855">Cambodia +855</option>
+                                    <option value="+237">Cameroon +237</option>
+                                    <option value="+1">Canada +1</option>
+                                    <option value="+238">Cape Verde +238</option>
+                                    <option value="+236">Central African Republic +236</option>
+                                    <option value="+235">Chad +235</option>
+                                    <option value="+56">Chile +56</option>
+                                    <option value="+86">China +86</option>
+                                    <option value="+57">Colombia +57</option>
+                                    <option value="+269">Comoros +269</option>
+                                    <option value="+242">Congo +242</option>
+                                    <option value="+682">Cook Islands +682</option>
+                                    <option value="+506">Costa Rica +506</option>
+                                    <option value="+385">Croatia +385</option>
+                                    <option value="+53">Cuba +53</option>
+                                    <option value="+357">Cyprus +357</option>
+                                    <option value="+420">Czech Republic +420</option>
+                                    <option value="+243">Democratic Republic of the Congo +243</option>
+                                    <option value="+45">Denmark +45</option>
+                                    <option value="+253">Djibouti +253</option>
+                                    <option value="+1-767">Dominica +1-767</option>
+                                    <option value="+1-809">Dominican Republic +1-809</option>
+                                    <option value="+670">East Timor +670</option>
+                                    <option value="+593">Ecuador +593</option>
+                                    <option value="+20">Egypt +20</option>
+                                    <option value="+503">El Salvador +503</option>
+                                    <option value="+240">Equatorial Guinea +240</option>
+                                    <option value="+291">Eritrea +291</option>
+                                    <option value="+372">Estonia +372</option>
+                                    <option value="+251">Ethiopia +251</option>
+                                    <option value="+679">Fiji +679</option>
+                                    <option value="+358">Finland +358</option>
+                                    <option value="+33">France +33</option>
+                                    <option value="+241">Gabon +241</option>
+                                    <option value="+220">Gambia +220</option>
+                                    <option value="+995">Georgia +995</option>
+                                    <option value="+49">Germany +49</option>
+                                    <option value="+233">Ghana +233</option>
+                                    <option value="+30">Greece +30</option>
+                                    <option value="+1-473">Grenada +1-473</option>
+                                    <option value="+502">Guatemala +502</option>
+                                    <option value="+224">Guinea +224</option>
+                                    <option value="+245">Guinea-Bissau +245</option>
+                                    <option value="+592">Guyana +592</option>
+                                    <option value="+509">Haiti +509</option>
+                                    <option value="+504">Honduras +504</option>
+                                    <option value="+852">Hong Kong +852</option>
+                                    <option value="+36">Hungary +36</option>
+                                    <option value="+354">Iceland +354</option>
+                                    <option value="+91">India +91</option>
+                                    <option value="+62">Indonesia +62</option>
+                                    <option value="+98">Iran +98</option>
+                                    <option value="+964">Iraq +964</option>
+                                    <option value="+353">Ireland +353</option>
+                                    <option value="+972">Israel +972</option>
+                                    <option value="+39">Italy +39</option>
+                                    <option value="+1-876">Jamaica +1-876</option>
+                                    <option value="+81">Japan +81</option>
+                                    <option value="+962">Jordan +962</option>
+                                    <option value="+7">Kazakhstan +7</option>
+                                    <option value="+254">Kenya +254</option>
+                                    <option value="+686">Kiribati +686</option>
+                                    <option value="+383">Kosovo +383</option>
+                                    <option value="+965">Kuwait +965</option>
+                                    <option value="+996">Kyrgyzstan +996</option>
+                                    <option value="+856">Laos +856</option>
+                                    <option value="+371">Latvia +371</option>
+                                    <option value="+961">Lebanon +961</option>
+                                    <option value="+266">Lesotho +266</option>
+                                    <option value="+231">Liberia +231</option>
+                                    <option value="+218">Libya +218</option>
+                                    <option value="+423">Liechtenstein +423</option>
+                                    <option value="+370">Lithuania +370</option>
+                                    <option value="+352">Luxembourg +352</option>
+                                    <option value="+853">Macau +853</option>
+                                    <option value="+389">North Macedonia +389</option>
+                                    <option value="+261">Madagascar +261</option>
+                                    <option value="+265">Malawi +265</option>
+                                    <option value="+60">Malaysia +60</option>
+                                    <option value="+960">Maldives +960</option>
+                                    <option value="+223">Mali +223</option>
+                                    <option value="+356">Malta +356</option>
+                                    <option value="+692">Marshall Islands +692</option>
+                                    <option value="+596">Martinique +596</option>
+                                    <option value="+222">Mauritania +222</option>
+                                    <option value="+230">Mauritius +230</option>
+                                    <option value="+52">Mexico +52</option>
+                                    <option value="+691">Micronesia +691</option>
+                                    <option value="+373">Moldova +373</option>
+                                    <option value="+377">Monaco +377</option>
+                                    <option value="+976">Mongolia +976</option>
+                                    <option value="+382">Montenegro +382</option>
+                                    <option value="+212">Morocco +212</option>
+                                    <option value="+258">Mozambique +258</option>
+                                    <option value="+95">Myanmar +95</option>
+                                    <option value="+264">Namibia +264</option>
+                                    <option value="+674">Nauru +674</option>
+                                    <option value="+977">Nepal +977</option>
+                                    <option value="+31">Netherlands +31</option>
+                                    <option value="+64">New Zealand +64</option>
+                                    <option value="+505">Nicaragua +505</option>
+                                    <option value="+227">Niger +227</option>
+                                    <option value="+234">Nigeria +234</option>
+                                    <option value="+850">North Korea +850</option>
+                                    <option value="+47">Norway +47</option>
+                                    <option value="+968">Oman +968</option>
+                                    <option value="+92">Pakistan +92</option>
+                                    <option value="+680">Palau +680</option>
+                                    <option value="+970">Palestine +970</option>
+                                    <option value="+507">Panama +507</option>
+                                    <option value="+675">Papua New Guinea +675</option>
+                                    <option value="+595">Paraguay +595</option>
+                                    <option value="+51">Peru +51</option>
+                                    <option value="+63">Philippines +63</option>
+                                    <option value="+48">Poland +48</option>
+                                    <option value="+351">Portugal +351</option>
+                                    <option value="+974">Qatar +974</option>
+                                    <option value="+40">Romania +40</option>
+                                    <option value="+7">Russia +7</option>
+                                    <option value="+250">Rwanda +250</option>
+                                    <option value="+1-869">Saint Kitts and Nevis +1-869</option>
+                                    <option value="+1-758">Saint Lucia +1-758</option>
+                                    <option value="+1-784">Saint Vincent and the Grenadines +1-784</option>
+                                    <option value="+685">Samoa +685</option>
+                                    <option value="+378">San Marino +378</option>
+                                    <option value="+239">Sao Tome and Principe +239</option>
+                                    <option value="+966">Saudi Arabia +966</option>
+                                    <option value="+221">Senegal +221</option>
+                                    <option value="+381">Serbia +381</option>
+                                    <option value="+248">Seychelles +248</option>
+                                    <option value="+232">Sierra Leone +232</option>
+                                    <option value="+65">Singapore +65</option>
+                                    <option value="+421">Slovakia +421</option>
+                                    <option value="+386">Slovenia +386</option>
+                                    <option value="+677">Solomon Islands +677</option>
+                                    <option value="+252">Somalia +252</option>
+                                    <option value="+27">South Africa +27</option>
+                                    <option value="+82">South Korea +82</option>
+                                    <option value="+34">Spain +34</option>
+                                    <option value="+94">Sri Lanka +94</option>
+                                    <option value="+249">Sudan +249</option>
+                                    <option value="+597">Suriname +597</option>
+                                    <option value="+268">Swaziland (Eswatini) +268</option>
+                                    <option value="+46">Sweden +46</option>
+                                    <option value="+41">Switzerland +41</option>
+                                    <option value="+963">Syria +963</option>
+                                    <option value="+886">Taiwan +886</option>
+                                    <option value="+992">Tajikistan +992</option>
+                                    <option value="+255">Tanzania +255</option>
+                                    <option value="+66">Thailand +66</option>
+                                    <option value="+228">Togo +228</option>
+                                    <option value="+676">Tonga +676</option>
+                                    <option value="+1-868">Trinidad and Tobago +1-868</option>
+                                    <option value="+216">Tunisia +216</option>
+                                    <option value="+90">Turkey +90</option>
+                                    <option value="+993">Turkmenistan +993</option>
+                                    <option value="+688">Tuvalu +688</option>
+                                    <option value="+256">Uganda +256</option>
+                                    <option value="+380">Ukraine +380</option>
+                                    <option value="+971">United Arab Emirates +971</option>
+                                    <option value="+44">United Kingdom +44</option>
+                                    <option value="+1">United States +1</option>
+                                    <option value="+598">Uruguay +598</option>
+                                    <option value="+998">Uzbekistan +998</option>
+                                    <option value="+678">Vanuatu +678</option>
+                                    <option value="+58">Venezuela +58</option>
+                                    <option value="+84">Vietnam +84</option>
+                                    <option value="+967">Yemen +967</option>
+                                    <option value="+260">Zambia +260</option>
+                                    <option value="+263">Zimbabwe +263</option>
+                                </select>
+
+                                <input type="tel" placeholder="Your phone number for SMS">
+                            </div>
+                            <button>Subscribe</button>
+                        </div>
+
+                        <div class="subscribe-group">
+                            <div class="phone-input">
+                                <select>
+                                    <option value="+92">PK +92</option>
+                                    <option value="+93">Afghanistan +93</option>
+                                    <option value="+355">Albania +355</option>
+                                    <option value="+213">Algeria +213</option>
+                                    <option value="+376">Andorra +376</option>
+                                    <option value="+244">Angola +244</option>
+                                    <option value="+1-268">Antigua and Barbuda +1-268</option>
+                                    <option value="+54">Argentina +54</option>
+                                    <option value="+374">Armenia +374</option>
+                                    <option value="+61">Australia +61</option>
+                                    <option value="+43">Austria +43</option>
+                                    <option value="+994">Azerbaijan +994</option>
+                                    <option value="+1-242">Bahamas +1-242</option>
+                                    <option value="+973">Bahrain +973</option>
+                                    <option value="+880">Bangladesh +880</option>
+                                    <option value="+1-246">Barbados +1-246</option>
+                                    <option value="+375">Belarus +375</option>
+                                    <option value="+32">Belgium +32</option>
+                                    <option value="+501">Belize +501</option>
+                                    <option value="+229">Benin +229</option>
+                                    <option value="+975">Bhutan +975</option>
+                                    <option value="+591">Bolivia +591</option>
+                                    <option value="+387">Bosnia and Herzegovina +387</option>
+                                    <option value="+267">Botswana +267</option>
+                                    <option value="+55">Brazil +55</option>
+                                    <option value="+673">Brunei +673</option>
+                                    <option value="+359">Bulgaria +359</option>
+                                    <option value="+226">Burkina Faso +226</option>
+                                    <option value="+257">Burundi +257</option>
+                                    <option value="+855">Cambodia +855</option>
+                                    <option value="+237">Cameroon +237</option>
+                                    <option value="+1">Canada +1</option>
+                                    <option value="+238">Cape Verde +238</option>
+                                    <option value="+236">Central African Republic +236</option>
+                                    <option value="+235">Chad +235</option>
+                                    <option value="+56">Chile +56</option>
+                                    <option value="+86">China +86</option>
+                                    <option value="+57">Colombia +57</option>
+                                    <option value="+269">Comoros +269</option>
+                                    <option value="+242">Congo +242</option>
+                                    <option value="+682">Cook Islands +682</option>
+                                    <option value="+506">Costa Rica +506</option>
+                                    <option value="+385">Croatia +385</option>
+                                    <option value="+53">Cuba +53</option>
+                                    <option value="+357">Cyprus +357</option>
+                                    <option value="+420">Czech Republic +420</option>
+                                    <option value="+243">Democratic Republic of the Congo +243</option>
+                                    <option value="+45">Denmark +45</option>
+                                    <option value="+253">Djibouti +253</option>
+                                    <option value="+1-767">Dominica +1-767</option>
+                                    <option value="+1-809">Dominican Republic +1-809</option>
+                                    <option value="+670">East Timor +670</option>
+                                    <option value="+593">Ecuador +593</option>
+                                    <option value="+20">Egypt +20</option>
+                                    <option value="+503">El Salvador +503</option>
+                                    <option value="+240">Equatorial Guinea +240</option>
+                                    <option value="+291">Eritrea +291</option>
+                                    <option value="+372">Estonia +372</option>
+                                    <option value="+251">Ethiopia +251</option>
+                                    <option value="+679">Fiji +679</option>
+                                    <option value="+358">Finland +358</option>
+                                    <option value="+33">France +33</option>
+                                    <option value="+241">Gabon +241</option>
+                                    <option value="+220">Gambia +220</option>
+                                    <option value="+995">Georgia +995</option>
+                                    <option value="+49">Germany +49</option>
+                                    <option value="+233">Ghana +233</option>
+                                    <option value="+30">Greece +30</option>
+                                    <option value="+1-473">Grenada +1-473</option>
+                                    <option value="+502">Guatemala +502</option>
+                                    <option value="+224">Guinea +224</option>
+                                    <option value="+245">Guinea-Bissau +245</option>
+                                    <option value="+592">Guyana +592</option>
+                                    <option value="+509">Haiti +509</option>
+                                    <option value="+504">Honduras +504</option>
+                                    <option value="+852">Hong Kong +852</option>
+                                    <option value="+36">Hungary +36</option>
+                                    <option value="+354">Iceland +354</option>
+                                    <option value="+91">India +91</option>
+                                    <option value="+62">Indonesia +62</option>
+                                    <option value="+98">Iran +98</option>
+                                    <option value="+964">Iraq +964</option>
+                                    <option value="+353">Ireland +353</option>
+                                    <option value="+972">Israel +972</option>
+                                    <option value="+39">Italy +39</option>
+                                    <option value="+1-876">Jamaica +1-876</option>
+                                    <option value="+81">Japan +81</option>
+                                    <option value="+962">Jordan +962</option>
+                                    <option value="+7">Kazakhstan +7</option>
+                                    <option value="+254">Kenya +254</option>
+                                    <option value="+686">Kiribati +686</option>
+                                    <option value="+383">Kosovo +383</option>
+                                    <option value="+965">Kuwait +965</option>
+                                    <option value="+996">Kyrgyzstan +996</option>
+                                    <option value="+856">Laos +856</option>
+                                    <option value="+371">Latvia +371</option>
+                                    <option value="+961">Lebanon +961</option>
+                                    <option value="+266">Lesotho +266</option>
+                                    <option value="+231">Liberia +231</option>
+                                    <option value="+218">Libya +218</option>
+                                    <option value="+423">Liechtenstein +423</option>
+                                    <option value="+370">Lithuania +370</option>
+                                    <option value="+352">Luxembourg +352</option>
+                                    <option value="+853">Macau +853</option>
+                                    <option value="+389">North Macedonia +389</option>
+                                    <option value="+261">Madagascar +261</option>
+                                    <option value="+265">Malawi +265</option>
+                                    <option value="+60">Malaysia +60</option>
+                                    <option value="+960">Maldives +960</option>
+                                    <option value="+223">Mali +223</option>
+                                    <option value="+356">Malta +356</option>
+                                    <option value="+692">Marshall Islands +692</option>
+                                    <option value="+596">Martinique +596</option>
+                                    <option value="+222">Mauritania +222</option>
+                                    <option value="+230">Mauritius +230</option>
+                                    <option value="+52">Mexico +52</option>
+                                    <option value="+691">Micronesia +691</option>
+                                    <option value="+373">Moldova +373</option>
+                                    <option value="+377">Monaco +377</option>
+                                    <option value="+976">Mongolia +976</option>
+                                    <option value="+382">Montenegro +382</option>
+                                    <option value="+212">Morocco +212</option>
+                                    <option value="+258">Mozambique +258</option>
+                                    <option value="+95">Myanmar +95</option>
+                                    <option value="+264">Namibia +264</option>
+                                    <option value="+674">Nauru +674</option>
+                                    <option value="+977">Nepal +977</option>
+                                    <option value="+31">Netherlands +31</option>
+                                    <option value="+64">New Zealand +64</option>
+                                    <option value="+505">Nicaragua +505</option>
+                                    <option value="+227">Niger +227</option>
+                                    <option value="+234">Nigeria +234</option>
+                                    <option value="+850">North Korea +850</option>
+                                    <option value="+47">Norway +47</option>
+                                    <option value="+968">Oman +968</option>
+                                    <option value="+92">Pakistan +92</option>
+                                    <option value="+680">Palau +680</option>
+                                    <option value="+970">Palestine +970</option>
+                                    <option value="+507">Panama +507</option>
+                                    <option value="+675">Papua New Guinea +675</option>
+                                    <option value="+595">Paraguay +595</option>
+                                    <option value="+51">Peru +51</option>
+                                    <option value="+63">Philippines +63</option>
+                                    <option value="+48">Poland +48</option>
+                                    <option value="+351">Portugal +351</option>
+                                    <option value="+974">Qatar +974</option>
+                                    <option value="+40">Romania +40</option>
+                                    <option value="+7">Russia +7</option>
+                                    <option value="+250">Rwanda +250</option>
+                                    <option value="+1-869">Saint Kitts and Nevis +1-869</option>
+                                    <option value="+1-758">Saint Lucia +1-758</option>
+                                    <option value="+1-784">Saint Vincent and the Grenadines +1-784</option>
+                                    <option value="+685">Samoa +685</option>
+                                    <option value="+378">San Marino +378</option>
+                                    <option value="+239">Sao Tome and Principe +239</option>
+                                    <option value="+966">Saudi Arabia +966</option>
+                                    <option value="+221">Senegal +221</option>
+                                    <option value="+381">Serbia +381</option>
+                                    <option value="+248">Seychelles +248</option>
+                                    <option value="+232">Sierra Leone +232</option>
+                                    <option value="+65">Singapore +65</option>
+                                    <option value="+421">Slovakia +421</option>
+                                    <option value="+386">Slovenia +386</option>
+                                    <option value="+677">Solomon Islands +677</option>
+                                    <option value="+252">Somalia +252</option>
+                                    <option value="+27">South Africa +27</option>
+                                    <option value="+82">South Korea +82</option>
+                                    <option value="+34">Spain +34</option>
+                                    <option value="+94">Sri Lanka +94</option>
+                                    <option value="+249">Sudan +249</option>
+                                    <option value="+597">Suriname +597</option>
+                                    <option value="+268">Swaziland (Eswatini) +268</option>
+                                    <option value="+46">Sweden +46</option>
+                                    <option value="+41">Switzerland +41</option>
+                                    <option value="+963">Syria +963</option>
+                                    <option value="+886">Taiwan +886</option>
+                                    <option value="+992">Tajikistan +992</option>
+                                    <option value="+255">Tanzania +255</option>
+                                    <option value="+66">Thailand +66</option>
+                                    <option value="+228">Togo +228</option>
+                                    <option value="+676">Tonga +676</option>
+                                    <option value="+1-868">Trinidad and Tobago +1-868</option>
+                                    <option value="+216">Tunisia +216</option>
+                                    <option value="+90">Turkey +90</option>
+                                    <option value="+993">Turkmenistan +993</option>
+                                    <option value="+688">Tuvalu +688</option>
+                                    <option value="+256">Uganda +256</option>
+                                    <option value="+380">Ukraine +380</option>
+                                    <option value="+971">United Arab Emirates +971</option>
+                                    <option value="+44">United Kingdom +44</option>
+                                    <option value="+1">United States +1</option>
+                                    <option value="+598">Uruguay +598</option>
+                                    <option value="+998">Uzbekistan +998</option>
+                                    <option value="+678">Vanuatu +678</option>
+                                    <option value="+58">Venezuela +58</option>
+                                    <option value="+84">Vietnam +84</option>
+                                    <option value="+967">Yemen +967</option>
+                                    <option value="+260">Zambia +260</option>
+                                    <option value="+263">Zimbabwe +263</option>
+                                </select>
+
+                                <input type="text" placeholder="WhatsApp Account">
+                            </div>
+                            <button>Subscribe</button>
+                        </div>
+
+                        <div class="terms">
+                            <p>By clicking the SUBSCRIBE button, you are agreeing to our </p>
+                            <a href="#"> Privacy & Cookie Policy</a>
+                        </div>
 
 
-</div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div class="terms-conditions-policy">
+                        <p>©2025-2030 Noshahi Developer Inc All Rights Reserved</p>
 
-
-<script>
-
-// --- Quantity Selector Logic ---
-document.querySelector(".qty-box").addEventListener("click", (e) => {
-    const input = document.querySelector(".qty-input");
-    let currentQty = parseInt(input.value);
-
-    if (e.target.textContent === "+") {
-        input.value = currentQty + 1;
-    } else if (e.target.textContent === "-" && currentQty > 1) {
-        input.value = currentQty - 1;
-    }
-});
-
-// --- Size Selection Logic ---
-document.querySelectorAll(".size-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-    });
-});
-
-// --- Color Selection Logic (UPDATED to also change main image src) ---
-const mainImageElement = document.getElementById("mainImage");
-
-document.querySelectorAll(".color-item").forEach(cl => {
-    cl.addEventListener("click", () => {
-        document.querySelectorAll(".color-item").forEach(c => c.classList.remove("active"));
-        cl.classList.add("active");
-        
-        const imgElement = cl.querySelector('img');
-        const placeholderDiv = cl.querySelector('.image-placeholder');
-        let selectedImageSrc = null;
-
-        if (imgElement && imgElement.src) {
-            selectedImageSrc = imgElement.src;
-        } 
-        
-        // Use the selected image source or fall back to the main black image if needed
-        if (selectedImageSrc) {
-            mainImageElement.src = selectedImageSrc;
-        } else {
-            // For placeholder colors (Dark Wash, Blue), revert to the default main image
-             mainImageElement.src = "uploaded:work3.PNG-8bdda14e-ca16-497a-aa9e-40788dd187d7";
-        }
-        
-    });
-});
-</script>
-<script>
-    // Get all thumbnails
-    const thumbs = document.querySelectorAll(".thumb img");
-    const mainImage = document.getElementById("mainImage");
-
-    thumbs.forEach(thumb => {
-        thumb.addEventListener("click", function () {
-
-            // Set main image to clicked thumbnail image
-            mainImage.src = this.src;
-
-            // Remove active class from all thumbnails
-            document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
-
-            // Add active class to clicked image's parent
-            this.parentElement.classList.add("active");
-        });
-    });
-</script>
+                        <ul class="footer-links">
+                            <li><a href="#">Privacy Center |</a></li>
+                            <li><a href="#">Privacy & Cookie Policy |</a></li>
+                            <li><a href="#">Manage Cookies |</a></li>
+                            <li><a href="#">Terms & Conditions |</a></li>
+                            <li><a href="#">Marketplace IP Rules |</a></li>
+                            <li><a href="#">IP Notice |</a></li>
+                            <li><a href="#">Imprint |</a></li>
+                            <li><a href="#">Ad Choice |</a></li>
+                            <li class="country"><a href="#">Pakistan</a></li>
+                        </ul>
+                    </div>
+                    <!-- PAYMENT ICONS -->
+                    <div class="banks">
+                        <h6>WE ACCEPT</h6>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center payments">
+                                <img src="images/cod.jpeg" alt="cash on delivary">
+                                <img src="images/Visa.png" alt="Visa">
+                                <img src="images/mastercard.png" alt="Mastercard">
+                                <img src="images/hbl.png" alt="hbl">
+                                <img src="images/jazzcash.png" alt="jazzcash">
+                                <img src="images/easipaisa.png" alt="easypaisa">
+                                <img src="images/paypal.png" alt="PayPal">
+                                <img src="images/toss.png" alt="toss">
+                                <img src="images/Applepay.png" alt="Apple Pay">
+                                <img src="images/union pay.png" alt="UnionPay">
+                                <img src="images/american express.png" alt="american express">
+                                <img src="images/konbini.jpeg" alt="konbini">
+                                <img src="images/gcash.jpeg" alt="Gcash">
+                                <img src="images/cabal.png" alt="cabal">
+                                <img src="images/nbp.jpeg" alt="National Bank of Pakistan">
+                                <img src="images/mcb.jpeg" alt="MCB">
+                                <img src="images/ubl.png" alt="UBL">
+                                <img src="images/faysalbank.jpeg" alt="fasalbank">
+                                <img src="images/askaribank.png" alt="askribank">
+                                <img src="images/bankislami.png" alt="islamicbank">
+                                <img src="images/meezan bank.jpeg" alt="meezanbank">
+                                <img src="images/bankAlfalah.png" alt="alfalah">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Fixed Js -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/product.js"></script>
 
 
 </body>
+
 </html>

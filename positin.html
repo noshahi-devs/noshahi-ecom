@@ -2,161 +2,82 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sticky Sidebar + Footer Sync</title>
+<title>Modal Demo</title>
 
 <style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-    }
-
     body{
-        font-family:Arial;
+        font-family: Arial, sans-serif;
     }
 
-    /* -------------------------------- HEADER ------------------------------ */
-    header{
-        background:#2c3e50;
-        color:#fff;
-        padding:20px;
-        font-size:22px;
-        text-align:center;
-        position:sticky;
-        top:0;
-        z-index:10;
-        transition:0.4s ease;
+    /* Modal Background */
+    .modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6);
+        z-index: 999;
+        border: 1px solid red;
     }
 
-    .hide{
-        transform:translateY(-100%); /* header upar chala jaye */
+    /* Modal Box */
+    .modal-content {
+        width: 350px;
+        margin: 15% auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
     }
 
-    /* -------------------------------- LAYOUT ------------------------------ */
-    .wrapper{
-        display:flex;
-        width:100%;
-        min-height:100vh;
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 25px;
+        cursor: pointer;
     }
 
-    /* -------------------------------- SIDEBAR ----------------------------- */
-    .sidebar{
-        width:260px;
-        background:#34495e;
-        color:white;
-        padding:20px;
-        height:fit-content;
-
-        /* STICKY until footer appears */
-        position:sticky;
-        top:20px;
-        max-height:calc(100vh - 40px); 
-        overflow-y:auto;
-        transition:0.3s;
-    }
-
-    .sidebar.not-sticky{
-        position:relative;   /* footer aa jaye → sticky ختم */
-        top:auto;
-    }
-
-    /* -------------------------------- CONTENT ----------------------------- */
-    .content{
-        flex:1;
-        padding:25px;
-        background:#ecf0f1;
-    }
-
-    .box{
-        background:white;
-        padding:20px;
-        margin-bottom:20px;
-        border-radius:8px;
-        box-shadow:0 0 3px rgba(0,0,0,0.1);
-    }
-
-    /* -------------------------------- FOOTER ------------------------------ */
-    footer{
-        background:#2c3e50;
-        color:white;
-        padding:30px;
-        text-align:center;
-        margin-top:40px;
+    a {
+        font-size: 20px;
+        cursor: pointer;
+        color: blue;
     }
 </style>
+
 </head>
 <body>
 
-<header id="header">My Header</header>
+<!-- CLICK LINK -->
+<a id="openModalLink">Open Modal</a>
 
-<div class="wrapper">
-
-    <div class="sidebar" id="sidebar">
-        <h3>Sidebar</h3>
-        <p>Yeh apni jagah stick rahega...</p>
-        <div class="box">Menu 1</div>
-        <div class="box">Menu 2</div>
-        <div class="box">Menu 3</div>
-        <div class="box">Menu 4</div>
-        <div class="box">Menu 5</div>
-        <div class="box">Menu 6</div>
-        <div class="box">Menu 7</div>
-        <div class="box">Menu 8</div>
-        <div class="box">Menu 9</div>
+<!-- MODAL -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Modal Popup</h2>
+        <p>Ye modal JS se link click par open hua hai.</p>
     </div>
-
-    <div class="content">
-        <h2>Main Content</h2>
-        <p>Page scroll yahan se control ho raha hai...</p>
-
-        <!-- Long Page Content -->
-        <div class="box">Section 1</div>
-        <div class="box">Section 2</div>
-        <div class="box">Section 3</div>
-        <div class="box">Section 4</div>
-        <div class="box">Section 5</div>
-        <div class="box">Section 6</div>
-        <div class="box">Section 7</div>
-        <div class="box">Section 8</div>
-        <div class="box">Section 9</div>
-        <div class="box">Section 10</div>
-        <div class="box">Section 11</div>
-        <div class="box">Section 12</div>
-    </div>
-
 </div>
 
-<footer id="footer">This is Footer — Jab content khatam ho tab aata hai</footer>
-
 <script>
-    const sidebar = document.getElementById("sidebar");
-    const footer = document.getElementById("footer");
-
-    window.addEventListener("scroll", () => {
-        let sidebarBottom = sidebar.getBoundingClientRect().bottom;
-        let footerTop = footer.getBoundingClientRect().top;
-
-        // If sidebar is touching the footer → remove sticky
-        if (sidebarBottom >= footerTop){
-            sidebar.classList.add("not-sticky");
-        } else {
-            sidebar.classList.remove("not-sticky");
-        }
+    // Link par click → modal open
+    document.getElementById("openModalLink").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "block";
     });
 
-    let lastScroll = 0;
-    const header = document.getElementById("header");
+    // Close button
+    document.querySelector(".close").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "none";
+    });
 
-    window.addEventListener("scroll", () => {
-        let current = window.scrollY;
-
-        if(current > lastScroll){
-            header.classList.add("hide");   // scroll down → hide header
-        }else{
-            header.classList.remove("hide"); // scroll up → show header
+    // Modal background par click → close
+    window.addEventListener("click", function (event) {
+        if (event.target === document.getElementById("myModal")) {
+            document.getElementById("myModal").style.display = "none";
         }
-
-        lastScroll = current;
     });
 </script>
 

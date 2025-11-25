@@ -398,7 +398,7 @@
   let fav = false;
   favBtn.addEventListener('click', () => { fav = !fav; favIcon.className = fav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'; favIcon.style.color = fav ? '#e63946' : '#111'; });
 
-  /* ---------- Accordion ---------- */
+  /* ---------- Accordion Collapse Plus Minus ---------- */
   document.querySelectorAll('.acc-row').forEach(row => {
     row.addEventListener('click', () => {
       const id = row.dataset.acc;

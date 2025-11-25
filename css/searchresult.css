@@ -1,3 +1,7 @@
+*{
+  /* border: 4px solid red; */
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: #000;
@@ -1322,8 +1326,6 @@ input[type=range]::-webkit-slider-thumb {
   text-decoration: underline;
 }
 
-
-
 /* paggination */
 
 .pagination-box {
@@ -1573,6 +1575,8 @@ h3 {
 .footer-bottom {
   display: flex;
   width: 100%;
+  border: 1px solid rgb(26, 255, 0);
+  height: 13rem;
 }
 
 .terms-conditions-policy {
@@ -1619,6 +1623,7 @@ h3 {
 .banks {
   width: 57%;
   margin-top: 50px;
+  height: 10rem;
 }
 
 /* Footer close */
@@ -1661,7 +1666,7 @@ h3 {
 
   /*  Social icons centered */
   .social-icons {
-    margin: 20px auto;
+      margin: 20px auto;
     width: 100%;
   }
 
@@ -1760,6 +1765,11 @@ h3 {
   .banks img {
     height: 22px;
     margin: 5px;
+  }
+
+  .payments{
+    height: 3px;
+    overflow: hidden;
   }
 
   /* Payments icons resizing */

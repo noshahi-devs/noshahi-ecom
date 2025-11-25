@@ -461,3 +461,34 @@ function startTimer(container) {
 document.querySelectorAll('.timer-card').forEach(card => {
     startTimer(card);
 });
+
+
+const side_bar = document.getElementById("sidebar");
+    const footer = document.getElementById("footer");
+
+    window.addEventListener("scroll", () => {
+        let sidebarBottom = side_bar.getBoundingClientRect().bottom;
+        let footerTop = footer.getBoundingClientRect().top;
+
+        // If sidebar is touching the footer → remove sticky
+        if (sidebarBottom >= footerTop){
+            side_bar.classList.add("not-sticky");
+        } else {
+            side_bar.classList.remove("not-sticky");
+        }
+    });
+
+    let lastScroll = 0;
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+        let current = window.scrollY;
+
+        if(current > lastScroll){
+            header.classList.add("hide");   // scroll down → hide header
+        }else{
+            header.classList.remove("hide"); // scroll up → show header
+        }
+
+        lastScroll = current;
+    });
