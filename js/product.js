@@ -1,137 +1,221 @@
- //headre & footer
- 
- // === USER TOOLTIP ===
-    const userWrapper = document.querySelector(".user-menu-wrapper");
-    const userTooltip = document.querySelector(".user-tooltip-box");
+//headre & footer
 
-    userWrapper.addEventListener("mouseenter", () => {
-      userTooltip.style.display = "flex";
-    });
+// === USER TOOLTIP ===
+const userWrapper = document.querySelector(".user-menu-wrapper");
+const userTooltip = document.querySelector(".user-tooltip-box");
 
-    userWrapper.addEventListener("mouseleave", (e) => {
-      if (!userWrapper.contains(e.relatedTarget)) {
-        userTooltip.style.display = "none";
-      }
-    });
+userWrapper.addEventListener("mouseenter", () => {
+  userTooltip.style.display = "flex";
+});
 
-
-    // === GLOBE TOOLTIP ===
-    const menuWrapper = document.querySelector(".currency-menu-wrapper");
-    const tooltip = document.querySelector(".currency-tooltip-box");
-
-    menuWrapper.addEventListener("mouseenter", () => {
-      menuWrapper.classList.add("active");
-    });
-
-    menuWrapper.addEventListener("mouseleave", (e) => {
-      if (!menuWrapper.contains(e.relatedTarget)) {
-        menuWrapper.classList.remove("active");
-      }
-    });
+userWrapper.addEventListener("mouseleave", (e) => {
+  if (!userWrapper.contains(e.relatedTarget)) {
+    userTooltip.style.display = "none";
+  }
+});
 
 
-    // ===== CART TOOLTIP =====
-    const cartWrapper = document.querySelector(".cart-wrapper");
-    const cartTooltip = document.querySelector(".cart-tooltip-box");
+// === GLOBE TOOLTIP ===
+const menuWrapper = document.querySelector(".currency-menu-wrapper");
+const tooltip = document.querySelector(".currency-tooltip-box");
 
-    cartWrapper.addEventListener("mouseenter", () => {
-      cartWrapper.classList.add("active");
-    });
+menuWrapper.addEventListener("mouseenter", () => {
+  menuWrapper.classList.add("active");
+});
 
-    cartWrapper.addEventListener("mouseleave", (e) => {
-      if (!cartWrapper.contains(e.relatedTarget)) {
-        cartWrapper.classList.remove("active");
-      }
-    });
-
-
-    // Get all thumbnails
-        const thumbs = document.querySelectorAll(".thumb img");
-        const mainImage = document.getElementById("mainImage");
-
-        thumbs.forEach(thumb => {
-            thumb.addEventListener("click", function () {
-
-                // Set main image to clicked thumbnail image
-                mainImage.src = this.src;
-
-                // Remove active class from all thumbnails
-                document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
-
-                // Add active class to clicked image's parent
-                this.parentElement.classList.add("active");
-            });
-        });
+menuWrapper.addEventListener("mouseleave", (e) => {
+  if (!menuWrapper.contains(e.relatedTarget)) {
+    menuWrapper.classList.remove("active");
+  }
+});
 
 
-         // --- Quantity Selector Logic ---
-        document.querySelector(".qty-box").addEventListener("click", (e) => {
-            const input = document.querySelector(".qty-input");
-            let currentQty = parseInt(input.value);
+// ===== CART TOOLTIP =====
+const cartWrapper = document.querySelector(".cart-wrapper");
+const cartTooltip = document.querySelector(".cart-tooltip-box");
 
-            if (e.target.textContent === "+") {
-                input.value = currentQty + 1;
-            } else if (e.target.textContent === "-" && currentQty > 1) {
-                input.value = currentQty - 1;
-            }
-        });
+cartWrapper.addEventListener("mouseenter", () => {
+  cartWrapper.classList.add("active");
+});
 
-        // --- Size Selection Logic ---
-        document.querySelectorAll(".size-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-            });
-        });
+cartWrapper.addEventListener("mouseleave", (e) => {
+  if (!cartWrapper.contains(e.relatedTarget)) {
+    cartWrapper.classList.remove("active");
+  }
+});
 
-        // --- Color Selection Logic (UPDATED to also change main image src) ---
-        const mainImageElement = document.getElementById("mainImage");
 
-        document.querySelectorAll(".color-item").forEach(cl => {
-            cl.addEventListener("click", () => {
-                document.querySelectorAll(".color-item").forEach(c => c.classList.remove("active"));
-                cl.classList.add("active");
+// Get all thumbnails
+const thumbs = document.querySelectorAll(".thumb img");
+const mainImage = document.getElementById("mainImage");
 
-                const imgElement = cl.querySelector('img');
-                const placeholderDiv = cl.querySelector('.image-placeholder');
-                let selectedImageSrc = null;
+thumbs.forEach(thumb => {
+  thumb.addEventListener("click", function () {
 
-                if (imgElement && imgElement.src) {
-                    selectedImageSrc = imgElement.src;
-                }
+    // Set main image to clicked thumbnail image
+    mainImage.src = this.src;
 
-                // Use the selected image source or fall back to the main black image if needed
-                if (selectedImageSrc) {
-                    mainImageElement.src = selectedImageSrc;
-                } else {
-                    // For placeholder colors (Dark Wash, Blue), revert to the default main image
-                    mainImageElement.src = "uploaded:work3.PNG-8bdda14e-ca16-497a-aa9e-40788dd187d7";
-                }
+    // Remove active class from all thumbnails
+    document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
 
-            });
-        });
+    // Add active class to clicked image's parent
+    this.parentElement.classList.add("active");
+  });
+});
 
-        // header move oper
 
-         let lastScroll = 0;
-    const header = document.getElementById("header");
+// --- Quantity Selector Logic ---
+document.querySelector(".qty-box").addEventListener("click", (e) => {
+  const input = document.querySelector(".qty-input");
+  let currentQty = parseInt(input.value);
 
-    window.addEventListener("scroll", () => {
-        let current = window.scrollY;
+  if (e.target.textContent === "+") {
+    input.value = currentQty + 1;
+  } else if (e.target.textContent === "-" && currentQty > 1) {
+    input.value = currentQty - 1;
+  }
+});
 
-        if(current > lastScroll){
-            header.classList.add("hide");   // scroll down → hide header
-        }else{
-            header.classList.remove("hide"); // scroll up → show header
-        }
+// --- Size Selection Logic ---
+document.querySelectorAll(".size-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
 
-        lastScroll = current;
-    });
+// --- Color Selection Logic (UPDATED to also change main image src) ---
+const mainImageElement = document.getElementById("mainImage");
+
+document.querySelectorAll(".color-item").forEach(cl => {
+  cl.addEventListener("click", () => {
+    document.querySelectorAll(".color-item").forEach(c => c.classList.remove("active"));
+    cl.classList.add("active");
+
+    const imgElement = cl.querySelector('img');
+    const placeholderDiv = cl.querySelector('.image-placeholder');
+    let selectedImageSrc = null;
+
+    if (imgElement && imgElement.src) {
+      selectedImageSrc = imgElement.src;
+    }
+
+    // Use the selected image source or fall back to the main black image if needed
+    if (selectedImageSrc) {
+      mainImageElement.src = selectedImageSrc;
+    } else {
+      // For placeholder colors (Dark Wash, Blue), revert to the default main image
+      mainImageElement.src = "uploaded:work3.PNG-8bdda14e-ca16-497a-aa9e-40788dd187d7";
+    }
+
+  });
+});
+
+// header move oper
+
+let lastScroll = 0;
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+  let current = window.scrollY;
+
+  if (current > lastScroll) {
+    header.classList.add("hide");   // scroll down → hide header
+  } else {
+    header.classList.remove("hide"); // scroll up → show header
+  }
+
+  lastScroll = current;
+});
 
 
 /* ---------- Size buttons & dropdown sync ---------- */
-  const sizeBtns = document.querySelectorAll('.size-btn');
-  const sizeSelect = document.getElementById('sizeSelect');
-  function clearSizes(){ sizeBtns.forEach(b => b.classList.remove('selected')); }
-  sizeBtns.forEach(b => { b.addEventListener('click', () => { clearSizes(); b.classList.add('selected'); sizeSelect.value = b.dataset.size; }); });
-  sizeSelect.addEventListener('change', () => { clearSizes(); const v = sizeSelect.value; sizeBtns.forEach(b => { if (b.dataset.size === v) b.classList.add('selected'); }); });
+const sizeBtns = document.querySelectorAll('.size-btn');
+const sizeSelect = document.getElementById('sizeSelect');
+function clearSizes() { sizeBtns.forEach(b => b.classList.remove('selected')); }
+sizeBtns.forEach(b => { b.addEventListener('click', () => { clearSizes(); b.classList.add('selected'); sizeSelect.value = b.dataset.size; }); });
+sizeSelect.addEventListener('change', () => { clearSizes(); const v = sizeSelect.value; sizeBtns.forEach(b => { if (b.dataset.size === v) b.classList.add('selected'); }); });
+
+/* ---------- Favourite toggle ---------- */
+const favBtn = document.getElementById('favBtn');
+const favIcon = document.getElementById('favIcon');
+let fav = false;
+favBtn.addEventListener('click', () => { fav = !fav; favIcon.className = fav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'; favIcon.style.color = fav ? '#000' : '#111'; });
+
+/* ---------- Accordion Collapse Plus Minus ---------- */
+document.querySelectorAll('.acc-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const id = row.dataset.acc;
+    const content = document.getElementById(id);
+    const isOpen = content.style.display === 'block';
+    document.querySelectorAll('.acc-content').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.acc-row .plus').forEach(p => p.textContent = '+');
+    if (!isOpen) { content.style.display = 'block'; row.querySelector('.plus').textContent = '-'; }
+  });
+});
+
+
+// SWITCH COUNTRY → CHANGE FIRST COLUMN HEADING
+document.querySelectorAll(".country-select").forEach(item => {
+  item.addEventListener("click", function () {
+    const selected = this.innerText;
+    document.getElementById("countryBtn").innerText = selected + " Size";
+    document.getElementById("countryCol").innerText = selected;
+  });
+});
+
+// TABS
+const tabProduct = document.getElementById("tabProduct");
+const tabBody = document.getElementById("tabBody");
+const productTab = document.getElementById("productTab");
+const bodyTab = document.getElementById("bodyTab");
+
+tabProduct.onclick = () => {
+  tabProduct.classList.add("active");
+  tabBody.classList.remove("active");
+  productTab.style.display = "block";
+  bodyTab.style.display = "none";
+};
+
+tabBody.onclick = () => {
+  tabBody.classList.add("active");
+  tabProduct.classList.remove("active");
+  productTab.style.display = "none";
+  bodyTab.style.display = "block";
+};
+
+//next previous images
+
+const thumbButtons = document.querySelectorAll('.c-thumb');
+const mainImg = document.getElementById('mainImage');
+let currentIndex = 0;
+
+// --- Thumbnail Click Logic ---
+thumbButtons.forEach((thumb, index) => {
+  thumb.addEventListener('click', () => {
+    currentIndex = index;
+    updateMainImage();
+  });
+});
+
+// --- Prev Button ---
+document.getElementById('prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + thumbButtons.length) % thumbButtons.length;
+  updateMainImage();
+});
+
+// --- Next Button ---
+document.getElementById('next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % thumbButtons.length;
+  updateMainImage();
+});
+
+// --- Update Function (Best Practice) ---
+function updateMainImage() {
+  const imgPath = thumbButtons[currentIndex].dataset.img;
+  mainImg.src = imgPath;
+
+  thumbButtons.forEach(t => t.classList.remove('active'));
+  thumbButtons[currentIndex].classList.add('active');
+}
+

@@ -42,10 +42,10 @@
                             <p class="user-name">sharjeelnoshahi</p>
                         </a>
                         <a href="#">
-                            <p>Shein Club</p>
+                            <p>Noshahi Club</p>
                         </a>
                         <a href="#">
-                            <p>SHEIN Saver</p>
+                            <p>Noshahi Saver</p>
                         </a>
                         <a href="#">
                             <p>My Profile</p>
@@ -206,28 +206,41 @@
         <div class="main-content">
             <div class="left-column">
                 <div class="image-box">
-                    <div class="thumbnails">
-                        <div class="thumb active">
-                            <img src="images/card_3.jpg" alt="Denim Pants Thumbnail 1">
+                    <div class="thumbnails" id="colorThumbs">
+                        <div class="thumb c-thumb active" data-img="images/card_3.jpg">
+                            <img src="images/card_3.jpg">
                         </div>
-                        <div class="thumb">
-                            <img src="images/2.webp" alt="Denim Pants Thumbnail 2">
+
+                        <div class="thumb c-thumb" data-img="images/2.webp">
+                            <img src="images/2.webp">
                         </div>
-                        <div class="thumb">
-                            <img src="images/3.webp" alt="Denim Pants Thumbnail 3">
+
+                        <div class="thumb c-thumb" data-img="images/3.webp">
+                            <img src="images/3.webp">
                         </div>
-                        <div class="thumb">
-                            <img src="images/4.webp" alt="Denim Pants Thumbnail 4">
+
+                        <div class="thumb c-thumb" data-img="images/4.webp">
+                            <img src="images/4.webp">
                         </div>
-                        <div class="thumb">
-                            <img src="images/1.webp" alt="Denim Pants Thumbnail 5">
+
+                        <div class="thumb c-thumb" data-img="images/1.webp">
+                            <img src="images/1.webp">
                         </div>
-                        <div class="thumb">
-                            <img src="images/card_4.webp" alt="Denim Pants Thumbnail 6">
+
+                        <div class="thumb c-thumb" data-img="images/card_4.webp">
+                            <img src="images/card_4.webp">
                         </div>
+
                     </div>
-                    <div class="main-image">
-                        <img id="mainImage" src="images/card_5.webp" alt="Main Product Image - Black Denim">
+                    <div class="main-image" class="main-frame" id="mainFrame" tabindex="0"
+                        aria-label="Main product image">
+                        <button class="arrow left" id="prev" aria-label="previous image">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <img id="mainImage" src="images/card_4.jpg" alt="Main Product Image - Black Denim">
+                        <button class="arrow right" id="next" aria-label="next image">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -318,16 +331,17 @@
 
                     <!-- Size: dropdown above buttons -->
                     <div class="size-area">
-                        <div class="size-label">Size</div>
-
-                        <div class="size-select">
-                            <select id="sizeSelect" aria-label="Size select">
-                                <option value="">MX Size</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                            </select>
+                        <div class="size-text-type">
+                            <div class="size-label">Size</div>
+                            <div class="size-select">
+                                <select id="sizeSelect" aria-label="Size select">
+                                    <option value="">MX Size</option>
+                                    <option value="S">S Size</option>
+                                    <option value="M">M Size</option>
+                                    <option value="L">L Size</option>
+                                    <option value="XL">XL Size</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="size-buttons" id="sizeButtons">
@@ -335,6 +349,10 @@
                             <button class="size-btn" data-size="M">M</button>
                             <button class="size-btn" data-size="L">L</button>
                             <button class="size-btn" data-size="XL">XL</button>
+                        </div>
+                        <div class="size-helpers">
+                            <a href="#" title="Size Guide"><i class="fa-solid fa-ruler"></i> Size Guide</a>
+                            <a href="#" title="Check My Size"><i class="fa-solid fa-user-check"></i> Check My Size</a>
                         </div>
                         <a href="#" class="not-your-size">Not your size? Tell me your size</a>
                     </div>
@@ -353,14 +371,349 @@
                             ADD TO CART
                             <span class="add-cart-discount">34% off discount</span>
                         </button>
-                        <button class="wishlist-btn">♡</button>
+                        <button class="fav-btn" id="favBtn" title="Add to favourites">
+                            <i class="fa-regular fa-heart" id="favIcon"></i>
+                        </button>
                     </div>
+                    <div class="points">Earn up to <strong>11 Points</strong> calculated at checkout</div>
+                    <div class="ship-box">
 
-                    <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
+                        <div class="title-main">Shipping to <span>Phoenix, ARIZONA, United States</span></div>
+
+                        <!-- Free Shipping -->
+                        <div class="row-item">
+                            <svg style="width: 24px; height: 24px;" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" fill="white" fill-opacity="0.01"></rect>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M17.4086 6.92012V4H3.01044V8.64506V14.2934V18.4515H4.76135C5.24011 16.7751 6.78359 15.5479 8.61371 15.5479C10.4438 15.5479 11.9873 16.7751 12.4661 18.4515H13.6171C14.0958 16.7751 15.6393 15.5479 17.4694 15.5479C19.2996 15.5479 20.8431 16.7752 21.3218 18.4517H22.5697V8.60743L17.4086 6.92012ZM17.4086 12.4516V9.02453L20.5692 10.0576V12.4516H17.4086Z"
+                                    fill="#198055"></path>
+                                <circle cx="17.5168" cy="19.554" r="2" fill="#198055"></circle>
+                                <circle cx="8.61353" cy="19.554" r="2" fill="#198055"></circle>
+                            </svg>
+                            <div>
+                                <div class="green-text">Free Shipping (Orders > $29.00)</div>
+                                <div class="gray">Estimated Delivery: <span class="bold">Dec 3 - Dec 9</span></div>
+                                <div class="red-box">73% arrive in ≤ 7 days</div>
+                            </div>
+                        </div>
+
+                        <!-- Return -->
+                        <div class="row-item">
+                            <svg style="width:24;height:24;" width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M22.7311 32.1047L15.3483 25.9523L22.7311 19.8L24.6517 22.1047L21.7772 24.5H32.5V31H29.5V27.5H21.8916L24.6517 29.8L22.7311 32.1047Z"
+                                    fill="#198055"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M44 7.99994V15.9999H41.5V41.4999H6.5V15.9999H4V7.99994H44ZM7 12.9999H41V10.9999H7V12.9999ZM9.5 15.9999V38.4999H38.5V15.9999H9.5Z"
+                                    fill="#198055"></path>
+                                <rect width="48" height="48" fill="white" fill-opacity="0.01"></rect>
+                            </svg>
+                            <div>
+                                <div class="green-text">Return Policy</div>
+                                <div class="gray normal">Free Return</div>
+                            </div>
+                        </div>
+
+                        <!-- Security -->
+                        <div class="row-item">
+                            <svg style="width:24;height:24;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M16.9718 9.77253L15.4476 8.4777L11.3724 13.274L8.17984 10.6854L6.92024 12.2389L11.6317 16.0589L16.9718 9.77253Z"
+                                    fill="#198055"></path>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M21.6305 4.98486L11.9994 0.914062L2.41368 4.97874L2.38343 5.60605C2.27318 7.89188 2.34505 10.168 2.59902 12.434L2.65097 12.8847L2.75641 13.7228C2.7919 13.9882 2.82774 14.2395 2.86395 14.4768C3.12183 16.1674 3.98828 17.7055 5.30045 18.8021L5.65733 19.0978C8.07722 21.0858 10.0646 22.3651 11.6608 22.9407L12 23.063L12.3392 22.9407C14.0351 22.3292 16.1089 20.997 18.5953 18.9432C19.7483 17.9909 20.5667 16.6952 20.9314 15.2449L21.0539 14.7254C21.2154 13.9925 21.3392 13.2334 21.4288 12.434C21.6207 10.722 21.6961 8.64587 21.6565 6.20185L21.6305 4.98486ZM11.9994 3.08599L19.6574 6.32199L19.6636 6.76927C19.6834 8.90083 19.6089 10.7158 19.4413 12.2112C19.3593 12.9426 19.2468 13.6325 19.1039 14.281L18.9882 14.7718C18.7311 15.794 18.1459 16.7204 17.3217 17.4012L16.9762 17.684C15.0366 19.2565 13.4062 20.3228 12.106 20.8827L12.0014 20.925L11.9236 20.894C10.6338 20.3363 8.9601 19.2228 6.93017 17.5552L6.57978 17.2648C5.64489 16.4835 5.02544 15.3838 4.84108 14.1752L4.7553 13.5801L4.67045 12.9254L4.58657 12.2112L4.50393 11.4008C4.35491 9.77906 4.30354 8.15195 4.34983 6.51922L4.35637 6.32598L11.9994 3.08599Z"
+                                    fill="#198055"></path>
+                            </svg>
+                            <div>
+                                <div class="green-text">Shopping Security</div>
+                                <div>
+                                    <span class="security-pill">✔ Safe Payments</span>
+                                    <span class="security-pill">✔ Privacy Protection</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seller -->
+                        <div class="row-item">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14.5 1.5H1.5V14.5H14.5V1.5ZM13.5 2.5H2.5V6.1L2.51171 6.18873C2.59911 6.88733 3.16423 7.42854 3.85935 7.49346L4 7.5C4.7583 7.5 5.39507 6.93391 5.48829 6.18873L5.54308 5.7508H6.45692L6.51171 6.18873C6.60493 6.93391 7.2417 7.5 8 7.5C8.7583 7.5 9.39507 6.93391 9.48829 6.18873L9.54308 5.7508H10.4569L10.5117 6.18873C10.6049 6.93391 11.2417 7.5 12 7.5C12.7583 7.5 13.3951 6.93391 13.4883 6.18873L13.5 6.092V2.5ZM13.5 8.00006C13.1218 8.28385 12.6614 8.46241 12.1637 8.4947L12 8.5C11.2305 8.5 10.5364 8.15058 10.0759 7.59655L10 7.499L9.92411 7.59655C9.49649 8.11101 8.86743 8.44904 8.16367 8.4947L8 8.5C7.23054 8.5 6.53641 8.15058 6.07589 7.59655L6 7.499L5.92411 7.59655C5.49649 8.11101 4.86743 8.44904 4.16367 8.4947L4 8.5C3.43968 8.5 2.91931 8.31471 2.5 8.00006V13.5H6V10.5H10V13.5H13.5V8.00006ZM9 11.5V13.5H7V11.5H9Z"
+                                    fill="#198055"></path>
+                            </svg>
+                            <div>
+                                <div class="gray">Sourced from <span class="bold">Noshahi Essnce</span></div>
+                                <div class="gray normal">Sold by and Ships from Noshahi</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="accordion">
+                        <div class="acc-row" data-acc="desc">
+                            <h5>Description</h5>
+                            <div class="plus">+</div>
+                        </div>
+                        <div class="acc-content" id="desc">
+                            <h6 class="fw-bold mb-2">Features</h6>
+
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+
+                                <div class="feature-box">
+                                    <div class="feature-icon"><img src="images/comportable.png" alt="comfortable"></div>
+                                    Comfortable
+                                </div>
+
+                                <div class="feature-box">
+                                    <div class="feature-icon"><img src="images/breathabla.png" alt="breathable"></div>
+                                    Breathable
+                                </div>
+
+                                <div class="feature-box">
+                                    <div class="feature-icon"><img src="images/soft.png" alt="soft"></div>
+                                    Soft
+                                </div>
+
+                                <div class="feature-box">
+                                    <div class="feature-icon"><img src="images/skin friendly.png" alt="Skin-friendly">
+                                    </div>
+                                    Skin-friendly
+                                </div>
+
+                            </div>
+
+
+                            <!-- FABRIC ELASTICITY -->
+                            <h6 class="fw-bold mb-2">Fabric Elasticity</h6>
+                            <div class="elasticity-box">
+                                <img src="images/aerro.png" alt="">
+                                Medium Stretch
+                            </div>
+
+
+                            <!-- DETAILS TABLE -->
+                            <table class="details-table" style="width:100%; border-collapse: collapse;">
+
+                                <tr>
+                                    <td>Occasion:</td>
+                                    <td>Daily</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Festivals:</td>
+                                    <td>Independence Day</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Details:</td>
+                                    <td>Button, Pocket, Raw Hem, Ripped, Zipper</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Lined For Added Warmth:</td>
+                                    <td>No</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Pattern Type:</td>
+                                    <td>Plain</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Style:</td>
+                                    <td>Casual</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Closure Type:</td>
+                                    <td>Zipper Fly</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Body:</td>
+                                    <td>Unlined</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Color:</td>
+                                    <td>Black</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Type:</td>
+                                    <td>Skinny</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Jeans Style:</td>
+                                    <td>Curvy</td>
+                                </tr>
+
+                                <tr>
+                                    <td>SKU:</td>
+                                    <td>S225090998294825844<i class="fa-solid fa-clone"></i></td>
+                                </tr>
+
+                            </table>
+                        </div>
+
+                        <div class="acc-row" data-acc="sizefit">
+                            <h5>Size & Fit</h5>
+                            <div class="plus">+</div>
+                        </div>
+                        <div class="acc-content" id="sizefit">
+                            <!-- ================= COUNTRY DROPDOWN ================= -->
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <strong>Switch to:</strong>
+
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle" id="countryBtn" data-bs-toggle="dropdown">
+                                        EU Size
+                                    </button>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item country-select">EU</a></li>
+                                        <li><a class="dropdown-item country-select">BR</a></li>
+                                        <li><a class="dropdown-item country-select">DE</a></li>
+                                        <li><a class="dropdown-item country-select">AU</a></li>
+                                        <li><a class="dropdown-item country-select">SG</a></li>
+                                        <li><a class="dropdown-item country-select">UK</a></li>
+                                        <li><a class="dropdown-item country-select">JP</a></li>
+                                        <li><a class="dropdown-item country-select">MX</a></li>
+                                        <li><a class="dropdown-item country-select">IT</a></li>
+                                        <li><a class="dropdown-item country-select">FR</a></li>
+                                        <li><a class="dropdown-item country-select">US</a></li>
+                                        <li><a class="dropdown-item country-select">ES</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- ================= MODEL INFO ================= -->
+                            <div class="model-box">
+                                <img src="https://i.pravatar.cc/100?img=5">
+                                <div>
+                                    <strong>Model is Wearing: S (EU: 36)</strong><br>
+                                    Height: 66.9 &nbsp;&nbsp; Bust: 34.3 &nbsp;&nbsp; Waist: 26.4 &nbsp;&nbsp; Hips:
+                                    42.1
+                                </div>
+                            </div>
+
+                            <!-- ================ TABS =============== -->
+                            <div class="d-flex gap-4 border-bottom mb-3">
+                                <div id="tabProduct" class="tab-btn active">Product Measurements</div>
+                                <div id="tabBody" class="tab-btn">Body Measurements</div>
+                            </div>
+
+                            <!-- ================ PRODUCT TABLE =============== -->
+                            <div id="productTab">
+                                <div class="table-scroll">
+                                    <table class="table table-bordered table-fixed-first">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th id="countryCol">EU</th>
+                                                <th>Size</th>
+                                                <th>Length</th>
+                                                <th>Waist Size</th>
+                                                <th>Hip Size</th>
+                                                <th>Inceam</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>34</td>
+                                                <td>XS</td>
+                                                <td>36.2</td>
+                                                <td>24.4</td>
+                                                <td>32.7</td>
+                                                <td>13</td>
+                                            </tr>
+                                            <tr>
+                                                <td>36</td>
+                                                <td>S</td>
+                                                <td>36.6</td>
+                                                <td>26</td>
+                                                <td>34.3</td>
+                                                <td>14</td>
+                                            </tr>
+                                            <tr>
+                                                <td>38</td>
+                                                <td>M</td>
+                                                <td>37</td>
+                                                <td>27.6</td>
+                                                <td>35.8</td>
+                                                <td>15</td>
+                                            </tr>
+                                            <tr>
+                                                <td>40/42</td>
+                                                <td>L</td>
+                                                <td>37.6</td>
+                                                <td>29.9</td>
+                                                <td>38.2</td>
+                                                <td>16</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="small-note">
+                                    *This data was obtained from manually measuring the product, it may be off by
+                                    0.39-0.79 IN.
+                                </div>
+                            </div>
+
+                            <!-- ================ BODY MEASUREMENT TAB (Hidden) =============== -->
+                            <div id="bodyTab" style="display:none">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th id="countryCol">EU</th>
+                                            <th>Size</th>
+                                            <th>Length</th>
+                                            <th>Waist Size</th>
+                                            <th>Hip Size</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>34</td>
+                                            <td>XS</td>
+                                            <td>36.2</td>
+                                            <td>24.4</td>
+                                            <td>32.7</td>
+                                        </tr>
+                                        <tr>
+                                            <td>36</td>
+                                            <td>S</td>
+                                            <td>36.6</td>
+                                            <td>26</td>
+                                            <td>34.3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>38</td>
+                                            <td>M</td>
+                                            <td>37</td>
+                                            <td>27.6</td>
+                                            <td>35.8</td>
+                                        </tr>
+                                        <tr>
+                                            <td>40/42</td>
+                                            <td>L</td>
+                                            <td>37.6</td>
+                                            <td>29.9</td>
+                                            <td>38.2</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
                         <p>Shipping & Returns</p>
                         <p>Free Shipping Orders Over $50.00</p>
                         <p>Delivery: Standard Shipping (5-8 business days)</p>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
