@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Demo 1</title>
     <!-- head icon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
@@ -14,14 +13,1049 @@
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-    </style>
-    <!-- css -->
-    <link rel="stylesheet" href="css/product.css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
 
+        /*=============== Header Open========== */
+
+        /* BASE HEADER */
+        .noshahi-header {
+            width: 100%;
+            background: white;
+            color: #000;
+            position: sticky;
+            z-index: 10;
+            transition: 1s ease;
+        }
+
+        .hide {
+            transform: translateY(-100%);
+        }
+
+        /* TOP BAR */
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* SEARCH BAR */
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            background: #fff;
+            overflow: hidden;
+            margin: 0 20px;
+            border: 1px solid rgb(209, 205, 205);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 8px 10px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-bar button {
+            background: #000;
+            color: #fff;
+            border: none;
+            height: 35px;
+            width: 54px;
+            border-radius: 4px;
+            padding: 7px 13px;
+            margin-right: 2px;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            color: #000;
+            transition: 0.3s;
+        }
+
+        .header-icons i:hover {
+            color: #645d5d;
+        }
+
+        /* NAVIGATION */
+        .noshahi-navbar {
+            background-color: white;
+            overflow-x: auto;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            position: relative;
+            scrollbar-width: none;
+        }
+
+        .noshahi-navbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-item {
+            display: inline-block;
+        }
+
+        .nav-link {
+            color: #000 !important;
+            font-size: 13px;
+            padding: 5px 13px !important;
+            text-transform: capitalize;
+            margin-top: -2px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: #c8c7c7;
+        }
+
+        .nav-link i {
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        /* Scroll buttons */
+        .scroll-btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            background: #fff;
+            color: #000;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .scroll-btn.left {
+            left: 0;
+            background: transparent;
+            color: #000;
+            display: block;
+            margin-right: 10px;
+        }
+
+        .scroll-btn.right {
+            right: 0;
+            background: rgb(255, 255, 255);
+            color: #000;
+            display: block;
+            margin-left: 10px;
+        }
+
+        /* Dropdown menu */
+        .dropdown-menu {
+            background-color: #fff;
+            border: none;
+            border-top: 2px solid #f2f2f2;
+            border-right: 2px solid #f2f2f2;
+            padding: 20px;
+            min-width: 200px;
+            height: 200px;
+            overflow: scroll;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            margin-left: 10px;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: flex;
+        }
+
+        .dropdown-menu-column {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .dropdown-menu-column a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            margin-bottom: 13px;
+            font-size: 13px;
+            padding: 8px;
+        }
+
+        .dropdown-menu-column a:hover {
+            text-decoration: none;
+            background: #d2cfcf;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+
+        /* heder icon with tooltip */
+
+        /* user menu */
+
+        .user-menu-wrapper {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .user-icon {
+            display: inline-block;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .user-icon i {
+            font-size: 20px;
+            cursor: pointer;
+            color: #000;
+            display: inline-block;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        .user-tooltip-box {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 6px;
+            width: 220px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 6px 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            z-index: 9999;
+            pointer-events: auto;
+        }
+
+        .user-menu-wrapper:hover .user-tooltip-box,
+        .user-menu-wrapper:focus-within .user-tooltip-box {
+            display: flex;
+        }
+
+        .user-tooltip-box a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .user-tooltip-box p {
+            margin: 0;
+            padding: 10px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #4a4a4a;
+            line-height: 1.1;
+        }
+
+        .user-tooltip-box hr {
+            margin: 3px 2px;
+            border: none;
+            border-top: 1px solid #666464;
+        }
+
+        .user-tooltip-box p:hover {
+            background: #999595;
+            color: #fffefe;
+        }
+
+        .user-tooltip-box .user-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #222;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #666464;
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        /* Globe Icon */
+        .currency-menu-wrapper i {
+            font-size: 20px;
+            color: #000;
+            position: relative;
+        }
+
+        /* Tooltip Box */
+        .currency-tooltip-box {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Show tooltip */
+        .currency-menu-wrapper.active .currency-tooltip-box {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Sections */
+        .tooltip-section {
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        /* Dropdown */
+        .tooltip-section select {
+            width: 100%;
+            padding: 6px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        /* Language options */
+        .language-options {
+            display: flex;
+            gap: 10px;
+            padding-top: 5px;
+            border-top: 1px solid #ccc;
+        }
+
+        .language-options span {
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+            padding: 3px 5px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .language-options span.active,
+        .language-options span:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* International Link */
+        .international-link {
+            display: block;
+            text-align: left;
+            margin-top: 5px;
+            color: #007aff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .international-link:hover {
+            text-decoration: underline;
+        }
+
+        /* cartTooltip */
+        .cart-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .cart-tooltip-box {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .cart-wrapper.active .cart-tooltip-box {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tooltip-content p {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+        }
+
+        .tooltip-content a {
+            display: block;
+            text-align: center;
+            color: #007aff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .tooltip-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .search-bar {
+                max-width: 400px;
+                margin: 0 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-top {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                font-size: 12px;
+                gap: 10px;
+            }
+        }
+
+        /*======= Header Close ========*/
+
+        /*======= Footer open ===========*/
+        .footer {
+            margin-top: 2rem;
+            background-color: #f9f9f9;
+            height: 38rem;
+            width: 100%;
+            padding: 50px 0;
+            color: #000;
+        }
+
+        .footer h6 {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            width: 8rem;
+        }
+
+        .footer a {
+            color: #000;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .row-link {
+            margin-right: 35px;
+        }
+
+        .social-icons {
+            margin-left: 100px;
+            width: 615px;
+        }
+
+        .social-icon {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .social-icon a {
+            font-size: 20px;
+            margin-right: 12px;
+            color: #000;
+        }
+
+        .social-icon a i {
+            font-size: 25px;
+            margin-left: 6px;
+        }
+
+        .social-icons h6 {
+            font-size: 12px;
+            width: 15rem;
+        }
+
+        .subscribe-input {
+            border: 1px solid #ccc;
+            border-radius: 0;
+            font-size: 14px;
+            padding: 10px;
+            width: 100%;
+        }
+
+
+        .payments img {
+            height: 26px;
+            margin: 5px;
+            filter: grayscale(20%);
+        }
+
+        /* subscribe-container */
+
+
+        .subscribe-container {
+            width: 400px;
+        }
+
+        h3 {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .subscribe-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-right: none;
+            background-color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            width: 90px;
+        }
+
+        .subscribe-group input,
+        .phone-input input {
+            flex: 1;
+            padding: 5px;
+            width: 363px;
+            background: #ffffff;
+            border: none;
+            border-left: 1px solid #ccc;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .phone-input {
+            border: 2px solid rgb(237, 236, 238)
+        }
+
+        .subscribe-group-email {
+            display: flex;
+            width: 37.4rem;
+        }
+
+        .subscribe-group-email input {
+            flex: 1;
+            padding: 8px;
+            padding-right: 100px;
+            border: 1px solid #ccc;
+            border-right: none;
+            background-color: #ffffff;
+            font-size: 12px;
+            outline: none;
+        }
+
+
+        .subscribe-group button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 7px 34px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .subscribe-group button:hover {
+            opacity: 0.9;
+        }
+
+        .phone-input {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .phone-input select {
+            padding: 7px;
+            border: 1px solid #F9F9F9;
+            border-right: none;
+            background-color: #ffffff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .terms {
+            display: flex;
+            flex-direction: row;
+            font-size: 12px;
+            color: #555;
+            margin-top: 10px;
+            width: 35rem;
+            padding-left: 5px;
+        }
+
+        .terms a {
+            color: #0073e6;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            display: flex;
+            width: 100%;
+        }
+
+        .terms-conditions-policy {
+            width: 50%;
+            margin-top: 140px;
+        }
+
+        .terms-conditions-policy p {
+            color: #989696;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0 8px;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .footer-links li {
+            display: inline;
+            padding: 0%;
+        }
+
+        .footer-links li:last-child {
+            border-right: none;
+        }
+
+        .footer-links a {
+            color: #7e7f7f;
+            text-decoration: underline;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .banks {
+            width: 57%;
+            margin-top: 50px;
+        }
+
+        /* Footer close */
+
+        /* Responsive Design for max-width: 767px (Mobile Devices)*/
+        @media (max-width: 767px) {
+
+            html,
+            body {
+                overflow-x: hidden !important;
+                background: #F7F8FA;
+            }
+
+            body {
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start;
+            }
+
+            .footer {
+                height: auto;
+                margin-top: 5rem;
+                padding-right: 50px !important;
+                text-align: center !important;
+            }
+
+            .footer h6 {
+                font-size: 11px !important;
+                width: 100%;
+            }
+
+            .footer a {
+                font-size: 12px !important;
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+
+            .row-link {
+                margin: 0 auto 20px auto;
+            }
+
+            /*  Social icons centered */
+            .social-icons {
+                margin: 20px auto;
+                width: 100%;
+            }
+
+            .social-icon {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .social-icon a {
+                font-size: 20px;
+                margin: 8px;
+            }
+
+            /*  Subscribe container responsive */
+            .subscribe-container {
+                width: 100%;
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .subscribe-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .subscribe-group select {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            /*  Input + Button vertically stacked */
+            .subscribe-group-email {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .subscribe-group-email input {
+                width: 100%;
+                border-right: 1px solid #ccc;
+                margin-bottom: 8px;
+            }
+
+            .subscribe-group button {
+                padding: 10px 0;
+                font-size: 14px;
+                display: block !important;
+                width: 100% !important;
+                margin-top: 8px !important;
+            }
+
+            /* Center align all subscribe section elements */
+            .subscribe-container,
+            .subscribe-group,
+            .subscribe-group-email {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+
+            /*  Phone input fix */
+            .phone-input {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                width: 100% !important;
+            }
+
+            .phone-input select,
+            .phone-input input {
+                width: 100% !important;
+                border-radius: 0 !important;
+                border: 1px solid #ccc !important;
+                margin-bottom: 6px !important;
+            }
+
+            /*  Terms section centered */
+            .terms {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                margin: 20px 0 10px 0;
+                padding: 0;
+            }
+
+            /*  Banks icons ABOVE terms & centered */
+            .banks {
+                margin-top: 20px;
+                margin-bottom: 10px;
+                flex-wrap: wrap;
+                order: -1 !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                margin: 0 0 10px 0 !important;
+            }
+
+            .banks img {
+                height: 22px;
+                margin: 5px;
+            }
+
+            /* Payments icons resizing */
+            .payments img {
+                height: 22px !important;
+            }
+
+            /*  Footer bottom layout */
+            .footer-bottom {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 100% !important;
+                gap: 20px !important;
+            }
+
+            .terms-conditions-policy {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .terms-conditions-policy p {
+                font-size: 12px;
+            }
+
+            /* Center and adjust terms text */
+            .terms,
+            .terms-conditions-policy {
+                order: 0 !important;
+                text-align: center !important;
+                width: 100% !important;
+                margin: 0 auto !important;
+                padding: 0 10px !important;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                padding: 0;
+                justify-content: center !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+
+            .footer-links a {
+                font-size: 12px;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .footer {
+                padding: 60px 20px;
+                background-color: #f9f9f9;
+                height: auto;
+            }
+
+            .row-link {
+                margin-right: 20px;
+            }
+
+            .social-icons {
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .subscribe-group-email,
+            .subscribe-group {
+                width: 100%;
+            }
+
+            .terms-conditions-policy {
+                margin-top: 50px;
+            }
+        }
+        
+        /* Footer Responsive close */
+        
+        /* --- Base Layout (Desktop) --- */
+        .profile-container {
+            display: flex;
+            max-width: 1200px;
+            margin-left: 12rem;
+            background-color: #fff;
+        }
+        
+        .breadcrumb {
+            padding: 5px 40px;
+            background-color: #fff;
+            display: inline-block;
+            font-size: 12px;
+            margin-left: 10rem;
+            color: #999999;
+            cursor: pointer;
+        }
+
+        .breadcrumb p a {
+            background-color: #fff;
+            font-size: 12px;
+            color: #999999;
+            text-decoration: none;
+        }
+
+        /* --- Sidebar Styling --- */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            padding: 20px;
+            padding-top: 0px;
+            border-right: 1px solid #eee;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .menu-section h3 {
+            font-size: 15px;
+            color: #333;
+            padding: 5px 0;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-section ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+            margin-left: 15px;
+            margin-top: -10px;
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, margin-bottom 0.3s ease-out;
+        }
+
+        .menu-section.collapsed ul {
+            max-height: 0;
+            margin-bottom: 0;
+        }
+
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #555;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+            color: #888;
+            width: 15px;
+        }
+
+        /* Sign Out Link Styling */
+        .sign-out-section {
+            padding-top: 15px;
+            margin-top: 20px;
+        }
+
+        .sign-out-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .sign-out-link i {
+            margin-right: 10px;
+            color: #333;
+        }
+
+        /* Badges and Points */
+        .badge {
+            font-size: 9px;
+            padding: 2px 5px;
+            border-radius: 2px;
+            margin-left: 5px;
+            line-height: 1;
+        }
+
+        .club {
+            background-color: #ff9800;
+            color: white;
+        }
+
+        .saver {
+            background-color: #f50057;
+            color: white;
+        }
+
+        .points {
+            color: #ea1e63;
+            font-weight: normal;
+            margin-left: auto;
+            font-size: 11px;
+        }
+
+        /* --- Main Content Styling --- */
+        .main-content {
+            flex-grow: 1;
+            border: 3px solid red;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
+    <!--Header-->
     <header class="noshahi-header" id="header">
         <div class="header-top">
             <div class="logo">
@@ -189,533 +1223,95 @@
             <button class="scroll-btn right"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </header>
-    <div class="product-container">
-        <div class="breadcrub">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Women Apparel</a></li>
-                    <li class="breadcrumb-item"><a href="#">Women Clothing</a></li>
-                    <li class="breadcrumb-item"><a href="#">Women Denim</a></li>
-                    <li class="breadcrumb-item"><a href="#">Women Jeans</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Plain Ripped Skinny Pocket Casual Versatile
-                        Denim Jeans</li>
-                </ol>
-            </nav>
+    <div class="profile-sidebar">
+        <div class="breadcrumb">
+            <p><a href="index.html">Home</a> / Personal Center</p>
         </div>
-        <div class="main-content">
-            <div class="left-column">
-                <div class="image-box">
-                    <div class="thumbnails" id="colorThumbs">
-                        <div class="thumb c-thumb active" data-img="images/card_3.jpg">
-                            <img src="images/card_3.jpg">
-                        </div>
 
-                        <div class="thumb c-thumb" data-img="images/2.webp">
-                            <img src="images/2.webp">
-                        </div>
+        <div class="profile-container">
+            <div class="sidebar">
+                <a href="#"><h2>Personal Center</h2></a>
 
-                        <div class="thumb c-thumb" data-img="images/3.webp">
-                            <img src="images/3.webp">
-                        </div>
+                <div class="menu-section" id="account-section">
+                    <h3>My Account <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>                        
+                        <li class="active-link">
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                 My Profile
+                                 <span class="points">
+                                    +POINTS
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-credit-card"></i>
+                                My Payment Options
+                            </a>
+                        </li>                        
+                    </ul>
+                </div>
 
-                        <div class="thumb c-thumb" data-img="images/4.webp">
-                            <img src="images/4.webp">
-                        </div>
+                <div class="menu-section" id="assets-section">
+                    <h3>My Assets <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-wallet"></i> My Wallet</a></li>
+                    </ul>
+                </div>
 
-                        <div class="thumb c-thumb" data-img="images/1.webp">
-                            <img src="images/1.webp">
-                        </div>
+                <div class="menu-section" id="orders-section">
+                    <h3>My Orders <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-list-alt"></i> All Orders</a></li>
+                        <li><a href="#"><i class="fas fa-money-bill-wave"></i> Unpaid Orders</a></li>
+                        <li><a href="#"><i class="fas fa-box"></i> Processing Orders</a></li>
+                        <li><a href="#"><i class="fas fa-truck"></i> Shipped Orders</a></li>
+                        <li><a href="#"><i class="fas fa-star"></i> Review Orders</a></li>
+                        <li><a href="#"><i class="fas fa-undo-alt"></i> Return Orders</a></li>
+                    </ul>
+                </div>
 
-                        <div class="thumb c-thumb" data-img="images/card_4.webp">
-                            <img src="images/card_4.webp">
-                        </div>
+                <div class="menu-section" id="favorites-section">
+                    <h3>My Favorites <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-heart"></i> Wish List</a></li>
+                        <li><a href="#"><i class="fas fa-history"></i> Recently Viewed</a></li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section" id="service-section">
+                    <h3>Customer Service <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
+                    </ul>
+                </div>
 
-                    </div>
-                    <div class="main-image" class="main-frame" id="mainFrame" tabindex="0"
-                        aria-label="Main product image">
-                        <button class="arrow left" id="prev" aria-label="previous image">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </button>
-                        <img id="mainImage" src="images/card_4.jpg" alt="Main Product Image - Black Denim">
-                        <button class="arrow right" id="next" aria-label="next image">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-                    </div>
+                <div class="menu-section" id="policy-section">
+                    <h3>Policy <span class="toggle-icon"><i class="fas fa-minus"></i></span></h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-shipping-fast"></i> Shipping Info</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Return Policy</a></li>
+                        <li><a href="#"><i class="fas fa-lock"></i> Privacy & Cookie Policy</a></li>
+                        <li><a href="#"><i class="fas fa-receipt"></i> Refund</a></li>
+                        <li><a href="#"><i class="fas fa-credit-card"></i> Payment Method</a></li>
+                        <li><a href="#"><i class="fas fa-wallet"></i> About SHEIN Wallet</a></li>
+                        <li><a href="#"><i class="fas fa-dollar-sign"></i> Bonus Point Policy</a></li>
+                        <li><a href="#"><i class="fas fa-percent"></i> Coupon Policy</a></li>
+                        <li><a href="#"><i class="fas fa-medal"></i> SHEIN VIP Terms & Conditions</a></li>
+                        <li><a href="#"><i class="fas fa-comments"></i> Review Guidance</a></li>
+                        <li><a href="#"><i class="fas fa-gift"></i> Giftcard</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> How To Track My Order</a></li>
+                        <li><a href="#"><i class="fas fa-book-open"></i> How To Order Page</a></li>
+                    </ul>
+                </div>
+
+                <div class="sign-out-section">
+                    <a href="#" class="sign-out-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                 </div>
             </div>
-            <div class="product-info-column">
-                <div class="right-box">
-                    <div class="title-row">
-                        <div class="title">
-                            Women's Mid Rise Straight Leg Denim Pants - Non Stretch Classic Washed Button Fly Zipper
-                        </div>
-
-                        <div class="share-container">
-                            <span class="share-icon">
-                                <a href="#" class="share-btn" title="Share / Open">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                </a>
-                            </span>
-                            <div class="share-popup">
-                                <a href="https://twitter.com/intent/tweet?url=YOUR_PRODUCT_URL&text=Check%20out%20this%20product%21"
-                                    target="_blank" class="social-link">
-                                    <i class="fab fa-twitter social-icon-fa twitter"></i>
-                                </a>
-                                <a href="https://pinterest.com/pin/create/button/?url=YOUR_PRODUCT_URL&media=YOUR_IMAGE_URL&description=YOUR_PRODUCT_DESCRIPTION"
-                                    target="_blank" class="social-link">
-                                    <i class="fab fa-pinterest social-icon-fa pinterest"></i>
-                                </a>
-                                <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PRODUCT_URL" target="_blank"
-                                    class="social-link">
-                                    <i class="fab fa-facebook-f social-icon-fa facebook"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sku">
-                        <span>SKU: S225090998294825844 </span>
-                        <i class="fa-solid fa-clone"></i>
-                        <div class="rating" aria-hidden="true">
-                            <span style="color: rgb(246, 210, 9);">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </span>
-                            <span style="font-size:13px;color:#6a6a6a;">(1000+ Reviews)</span>
-                        </div>
-                    </div>
-
-                    <div class="price-container">
-                        <div class="price-now"><span>$</span>17.85</div>
-                        <div class="price-old-and-discount">
-                            <div class="price-old">$27.00</div>
-                            <div class="discount-box">-34%</div>
-                        </div>
-                    </div>
-
-                    <div class="klarna-box">
-                        <span class="klarna-text">Pay now, in 4 payments of $4.46, or pay over time with monthly<br>
-                            financing.<span class="klarna-logo">Klarna</span>
-                            <i class="fa-regular fa-circle-question"></i>
-                        </span>
-                    </div>
-                    <div class="hr">
-                        <hr>
-                    </div>
-                    <div class="section-title color-title">
-                        Color: Black
-                        <span class="large-image-link">Large Image</span>
-                    </div>
-
-                    <div class="color-list">
-                        <div class="color-item active">
-                            <img src="images/1.webp" alt="Black">
-                        </div>
-                        <div class="color-item">
-                            <img src="images/2.webp" alt="Light Wash">
-                            <span class="hot-tag">HOT</span>
-                        </div>
-                        <div class="color-item">
-                            <img src="images/3.webp" alt="Light Wash">
-                            <span class="hot-tag">HOT</span>
-                        </div>
-                        <div class="color-item">
-                            <img src="images/4.webp" alt="Light Wash">
-                        </div>
-                    </div>
-
-                    <!-- Size: dropdown above buttons -->
-                    <div class="size-area">
-                        <div class="size-text-type">
-                            <div class="size-label">Size</div>
-                            <div class="size-select">
-                                <select id="sizeSelect" aria-label="Size select">
-                                    <option value="">MX Size</option>
-                                    <option value="S">S Size</option>
-                                    <option value="M">M Size</option>
-                                    <option value="L">L Size</option>
-                                    <option value="XL">XL Size</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="size-buttons" id="sizeButtons">
-                            <button class="size-btn" data-size="S">S</button>
-                            <button class="size-btn" data-size="M">M</button>
-                            <button class="size-btn" data-size="L">L</button>
-                            <button class="size-btn" data-size="XL">XL</button>
-                        </div>
-                        <div class="size-helpers">
-                            <a href="#" title="Size Guide"><i class="fa-solid fa-ruler"></i> Size Guide</a>
-                            <a href="#" title="Check My Size"><i class="fa-solid fa-user-check"></i> Check My Size</a>
-                        </div>
-                        <a href="#" class="not-your-size">Not your size? Tell me your size</a>
-                    </div>
-
-                    <div class="quantity-selector">
-                        <div class="section-title" style="margin: 0;">Qty:</div>
-                        <div class="qty-box">
-                            <button class="qty-btn">-</button>
-                            <input type="text" class="qty-input" value="1" readonly>
-                            <button class="qty-btn">+</button>
-                        </div>
-                    </div>
-
-                    <div class="add-cart-section">
-                        <button class="add-cart">
-                            ADD TO CART
-                            <span class="add-cart-discount">34% off discount</span>
-                        </button>
-                        <button class="fav-btn" id="favBtn" title="Add to favourites">
-                            <i class="fa-regular fa-heart" id="favIcon"></i>
-                        </button>
-                    </div>
-                    <div class="points">Earn up to <strong>11 Points</strong> calculated at checkout</div>
-                    <div class="ship-box">
-
-                        <div class="title-main">Shipping to <span>Phoenix, ARIZONA, United States</span></div>
-
-                        <!-- Free Shipping -->
-                        <div class="row-item">
-                            <svg style="width: 24px; height: 24px;" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="24" height="24" fill="white" fill-opacity="0.01"></rect>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M17.4086 6.92012V4H3.01044V8.64506V14.2934V18.4515H4.76135C5.24011 16.7751 6.78359 15.5479 8.61371 15.5479C10.4438 15.5479 11.9873 16.7751 12.4661 18.4515H13.6171C14.0958 16.7751 15.6393 15.5479 17.4694 15.5479C19.2996 15.5479 20.8431 16.7752 21.3218 18.4517H22.5697V8.60743L17.4086 6.92012ZM17.4086 12.4516V9.02453L20.5692 10.0576V12.4516H17.4086Z"
-                                    fill="#198055"></path>
-                                <circle cx="17.5168" cy="19.554" r="2" fill="#198055"></circle>
-                                <circle cx="8.61353" cy="19.554" r="2" fill="#198055"></circle>
-                            </svg>
-                            <div>
-                                <div class="green-text">Free Shipping (Orders > $29.00)</div>
-                                <div class="gray">Estimated Delivery: <span class="bold">Dec 3 - Dec 9</span></div>
-                                <div class="red-box">73% arrive in ≤ 7 days</div>
-                            </div>
-                        </div>
-
-                        <!-- Return -->
-                        <div class="row-item">
-                            <svg style="width:24;height:24;" width="48" height="48" viewBox="0 0 48 48" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M22.7311 32.1047L15.3483 25.9523L22.7311 19.8L24.6517 22.1047L21.7772 24.5H32.5V31H29.5V27.5H21.8916L24.6517 29.8L22.7311 32.1047Z"
-                                    fill="#198055"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M44 7.99994V15.9999H41.5V41.4999H6.5V15.9999H4V7.99994H44ZM7 12.9999H41V10.9999H7V12.9999ZM9.5 15.9999V38.4999H38.5V15.9999H9.5Z"
-                                    fill="#198055"></path>
-                                <rect width="48" height="48" fill="white" fill-opacity="0.01"></rect>
-                            </svg>
-                            <div>
-                                <div class="green-text">Return Policy</div>
-                                <div class="gray normal">Free Return</div>
-                            </div>
-                        </div>
-
-                        <!-- Security -->
-                        <div class="row-item">
-                            <svg style="width:24;height:24;" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M16.9718 9.77253L15.4476 8.4777L11.3724 13.274L8.17984 10.6854L6.92024 12.2389L11.6317 16.0589L16.9718 9.77253Z"
-                                    fill="#198055"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M21.6305 4.98486L11.9994 0.914062L2.41368 4.97874L2.38343 5.60605C2.27318 7.89188 2.34505 10.168 2.59902 12.434L2.65097 12.8847L2.75641 13.7228C2.7919 13.9882 2.82774 14.2395 2.86395 14.4768C3.12183 16.1674 3.98828 17.7055 5.30045 18.8021L5.65733 19.0978C8.07722 21.0858 10.0646 22.3651 11.6608 22.9407L12 23.063L12.3392 22.9407C14.0351 22.3292 16.1089 20.997 18.5953 18.9432C19.7483 17.9909 20.5667 16.6952 20.9314 15.2449L21.0539 14.7254C21.2154 13.9925 21.3392 13.2334 21.4288 12.434C21.6207 10.722 21.6961 8.64587 21.6565 6.20185L21.6305 4.98486ZM11.9994 3.08599L19.6574 6.32199L19.6636 6.76927C19.6834 8.90083 19.6089 10.7158 19.4413 12.2112C19.3593 12.9426 19.2468 13.6325 19.1039 14.281L18.9882 14.7718C18.7311 15.794 18.1459 16.7204 17.3217 17.4012L16.9762 17.684C15.0366 19.2565 13.4062 20.3228 12.106 20.8827L12.0014 20.925L11.9236 20.894C10.6338 20.3363 8.9601 19.2228 6.93017 17.5552L6.57978 17.2648C5.64489 16.4835 5.02544 15.3838 4.84108 14.1752L4.7553 13.5801L4.67045 12.9254L4.58657 12.2112L4.50393 11.4008C4.35491 9.77906 4.30354 8.15195 4.34983 6.51922L4.35637 6.32598L11.9994 3.08599Z"
-                                    fill="#198055"></path>
-                            </svg>
-                            <div>
-                                <div class="green-text">Shopping Security</div>
-                                <div>
-                                    <span class="security-pill">✔ Safe Payments</span>
-                                    <span class="security-pill">✔ Privacy Protection</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Seller -->
-                        <div class="row-item">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px;">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M14.5 1.5H1.5V14.5H14.5V1.5ZM13.5 2.5H2.5V6.1L2.51171 6.18873C2.59911 6.88733 3.16423 7.42854 3.85935 7.49346L4 7.5C4.7583 7.5 5.39507 6.93391 5.48829 6.18873L5.54308 5.7508H6.45692L6.51171 6.18873C6.60493 6.93391 7.2417 7.5 8 7.5C8.7583 7.5 9.39507 6.93391 9.48829 6.18873L9.54308 5.7508H10.4569L10.5117 6.18873C10.6049 6.93391 11.2417 7.5 12 7.5C12.7583 7.5 13.3951 6.93391 13.4883 6.18873L13.5 6.092V2.5ZM13.5 8.00006C13.1218 8.28385 12.6614 8.46241 12.1637 8.4947L12 8.5C11.2305 8.5 10.5364 8.15058 10.0759 7.59655L10 7.499L9.92411 7.59655C9.49649 8.11101 8.86743 8.44904 8.16367 8.4947L8 8.5C7.23054 8.5 6.53641 8.15058 6.07589 7.59655L6 7.499L5.92411 7.59655C5.49649 8.11101 4.86743 8.44904 4.16367 8.4947L4 8.5C3.43968 8.5 2.91931 8.31471 2.5 8.00006V13.5H6V10.5H10V13.5H13.5V8.00006ZM9 11.5V13.5H7V11.5H9Z"
-                                    fill="#198055"></path>
-                            </svg>
-                            <div>
-                                <div class="gray">Sourced from <span class="bold">Noshahi Essnce</span></div>
-                                <div class="gray normal">Sold by and Ships from Noshahi</div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="accordion">
-                        <div class="acc-row" data-acc="desc">
-                            <h5>Description</h5>
-                            <div class="plus">+</div>
-                        </div>
-                        <div class="acc-content" id="desc">
-                            <h6 class="fw-bold mb-2">Features</h6>
-
-                            <div class="d-flex flex-wrap gap-2 mb-3">
-
-                                <div class="feature-box">
-                                    <div class="feature-icon"><img src="images/comportable.png" alt="comfortable"></div>
-                                    Comfortable
-                                </div>
-
-                                <div class="feature-box">
-                                    <div class="feature-icon"><img src="images/breathabla.png" alt="breathable"></div>
-                                    Breathable
-                                </div>
-
-                                <div class="feature-box">
-                                    <div class="feature-icon"><img src="images/soft.png" alt="soft"></div>
-                                    Soft
-                                </div>
-
-                                <div class="feature-box">
-                                    <div class="feature-icon"><img src="images/skin friendly.png" alt="Skin-friendly">
-                                    </div>
-                                    Skin-friendly
-                                </div>
-
-                            </div>
-
-
-                            <!-- FABRIC ELASTICITY -->
-                            <h6 class="fw-bold mb-2">Fabric Elasticity</h6>
-                            <div class="elasticity-box">
-                                <img src="images/aerro.png" alt="">
-                                Medium Stretch
-                            </div>
-
-
-                            <!-- DETAILS TABLE -->
-                            <table class="details-table" style="width:100%; border-collapse: collapse;">
-
-                                <tr>
-                                    <td>Occasion:</td>
-                                    <td>Daily</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Festivals:</td>
-                                    <td>Independence Day</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Details:</td>
-                                    <td>Button, Pocket, Raw Hem, Ripped, Zipper</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Lined For Added Warmth:</td>
-                                    <td>No</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Pattern Type:</td>
-                                    <td>Plain</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Style:</td>
-                                    <td>Casual</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Closure Type:</td>
-                                    <td>Zipper Fly</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Body:</td>
-                                    <td>Unlined</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Color:</td>
-                                    <td>Black</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Type:</td>
-                                    <td>Skinny</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Jeans Style:</td>
-                                    <td>Curvy</td>
-                                </tr>
-
-                                <tr>
-                                    <td>SKU:</td>
-                                    <td>S225090998294825844<i class="fa-solid fa-clone"></i></td>
-                                </tr>
-
-                            </table>
-                        </div>
-
-                        <div class="acc-row" data-acc="sizefit">
-                            <h5>Size & Fit</h5>
-                            <div class="plus">+</div>
-                        </div>
-                        <div class="acc-content" id="sizefit">
-                            <!-- ================= COUNTRY DROPDOWN ================= -->
-                            <div class="d-flex align-items-center gap-2 mb-3">
-                                <strong>Switch to:</strong>
-
-                                <div class="dropdown">
-                                    <button class="dropdown-toggle" id="countryBtn" data-bs-toggle="dropdown">
-                                        EU Size
-                                    </button>
-
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item country-select">EU</a></li>
-                                        <li><a class="dropdown-item country-select">BR</a></li>
-                                        <li><a class="dropdown-item country-select">DE</a></li>
-                                        <li><a class="dropdown-item country-select">AU</a></li>
-                                        <li><a class="dropdown-item country-select">SG</a></li>
-                                        <li><a class="dropdown-item country-select">UK</a></li>
-                                        <li><a class="dropdown-item country-select">JP</a></li>
-                                        <li><a class="dropdown-item country-select">MX</a></li>
-                                        <li><a class="dropdown-item country-select">IT</a></li>
-                                        <li><a class="dropdown-item country-select">FR</a></li>
-                                        <li><a class="dropdown-item country-select">US</a></li>
-                                        <li><a class="dropdown-item country-select">ES</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- ================= MODEL INFO ================= -->
-                            <div class="model-box">
-                                <img src="https://i.pravatar.cc/100?img=5">
-                                <div>
-                                    <strong>Model is Wearing: S (EU: 36)</strong><br>
-                                    Height: 66.9 &nbsp;&nbsp; Bust: 34.3 &nbsp;&nbsp; Waist: 26.4 &nbsp;&nbsp; Hips:
-                                    42.1
-                                </div>
-                            </div>
-
-                            <!-- ================ TABS =============== -->
-                            <div class="d-flex gap-4 border-bottom mb-3">
-                                <div id="tabProduct" class="tab-btn active">Product Measurements</div>
-                                <div id="tabBody" class="tab-btn">Body Measurements</div>
-                            </div>
-
-                            <!-- ================ PRODUCT TABLE =============== -->
-                            <div id="productTab">
-                                <div class="table-scroll">
-                                    <table class="table table-bordered table-fixed-first">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th id="countryCol">EU</th>
-                                                <th>Size</th>
-                                                <th>Length</th>
-                                                <th>Waist Size</th>
-                                                <th>Hip Size</th>
-                                                <th>Inceam</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>34</td>
-                                                <td>XS</td>
-                                                <td>36.2</td>
-                                                <td>24.4</td>
-                                                <td>32.7</td>
-                                                <td>13</td>
-                                            </tr>
-                                            <tr>
-                                                <td>36</td>
-                                                <td>S</td>
-                                                <td>36.6</td>
-                                                <td>26</td>
-                                                <td>34.3</td>
-                                                <td>14</td>
-                                            </tr>
-                                            <tr>
-                                                <td>38</td>
-                                                <td>M</td>
-                                                <td>37</td>
-                                                <td>27.6</td>
-                                                <td>35.8</td>
-                                                <td>15</td>
-                                            </tr>
-                                            <tr>
-                                                <td>40/42</td>
-                                                <td>L</td>
-                                                <td>37.6</td>
-                                                <td>29.9</td>
-                                                <td>38.2</td>
-                                                <td>16</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="small-note">
-                                    *This data was obtained from manually measuring the product, it may be off by
-                                    0.39-0.79 IN.
-                                </div>
-                            </div>
-
-                            <!-- ================ BODY MEASUREMENT TAB (Hidden) =============== -->
-                            <div id="bodyTab" style="display:none">
-                                <table class="table table-bordered">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th id="countryCol">EU</th>
-                                            <th>Size</th>
-                                            <th>Length</th>
-                                            <th>Waist Size</th>
-                                            <th>Hip Size</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>34</td>
-                                            <td>XS</td>
-                                            <td>36.2</td>
-                                            <td>24.4</td>
-                                            <td>32.7</td>
-                                        </tr>
-                                        <tr>
-                                            <td>36</td>
-                                            <td>S</td>
-                                            <td>36.6</td>
-                                            <td>26</td>
-                                            <td>34.3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>38</td>
-                                            <td>M</td>
-                                            <td>37</td>
-                                            <td>27.6</td>
-                                            <td>35.8</td>
-                                        </tr>
-                                        <tr>
-                                            <td>40/42</td>
-                                            <td>L</td>
-                                            <td>37.6</td>
-                                            <td>29.9</td>
-                                            <td>38.2</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
-                        <p>Shipping & Returns</p>
-                        <p>Free Shipping Orders Over $50.00</p>
-                        <p>Delivery: Standard Shipping (5-8 business days)</p>
-                    </div> -->
-
-                </div>
+            <div class="main-content">
+                
             </div>
         </div>
     </div>
@@ -1253,12 +1849,180 @@
             </div>
         </div>
     </footer>
+
+    <script>
+
+        //headre & footer
+
+        // === USER TOOLTIP ===
+        const userWrapper = document.querySelector(".user-menu-wrapper");
+        const userTooltip = document.querySelector(".user-tooltip-box");
+
+        userWrapper.addEventListener("mouseenter", () => {
+            userTooltip.style.display = "flex";
+        });
+
+        userWrapper.addEventListener("mouseleave", (e) => {
+            if (!userWrapper.contains(e.relatedTarget)) {
+                userTooltip.style.display = "none";
+            }
+        });
+
+
+        // === GLOBE TOOLTIP ===
+        const menuWrapper = document.querySelector(".currency-menu-wrapper");
+        const tooltip = document.querySelector(".currency-tooltip-box");
+
+        menuWrapper.addEventListener("mouseenter", () => {
+            menuWrapper.classList.add("active");
+        });
+
+        menuWrapper.addEventListener("mouseleave", (e) => {
+            if (!menuWrapper.contains(e.relatedTarget)) {
+                menuWrapper.classList.remove("active");
+            }
+        });
+
+
+        // ===== CART TOOLTIP =====
+        const cartWrapper = document.querySelector(".cart-wrapper");
+        const cartTooltip = document.querySelector(".cart-tooltip-box");
+
+        cartWrapper.addEventListener("mouseenter", () => {
+            cartWrapper.classList.add("active");
+        });
+
+        cartWrapper.addEventListener("mouseleave", (e) => {
+            if (!cartWrapper.contains(e.relatedTarget)) {
+                cartWrapper.classList.remove("active");
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ==============================================
+            // 1. Sidebar Navigation Logic (Content Switching)
+            // ==============================================
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            // Set #profile-info as the default active section
+            contentSections.forEach(section => {
+                section.classList.remove('active-content');
+            });
+            const defaultSection = document.querySelector('#profile-info');
+            if (defaultSection) {
+                defaultSection.classList.add('active-content');
+            }
+
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+
+                    if (targetId && targetId.startsWith('#')) {
+                        e.preventDefault();
+
+                        contentSections.forEach(section => {
+                            section.classList.remove('active-content');
+                        });
+
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            targetSection.classList.add('active-content');
+                        }
+
+                        // Update active link styling
+                        document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('active-link'));
+                        this.closest('li').classList.add('active-link');
+                    }
+                });
+            });
+
+
+            // ==============================================
+            // 5. NEW: Collapsible Menu Logic (Plus/Minus Toggle)
+            // ==============================================
+            const menuSections = document.querySelectorAll('.menu-section h3');
+
+            menuSections.forEach(breadcrumb => {
+                breadcrumb.addEventListener('click', function () {
+                    // Get the parent .menu-section element
+                    const section = this.closest('.menu-section');
+                    const icon = this.querySelector('.toggle-icon i');
+
+                    // Toggle the 'collapsed' class
+                    const isCollapsed = section.classList.toggle('collapsed');
+
+                    // Change the icon based on the new state
+                    if (isCollapsed) {
+                        // If it's now collapsed, show plus (+)
+                        icon.classList.remove('fa-minus');
+                        icon.classList.add('fa-plus');
+                    } else {
+                        // If it's now open, show minus (-)
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                });
+            });
+
+
+            // ==============================================
+            // 2. Preference Button Logic (Categories/Targets/Styles)
+            // ==============================================
+            const prefButtons = document.querySelectorAll('.pref-button');
+
+            prefButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.toggle('selected');
+                });
+            });
+
+            // ==============================================
+            // 3. Tab Selection Logic (Dogs/Cats)
+            // ==============================================
+            const tabs = document.querySelectorAll('.tab');
+
+            if (document.querySelectorAll('.tab.active-tab').length === 0 && tabs.length > 0) {
+                tabs[0].classList.add('active-tab');
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(t => t.classList.remove('active-tab'));
+                    this.classList.add('active-tab');
+                });
+            });
+
+            // ==============================================
+            // 4. SAVE Button Logic (Mock Functionality)
+            // ==============================================
+            const saveButtons = document.querySelectorAll('.save-button');
+
+            saveButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const section = this.getAttribute('data-section');
+                    let message = '';
+
+                    if (section === 'info') {
+                        const nickname = document.getElementById('nickname').value;
+                        const selectedCategories = Array.from(document.querySelectorAll('.category.selected')).map(btn => btn.textContent);
+                        message = `Profile and Category preferences saved! Nickname: ${nickname}. Categories: ${selectedCategories.join(', ')}`;
+                    } else if (section === 'style') {
+                        const selectedStyles = Array.from(document.querySelectorAll('.style.selected')).map(btn => btn.textContent);
+                        const activeTab = document.querySelector('.tab.active-tab') ? document.querySelector('.tab.active-tab').textContent : 'N/A';
+                        message = `Style preferences for ${activeTab} saved! Styles: ${selectedStyles.join(', ')}`;
+                    }
+
+                    console.log(message);
+                    alert(`Data Saved Successfully! (Section: ${section})`);
+                });
+            });
+        });
+    </script>
     <!-- Fixed Js -->
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/product.js"></script>
-
-
 </body>
 
 </html>

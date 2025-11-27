@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolling Placeholder</title>
+
+    <style>
+        body {
+            background: #f2f2f2;
+            font-family: sans-serif;
+            padding: 40px;
+        }
+
+        .input-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 6px;
+            border: 1px solid #777;
+            outline: none;
+        }
+
+        /* Fake Placeholder Box */
+        .placeholder-box {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            pointer-events: none;
+            overflow: hidden;
+            height: 22px;
+            width: calc(100% - 24px);
+        }
+
+        .text-list {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .text-list span {
+            font-size: 18px;
+            color: #aaa;
+            height: 22px;
+            line-height: 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-box">
+        <input type="text" id="scrollInput">
+        
+        <div class="placeholder-box">
+            <div class="text-list" id="placeholderText">
+                <span>Jeans</span>
+                <span>T-Shirts</span>
+                <span>Shoes</span>
+                <span>Jackets</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const placeholder = document.getElementById("placeholderText");
+        const items = placeholder.children;
+        let index = 0;
+
+        setInterval(() => {
+            index++;
+            if (index >= items.length) index = 0;
+
+            placeholder.style.transform = `translateY(-${index * 22}px)`;
+        }, 2000);
+
+        // Jab user type kare placeholder hide
+        const input = document.getElementById("scrollInput");
+
+        input.addEventListener("input", () => {
+            if (input.value.length > 0) {
+                placeholder.style.opacity = 0;
+            } else {
+                placeholder.style.opacity = 1;
+            }
+        });
+    </script>
+
+</body>
+</html>

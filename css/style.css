@@ -637,35 +637,66 @@ h3 {
 
 /* SEARCH BAR */
 .search-bar {
-  flex: 1;
-  max-width: 500px;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  background: #fff;
-  overflow: hidden;
-  margin: 0 20px;
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: #fff;
+    overflow: hidden;
+    margin: 0 20px;
+    position: relative;
 }
 
+/* Input same as your design */
 .search-bar input {
-  flex: 1;
-  padding: 8px 10px;
-  border: none;
-  outline: none;
-  font-size: 15px;
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    z-index: 5; /* so text can be typed above placeholder */
+    background: transparent;
 }
 
+/* Search button same as your design */
 .search-bar button {
-  background: #000;
-  color: #fff;
-  border: none;
-  height: 36px;
-  width: 54px;
-  border-radius: 4px;
-  padding: 8px 13px;
-  margin-right: 2px;
-  cursor: pointer;
+    background: #000;
+    color: #fff;
+    border: none;
+    height: 36px;
+    width: 54px;
+    border-radius: 4px;
+    padding: 8px 13px;
+    margin-right: 2px;
+    cursor: pointer;
 }
+
+
+/* ----------- SCROLLING PLACEHOLDER ----------- */
+.placeholder-box {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    overflow: hidden;
+    height: 22px;
+    width: calc(100% - 80px); /* space for button */
+    pointer-events: none;
+}
+
+.text-list {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+}
+
+.text-list span {
+    font-size: 15px;
+    color: #aaa;
+    height: 22px;
+    line-height: 22px;
+}
+
 
 .header-icons {
   display: flex;

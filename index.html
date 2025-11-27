@@ -17,9 +17,9 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
 
-  </style>    
+  </style>
 
-</head> 
+</head>
 
 <body>
   <!-- header uper badge  -->
@@ -45,10 +45,22 @@
   <header class="noshahi-header">
     <div class="header-top">
       <div class="logo">NOSHAHI</div>
- 
+
       <div class="search-bar">
-        <input type="text" placeholder="Search...">
-        <a href="searchresult.html"><button><i class="fas fa-search"></i></button></a>
+        <div class="placeholder-box">
+          <div class="text-list" id="placeholderText">
+            <span>Jeans</span>
+            <span>T-Shirts</span>
+            <span>Shoes</span>
+            <span>Jackets</span>
+          </div>
+        </div>
+
+        <input type="text" id="scrollInput">
+
+        <a href="searchresult.html">
+          <button><i class="fas fa-search"></i></button>
+        </a>
       </div>
       <!-- heder icon with tooltip -->
       <div class="header-icons">
@@ -118,7 +130,7 @@
                 <option value="USD">$ USD</option>
                 <option value="EUR">€ EUR</option>
                 <option value="GBP">£ GBP</option>
-                <option value="JPY">¥ JPY</option> 
+                <option value="JPY">¥ JPY</option>
               </select>
             </div>
 
@@ -235,42 +247,41 @@
     <!-- CENTER CAROUSEL -->
     <div id="mainCarousel" class="carousel slide mx-2 w-70" data-bs-ride="carousel">
 
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
-  </div>
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+      </div>
 
-  <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
-    <div class="carousel-item active">
-      <img
-        src="//img.ltwebstatic.com/v4/j/ccc/2025/11/03/58/1762155583c146f503ee533d6553053feeaf6d8a86_thumbnail_1456x.webp"
-        class="d-block w-100" alt="Banner 1">
+      <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
+        <div class="carousel-item active">
+          <img
+            src="//img.ltwebstatic.com/v4/j/ccc/2025/11/03/58/1762155583c146f503ee533d6553053feeaf6d8a86_thumbnail_1456x.webp"
+            class="d-block w-100" alt="Banner 1">
+        </div>
+
+        <div class="carousel-item">
+          <img src="//img.ltwebstatic.com/v4/g/ccc/2025/11/12/10/1762929244ecc2afaeab8f081e088a18ddba9ce7d1.webp"
+            class="d-block w-100" alt="Banner 2">
+        </div>
+
+        <div class="carousel-item">
+          <img
+            src="//img.ltwebstatic.com/v4/j/ccc/2025/11/10/df/176276134710240bd8a601ffd28d0c4e74351984cd_thumbnail_782x.webp"
+            class="d-block w-100" alt="Banner 3">
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+
     </div>
-
-    <div class="carousel-item">
-      <img
-        src="//img.ltwebstatic.com/v4/g/ccc/2025/11/12/10/1762929244ecc2afaeab8f081e088a18ddba9ce7d1.webp"
-        class="d-block w-100" alt="Banner 2">
-    </div>
-
-    <div class="carousel-item">
-      <img
-        src="//img.ltwebstatic.com/v4/j/ccc/2025/11/10/df/176276134710240bd8a601ffd28d0c4e74351984cd_thumbnail_782x.webp"
-        class="d-block w-100" alt="Banner 3">
-    </div>
-  </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  </button>
-
-</div>
 
 
     <!-- RIGHT SIDE CARDS -->
@@ -1793,6 +1804,24 @@
       }
     });
   </script>
+  <script>
+    const placeholder = document.getElementById("placeholderText");
+    const items = placeholder.children;
+    let index = 0;
+
+    // Loop scrolling placeholder
+    setInterval(() => {
+        index++;
+        if (index >= items.length) index = 0;
+        placeholder.style.transform = `translateY(-${index * 22}px)`;
+    }, 2000);
+
+    // Hide placeholder on typing
+    const input = document.getElementById("scrollInput");
+    input.addEventListener("input", () => {
+        placeholder.style.opacity = input.value.length > 0 ? 0 : 1;
+    });
+</script>
 
 
   <!-- Bootstrap JS -->
