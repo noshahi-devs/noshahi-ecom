@@ -30,21 +30,6 @@ menuWrapper.addEventListener("mouseleave", (e) => {
 });
 
 
-// ===== CART TOOLTIP =====
-const cartWrapper = document.querySelector(".cart-wrapper");
-const cartTooltip = document.querySelector(".cart-tooltip-box");
-
-cartWrapper.addEventListener("mouseenter", () => {
-  cartWrapper.classList.add("active");
-});
-
-cartWrapper.addEventListener("mouseleave", (e) => {
-  if (!cartWrapper.contains(e.relatedTarget)) {
-    cartWrapper.classList.remove("active");
-  }
-});
-
-
 // Get all thumbnails
 const thumbs = document.querySelectorAll(".thumb img");
 const mainImage = document.getElementById("mainImage");
@@ -63,7 +48,6 @@ thumbs.forEach(thumb => {
   });
 });
 
-
 // --- Quantity Selector Logic ---
 document.querySelector(".qty-box").addEventListener("click", (e) => {
   const input = document.querySelector(".qty-input");
@@ -74,9 +58,12 @@ document.querySelector(".qty-box").addEventListener("click", (e) => {
   } else if (e.target.textContent === "-" && currentQty > 1) {
     input.value = currentQty - 1;
   }
+  let cartCount = 0;
+
+  cartCount = currentQty;
 });
 
-// --- Size Selection Logic ---
+// --- Size Selection Logic --- 
 document.querySelectorAll(".size-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".size-btn").forEach(b => b.classList.remove("active"));
@@ -218,4 +205,380 @@ function updateMainImage() {
   thumbButtons.forEach(t => t.classList.remove('active'));
   thumbButtons[currentIndex].classList.add('active');
 }
+
+// ===== HOVER CART MODAL CONTROL tool tip =====
+
+const hoverCartBtn = document.getElementById("hoverCartBtn");
+const hoverCartModal = document.getElementById("hoverCartModal");
+const hoverClose = document.querySelector(".hover-close");
+
+// Hover open
+hoverCartBtn.addEventListener("mouseenter", () => {
+  hoverCartModal.style.display = "block";
+});
+
+// Hover close when leaving
+hoverCartBtn.addEventListener("mouseleave", () => {
+  hoverCartModal.style.display = "none";
+});
+
+// Close button inside modal
+hoverClose.addEventListener("click", () => {
+  hoverCartModal.style.display = "none";
+});
+
+//Globe Modal
+//count product with cart icon
+let cartCount = 0;
+let cartQtyValue = 0;
+
+// ===== HOVER MODAL CART FUNCTIONALITY =====
+
+const hoverMain = document.getElementById("hoverMain");
+const hoverAllCheck = document.getElementById("hoverAllCheck");
+const hoverProdCheck = document.getElementById("hoverProdCheck");
+const hoverProductBox = document.getElementById("hoverProductBox");
+const hoverTotalPrice = document.getElementById("hoverTotalPrice");
+const hoverProdPrice = document.getElementById("hoverProdPrice");
+const hoverDeleteProd = document.getElementById("hoverDeleteProd");
+const iconCartQty = document.getElementById("iconCartQty");
+const hoverCartQty = document.getElementById("hoverCartQty");
+const hoverQtyArrow = document.getElementById("hoverQtyArrow");
+const hoverQtyValue = document.getElementById("hoverQtyValue");
+const hoverDropdownList = document.getElementById("hoverDropdownList");
+const hoverUnitPrice = 10.00;
+// Populate Qty Dropdown
+for (let i = 1; i <= 10; i++) {
+  let div = document.createElement("div");
+  div.textContent = i;
+  div.onclick = function () {
+    hoverQtyValue.textContent = i;
+    hoverCartQty.textContent = i;
+    hoverDropdownList.style.display = "none";
+    hoverTotalPrice.textContent = "$" + (hoverUnitPrice * i).toFixed(2);
+    iconCartQty.textContent = i;
+  };
+  hoverDropdownList.appendChild(div);
+}
+
+// Qty dropdown toggle
+hoverQtyArrow.onclick = function () {
+  hoverDropdownList.style.display = hoverDropdownList.style.display === "block" ? "none" : "block";
+  hoverQtyArrow.textContent = hoverQtyArrow.textContent === "▼" ? "▲" : "▼";
+};
+
+// Update checkboxes
+function hoverUpdateAll() {
+  if (!hoverMain.checked || !hoverAllCheck.checked) {
+    hoverProdCheck.checked = false;
+    hoverProdPrice.style.visibility = "hidden";
+    hoverTotalPrice.textContent = "$0.00";
+    hoverCartQty.textContent = "0";
+    iconCartQty.textContent = "0";   // <-- ADD HERE
+  } else {
+    hoverProdCheck.checked = true;
+    hoverProdPrice.style.visibility = "visible";
+    hoverTotalPrice.textContent = "$" + (hoverUnitPrice * parseInt(hoverQtyValue.textContent)).toFixed(2);
+    hoverCartQty.textContent = hoverQtyValue.textContent;
+    iconCartQty.textContent = hoverQtyValue.textContent;   // <-- ADD HERE
+  }
+}
+
+
+hoverMain.addEventListener("change", hoverUpdateAll);
+hoverAllCheck.addEventListener("change", hoverUpdateAll);
+
+// Delete product
+hoverDeleteProd.onclick = function () {
+  hoverProductBox.style.display = "none";
+  hoverTotalPrice.textContent = "$0.00";
+  hoverCartQty.textContent = "0";
+  let currentQty = parseInt(iconCartQty.textContent);
+  currentQty = currentQty > 1 ? currentQty - 1 : 0;
+
+  // Update both modal qty & icon badge
+  hoverQtyValue.textContent = currentQty;
+  hoverCartQty.textContent = currentQty;
+  iconCartQty.textContent = currentQty;
+
+  // Update total price
+  hoverTotalPrice.textContent = "$" + (hoverUnitPrice * currentQty).toFixed(2);
+
+  // Hide product box if qty=0
+  if (currentQty === 0) {
+    hoverProductBox.style.display = "none";
+  }
+
+};
+
+
+function openHoverModal() {
+  myModal.style.display = "block";
+  startTimer();
+}
+
+
+// VIEW ADD TO CART MODEL
+
+let Main = document.getElementById("Main");
+let allCheck = document.getElementById("allCheck");
+let prodCheck = document.getElementById("prodCheck");
+let productBox = document.getElementById("productBox");
+let totalPrice = document.getElementById("totalPrice");
+let prodPrice = document.getElementById("prodPrice");
+let deleteProd = document.getElementById("deleteProd");
+
+let cartQty = document.getElementById("cartQty");
+let qtyArrow = document.getElementById("qtyArrow");
+let qtyValue = document.getElementById("qtyValue");
+let dropdownList = document.getElementById("dropdownList");
+
+
+
+
+
+let unitPrice = 10.00;
+
+// --- Dropdown for cart modal ---
+for (let i = 1; i <= 10; i++) {
+  let divCart = document.createElement("div");
+  divCart.textContent = i;
+  divCart.onclick = function () {
+    cartQtyValue = i;    // sync current value
+    cartCount = i;       // badge sync
+    updateCartState();   // update modals & badge
+
+    // ✅ Input box update
+    const input = document.querySelector(".qty-input");
+    if (input) input.value = i;
+
+    dropdownList.style.display = "none";
+  };
+  dropdownList.appendChild(divCart);
+}
+
+// --- Dropdown for hover modal ---
+for (let i = 1; i <= 10; i++) {
+  let divHover = document.createElement("div");
+  divHover.textContent = i;
+  divHover.onclick = function () {
+    cartQtyValue = i;
+    cartCount = i;
+    updateCartState();
+
+    // ✅ Input box update
+    const input = document.querySelector(".qty-input");
+    if (input) input.value = i;
+
+    hoverDropdownList.style.display = "none";
+  };
+  hoverDropdownList.appendChild(divHover);
+}
+
+
+qtyArrow.onclick = function () {
+  dropdownList.style.display = dropdownList.style.display === "block" ? "none" : "block";
+  qtyArrow.textContent = qtyArrow.textContent === "▼" ? "▲" : "▼";
+};
+
+function updateAll() {
+  if (!Main.checked || !allCheck.checked) {
+    prodCheck.checked = false;
+    prodPrice.style.visibility = "hidden";
+    totalPrice.textContent = "$0.00";
+    cartQty.textContent = "0";
+  } else {
+    prodCheck.checked = true;
+    prodPrice.style.visibility = "visible";
+    totalPrice.textContent = "$" + (unitPrice * parseInt(qtyValue.textContent)).toFixed(2);
+    cartQty.textContent = qtyValue.textContent;
+  }
+}
+
+Main.addEventListener("change", updateAll);
+allCheck.addEventListener("change", updateAll);
+
+deleteProd.onclick = function () {
+  productBox.style.display = "none";
+  totalPrice.textContent = "$0.00";
+  cartQty.textContent = "0";
+};
+
+
+// Close button
+document.querySelector(".close").addEventListener("click", function () {
+  document.getElementById("myModal").style.display = "none";
+});
+
+// Modal background par click → close
+window.addEventListener("click", function (event) {
+  if (event.target === document.getElementById("myModal")) {
+    document.getElementById("myModal").style.display = "none";
+  }
+});
+
+let myModal = document.getElementById("myModal");
+let modalBox = document.querySelector("#myModal .modal-content");
+let closeBtn = document.querySelector("#myModal .close");
+
+let hideTimer = null;
+
+// === OPEN MODAL ===
+
+
+// === TIMER START ===
+function startTimer() {
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(() => {
+    myModal.style.display = "none";
+  }, 1000);
+}
+
+
+
+// === CHECK IF MOUSE IS INSIDE modal-content ===
+function isCursorInsideContent(e) {
+  let box = modalBox.getBoundingClientRect();
+  return (
+    e.clientX > box.left &&
+    e.clientX < box.right &&
+    e.clientY > box.top &&
+    e.clientY < box.bottom
+  );
+}
+
+// === STOP TIMER WHEN CURSOR ENTERS modal-content AREA ===
+myModal.addEventListener("mousemove", function (e) {
+  if (isCursorInsideContent(e)) {
+    clearTimeout(hideTimer);
+  } else {
+    startTimer();
+  }
+});
+
+
+function addToCart() {
+  // 1️⃣ Current quantity from input box
+  const input = document.querySelector(".qty-input");
+  let currentQty = parseInt(input.value);
+
+  // 2️⃣ Cart count ko current quantity se set karo
+  cartCount = currentQty;
+
+  // 4️⃣ Sync karo cartQtyValue
+  cartQtyValue = cartCount;
+
+  // 5️⃣ Update sab modal aur badge
+  updateCartState();
+
+  // 6️⃣ Show modals
+  let modal = document.getElementById("myModal");
+  if (modal) modal.style.display = "block";
+  hoverProductBox.style.display = "block"; // hover modal ka product box
+  hoverProductBox.style.display = "flex";
+  productBox.style.display = "block";
+  productBox.style.display = "flex";
+
+  startTimer();
+}
+
+
+
+deleteProd.onclick = function () {
+  if (cartCount > 0) cartCount--;
+  if (cartQtyValue > 0) cartQtyValue--;
+
+  // Update sab modals & icon
+  updateCartState();
+
+  // Agar qty 0 ho → product card hide karo
+  if (cartQtyValue === 0) {
+    productBox.style.display = "none";
+  }
+};
+
+
+
+// === CLOSE BUTTON ===
+closeBtn.addEventListener("click", () => {
+  myModal.style.display = "none";
+  clearTimeout(hideTimer);
+});
+
+function updateCartState() {
+  // Cart icon badge
+  document.getElementById("iconCartQty").textContent = cartCount;
+
+  // Hover modal
+  if (document.getElementById("hoverQtyValue")) {
+    document.getElementById("hoverQtyValue").textContent = cartQtyValue;
+    document.getElementById("hoverCartQty").textContent = cartQtyValue;
+    document.getElementById("hoverTotalPrice").textContent = "$" + (unitPrice * cartQtyValue).toFixed(2);
+  }
+
+  // Cart modal
+  if (document.getElementById("qtyValue")) {
+    document.getElementById("qtyValue").textContent = cartQtyValue;
+    document.getElementById("cartQty").textContent = cartQtyValue;
+    document.getElementById("totalPrice").textContent = "$" + (unitPrice * cartQtyValue).toFixed(2);
+  }
+
+  // ✅ Input box ko bhi update kar do
+  const input = document.querySelector(".qty-input");
+  if (input) input.value = cartQtyValue;
+}
+
+
+for (let i = 1; i <= 10; i++) {
+  let divHover = document.createElement("div");
+  divHover.textContent = i;
+  divHover.onclick = function () {
+    cartQtyValue = i;
+    cartCount = i;  // badge sync
+    updateCartState();
+    hoverDropdownList.style.display = "none";
+  };
+  hoverDropdownList.appendChild(divHover);
+
+  let divCart = divHover.cloneNode(true);
+  divCart.onclick = function () {
+    cartQtyValue = i;
+    cartCount = i;  // badge sync
+    updateCartState();
+    dropdownList.style.display = "none";
+  };
+  dropdownList.appendChild(divCart);
+}
+
+hoverDeleteProd.onclick = deleteProd.onclick = function () {
+  if (cartCount > 0) cartCount--;
+  if (cartQtyValue > 0) cartQtyValue--;
+  updateCartState();
+
+  if (cartQtyValue === 0) {
+    if (hoverProductBox) hoverProductBox.style.display = "none";
+    if (productBox) productBox.style.display = "none";
+  }
+};
+
+
+
+deleteProd.onclick = function () {
+  if (cartCount > 0) cartCount--;
+  if (cartQtyValue > 0) cartQtyValue--;
+  updateCartState();
+
+  if (cartQtyValue === 0) hoverProductBox.style.display = "none";
+  if (cartQtyValue === 0) productBox.style.display = "none";
+};
+
+
+
+
+
+
+
+
+
+
 

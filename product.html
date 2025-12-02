@@ -18,7 +18,6 @@
     </style>
     <!-- css -->
     <link rel="stylesheet" href="css/product.css">
-
 </head>
 
 <body>
@@ -72,22 +71,69 @@
                         <a href="#">
                             <p>Switch Accounts</p>
                         </a>
-                        <a href="#">
+                        <a href="signout.html">
                             <p>Sign Out</p>
                         </a>
                     </div>
                 </div>
-                <!-- CART -->
-                <div class="cart-wrapper">
-                    <a href="emptycart.html"><i class="fas fa-shopping-cart"></i></a>
-                    <div class="cart-tooltip-box">
-                        <div class="tooltip-content">
-                            <img src="images/emptycart.PNG" alt="">
-                            <p>Shopping cart is Empty</p>
-                            <a href="index.html">Go to Shop</a>
+                <div class="cart-wrapper" id="hoverCartBtn">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="iconCartQty" class="cart-qty-badge">0</span>
+                    </a>
+
+                    <!-- HOVER CART MODAL -->
+                    <div id="hoverCartModal" class="hover-cart-modal">
+                        <div class="hover-cart-content">
+                            <span class="hover-close">&times;</span>
+
+                            <div class="top-line">
+                                <input type="checkbox" id="hoverMain" checked>
+                                <span class="black-text">Use coupon now to save</span>
+                                <span class="red-text">$10.00</span>
+                            </div>
+                            <div class="view-cart-header">
+                                <input type="checkbox" id="hoverAllCheck" checked>
+                                <span>NOSHAHI</span>
+                            </div>
+                            <div class="product-card" id="hoverProductBox">
+                                <input type="checkbox" class="prod-check" id="hoverProdCheck" checked>
+                                <img src="images/card_4.jpg" />
+
+                                <div class="prod-details">
+                                    <div class="prod-title">NOSHAHI EZwear Black Slant Pocket...</div>
+                                    <div class="sold-by">Sold by NOSHAHI EZwear</div>
+                                    <div class="color-qty">
+                                        <div class="sizes">Black / (S)</div>
+                                        <div class="qty-box-modal">
+                                            Qty:
+                                            <span id="hoverQtyValue">0</span>
+                                            <span id="hoverQtyArrow" class="qty-dropdown">▼</span>
+                                            <div class="dropdown-list" id="hoverDropdownList"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-del">
+                                        <div class="price" id="hoverProdPrice">$10.00</div>
+                                        <div class="del-icon" id="hoverDeleteProd">🗑</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="total-area">
+                                <div class="hover-all-checkbox-total-price">
+                                    <div class="top-line-all">
+                                        <input type="checkbox" id="allCheck" checked>
+                                        <span class="All-text">All</span>
+                                    </div>
+                                    Total: <span class="del" id="hoverTotalPrice">$10.00</span>
+                                </div>
+                            </div>
+                            <div class="view-cart">VIEW CART (<span id="hoverCartQty">0</span>)</div>
                         </div>
                     </div>
+
                 </div>
+
                 <!-- WISHLIST / MESSAGE -->
                 <a href="#"><i class="far fa-heart"></i></a>
                 <a href="#"><i class="far fa-comment-dots"></i></a>
@@ -291,9 +337,9 @@
                     </div>
 
                     <div class="price-container">
-                        <div class="price-now"><span>$</span>17.85</div>
+                        <div class="price-now"><span>$</span>10.00</div>
                         <div class="price-old-and-discount">
-                            <div class="price-old">$27.00</div>
+                            <div class="price-old">$13.97</div>
                             <div class="discount-box">-34%</div>
                         </div>
                     </div>
@@ -361,19 +407,93 @@
                         <div class="section-title" style="margin: 0;">Qty:</div>
                         <div class="qty-box">
                             <button class="qty-btn">-</button>
-                            <input type="text" class="qty-input" value="1" readonly>
+                            <input type="text" class="qty-input" value="1">
                             <button class="qty-btn">+</button>
                         </div>
                     </div>
 
                     <div class="add-cart-section">
-                        <button class="add-cart">
+                        <button onclick="addToCart()" class="add-cart" id="openModalLink">
                             ADD TO CART
                             <span class="add-cart-discount">34% off discount</span>
                         </button>
+
                         <button class="fav-btn" id="favBtn" title="Add to favourites">
                             <i class="fa-regular fa-heart" id="favIcon"></i>
                         </button>
+                    </div>
+                    
+                    <!--Cart MODAL -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="top-line">
+                                <span class="black-text">Use coupon now to save</span>
+                                <span class="red-text">$10.00</span>
+                            </div>
+
+                            <div class="view-cart-header">
+                                <input type="checkbox" id="Main" checked>
+                                <svg style="width:20px;height:20px;" width="20" height="20" viewBox="0 0 20 20"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4.02392 2.16675C3.66381 2.16675 3.33301 2.36523 3.16354 2.68298L2.0101 4.84568C1.25754 6.25672 1.5275 7.99524 2.67251 9.11163C2.8211 9.2565 2.97729 9.38258 3.1391 9.49069V16.6667C3.1391 17.311 3.66144 17.8333 4.30577 17.8333H15.6947C16.339 17.8333 16.8613 17.311 16.8613 16.6667V9.49041C17.023 9.38236 17.179 9.25637 17.3275 9.11163C18.4725 7.99524 18.7425 6.25672 17.9899 4.84568L16.8365 2.68298C16.6709 2.37258 16.3466 2.16675 15.9783 2.16675H10V3.66675H15.6611L16.6664 5.55156C17.1049 6.37388 16.9476 7.38703 16.2803 8.03763C15.2531 9.03914 13.5278 8.31146 13.5278 6.87761V6.30961L12.0276 6.30957V6.38895C12.0276 7.50886 11.1197 8.41673 9.99982 8.41673C8.88821 8.41673 7.98551 7.52226 7.9722 6.41381V6.30961L6.47205 6.30957V6.38895C6.47205 6.39989 6.4721 6.41082 6.4722 6.42174V6.87761C6.4722 8.31146 4.74686 9.03914 3.71966 8.03763C3.05238 7.38703 2.89506 6.37388 3.33363 5.55156L4.33886 3.66675H10V2.16675H4.02392ZM7.36784 8.73802C6.73516 9.58606 5.68929 10.0636 4.6391 9.99841V16.3333H15.3613V9.99838C14.3109 10.0637 13.2647 9.5861 12.632 8.7378C11.986 9.46127 11.0461 9.91673 9.99982 9.91673C8.95367 9.91673 8.01388 9.46136 7.36784 8.73802Z"
+                                        fill="currentColor"></path>
+                                </svg>
+                                <span>NOSHAHI</span>
+                            </div>
+
+                            <div class="free-ship">
+                                <svg style="width:16px;height:16px;" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M13.0565 2.25V5.94L16.9274 7.20551V14.5887H14.9347C14.7713 15.2688 14.1592 15.7742 13.429 15.7742C12.6989 15.7742 12.0867 15.2688 11.9234 14.5887H6.76691C6.60359 15.2688 5.99146 15.7742 5.26129 15.7742C4.53112 15.7742 3.91899 15.2688 3.75567 14.5887H1.49194V11.4701H2.99194L2.9915 13.0885H11.556V3.75H2.9915V5.7335L6.1129 5.73387V7.23387H1.49194V2.25H13.0565ZM13.0565 7.51815V13.0885H15.427V8.293L13.0565 7.51815Z"
+                                        fill="#222"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M3.98387 9.94355V8.44355H0.5V9.94355H3.98387Z" fill="#222"></path>
+                                </svg>
+                                Add <span>$2.11</span> more to cart for <span><b>FREE STANDARD SHIPPING</b></span>!
+                            </div>
+
+                            <div class="product-card" id="productBox">
+                                <input type="checkbox" class="prod-check" id="prodCheck" checked>
+                                <img src="images/card_4.jpg" />
+
+                                <div class="prod-details">
+                                    <div class="prod-title">NOSHAHI EZwear Black Slant Pocket...</div>
+                                    <div class="sold-by">Sold by NOSHAHI EZwear</div>
+                                    <div class="color-qty">
+                                        <div class="sizes">Black / (S)</div>
+                                        <div class="qty-box-modal">
+                                            Qty:
+                                            <span id="qtyValue">0</span>
+                                            <span id="qtyArrow" class="qty-dropdown">▼</span>
+                                            <div class="dropdown-list" id="dropdownList"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-del">
+                                        <div class="price" id="prodPrice">$10.00</div>
+                                        <div class="del-icon" id="deleteProd">🗑</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="total-area">
+                                <p>Retail Price:$10.19</p>
+                                <div class="all-checkbox-total-price">
+                                    <div class="top-line-all">
+                                        <input type="checkbox" id="allCheck" checked>
+                                        <span class="All-text">All</span>
+                                    </div>
+                                    Total: <span class="del" id="totalPrice">$10.00</span>
+                                </div>
+                            </div>
+
+                            <div class="view-cart">VIEW CART (<span id="cartQty">1</span>)</div>
+                        </div>
                     </div>
                     <div class="points">Earn up to <strong>11 Points</strong> calculated at checkout</div>
                     <div class="ship-box">
@@ -458,24 +578,19 @@
                         </div>
                         <div class="acc-content" id="desc">
                             <h6 class="fw-bold mb-2">Features</h6>
-
                             <div class="d-flex flex-wrap gap-2 mb-3">
-
                                 <div class="feature-box">
                                     <div class="feature-icon"><img src="images/comportable.png" alt="comfortable"></div>
                                     Comfortable
                                 </div>
-
                                 <div class="feature-box">
                                     <div class="feature-icon"><img src="images/breathabla.png" alt="breathable"></div>
                                     Breathable
                                 </div>
-
                                 <div class="feature-box">
                                     <div class="feature-icon"><img src="images/soft.png" alt="soft"></div>
                                     Soft
                                 </div>
-
                                 <div class="feature-box">
                                     <div class="feature-icon"><img src="images/skin friendly.png" alt="Skin-friendly">
                                     </div>
@@ -709,12 +824,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div style="border-top: 1px solid #eee; padding-top: 15px; font-size: 14px; color: #555;">
-                        <p>Shipping & Returns</p>
-                        <p>Free Shipping Orders Over $50.00</p>
-                        <p>Delivery: Standard Shipping (5-8 business days)</p>
-                    </div> -->
-
                 </div>
             </div>
         </div>
@@ -1257,6 +1366,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/product.js"></script>
+
 
 
 </body>
