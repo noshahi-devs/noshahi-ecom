@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHEIN Checkout Clone</title>
+<style>
+ body {font-family: Arial, sans-serif; margin:0; background:#fff;}
+ .top-bar {display:flex; justify-content:space-between; padding:15px 25px; border-bottom:1px solid #ddd; font-size:22px; font-weight:bold;}
+ .breadcrumb {padding:15px 0; color:#777; font-size:14px; text-align:center; width:100%; margin:0;}
+ .container {display:flex; padding:20px 25px; gap:25px;}
+ .left {width:65%;}
+ .right {width:35%; border:1px solid #ddd; padding:20px; height:fit-content;}
+ .section {border:1px solid #ddd; padding:20px; margin-bottom:20px;}
+ .section h2 {font-size:20px; margin:0 0 15px 0;}
+ .address-head {display:flex; justify-content:space-between; align-items:center;}
+ .address-box {line-height:1.6; font-size:15px; position:relative; padding-left:15px;}
+ .address-box::before {content:""; position:absolute; left:0; top:5px; width:4px; height:45px; background:linear-gradient(#1C88E5,#E6483D,#FDB52A);} 
+ .edit-btn, .change-btn {background:#fff; border:1px solid #000; padding:6px 15px; cursor:pointer; font-size:14px;}
+ .product-header {font-size:22px; font-weight:bold; margin-bottom:15px;}
+ .product-box {display:flex; gap:20px; padding:15px 0; border-top:1px solid #eee; align-items:flex-start;}
+ .product-img {width:120px; height:165px; background:#ddd; position:relative;}
+ .discount-tag {position:absolute; top:0; left:0; background:#ff4d4d; color:#fff; padding:3px 6px; font-size:12px;}
+ .product-price-container {margin-top:10px; display:block;} {margin-top:10px;}
+ .price-orange {color:#ff6a00; font-weight:bold; font-size:18px; display:block; margin-top:5px;}
+ .price-cut {text-decoration:line-through; color:#777; font-size:14px;}
+ .qty-box {display:flex; align-items:center; gap:10px; margin-top:10px;}
+ .qty-btn {width:28px; height:28px; border:1px solid #000; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+ .ship-box {border-top:1px solid #eee; padding-top:15px; font-size:14px;}
+ .right h2 {font-size:22px; margin-bottom:15px;}
+ .summary-line {display:flex; justify-content:space-between; font-size:15px; margin:8px 0;}
+ .total {font-size:22px; font-weight:bold;}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+ <div>SHEIN</div>
+ <div>Source Checkout</div>
+</div>
+
+<div class="breadcrumb">Cart > Place Order > Pay > Order Complete</div>
+
+<div class="container">
+ <div class="left">
+
+  <!-- SHIPPING ADDRESS -->
+  <div class="section">
+   <div class="address-head">
+    <h2>Shipping Address</h2>
+    <button class="change-btn">Change</button>
+   </div>
+   <div class="address-box">
+    <strong>Ahmad Ashraf</strong> 7125277355<br>
+    4009 Porter Farm Rd<br>
+    Georgetown TEXAS United States 78628-2587
+   </div>
+   <button class="edit-btn" style="margin-top:10px;">Edit Address</button>
+  </div>
+
+  <!-- PRODUCT AREA -->
+  <div class="section">
+   <div class="product-header">SHEIN(<span id="itemCount">1</span>)</div>
+
+   <div class="product-box">
+    <div class="product-img"><div class="discount-tag">-34%</div></div>
+    <div>
+     <div class="price-box">
+      <span class="price-orange" id="newPrice">$27.70</span>
+      <span class="price-cut">$42.19</span>
+     </div>
+     <div class="qty-box">
+      <div class="qty-btn" onclick="decreaseQty()">-</div>
+      <div id="qty">1</div>
+      <div class="qty-btn" onclick="increaseQty()">+</div>
+     </div>
+    </div>
+   </div>
+
+   <div class="ship-box">
+    <strong>STANDARD SHIPPING</strong> — Free Shipping<br>
+    $0.00 <span style="color:#777; text-decoration:line-through;">$3.99</span>
+   </div>
+  </div>
+ </div>
+
+ <!-- RIGHT SUMMARY -->
+ <div class="right">
+  <h2>Order Summary</h2>
+  <div class="summary-line"><span>Retail Price:</span><span id="sumRetail">$42.19</span></div>
+  <div class="summary-line"><span>Shipping Fee:</span><span>FREE</span></div>
+  <div class="summary-line"><span>On-Time Delivery Guarantee:</span><span>FREE</span></div>
+  <div class="summary-line"><span>Promotions:</span><span style="color:#d00;">-$14.49</span></div>
+  <div class="summary-line"><span>Sales Tax:</span><span>$2.29</span></div>
+
+  <div class="summary-line total"><span>Order Total:</span><span id="sumTotal">$29.99</span></div>
+ </div>
+</div>
+
+<script>
+let qty = 1;
+const baseNew = 27.70;
+const baseRetail = 42.19;
+const tax = 2.29;
+const promo = 14.49;
+
+function update() {
+ document.getElementById("qty").innerText = qty;
+ document.getElementById("itemCount").innerText = qty;
+ document.getElementById("newPrice").innerText = "$" + (baseNew * qty).toFixed(2);
+ document.getElementById("sumRetail").innerText = "$" + (baseRetail * qty).toFixed(2);
+ let total = (baseNew * qty) - promo + tax;
+ document.getElementById("sumTotal").innerText = "$" + total.toFixed(2);
+}
+function increaseQty(){ qty++; update(); }
+function decreaseQty(){ if(qty>1){ qty--; update(); } }
+</script>
+
+</body>
+</html>
