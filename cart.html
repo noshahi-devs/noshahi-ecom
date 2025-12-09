@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- link css -->
+    <link rel="stylesheet" href="css/cart.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- Logo -->
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF;
+             font-family: "Roboto", Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    padding:30px 10px;
+        }
+
+        :root{
+    --bg:#ffffff;
+    --muted:#777777;
+    --accent:#f36b21; /* orange for estimated price */
+    --danger:#d9534f; /* red for promotions */
+    --black:#000000;
+    --container-w:320px;
+  }
+  *{box-sizing:border-box}
+
+  .order {
+    width:var(--container-w);
+    background:var(--bg);
+    border:1px solid #e6e6e6;
+    padding:18px 18px 20px;
+    box-shadow:0 0 0 rgba(0,0,0,0);
+  }
+
+  /* Heading */
+  .order h1{
+    font-size:20px;
+    margin:0;
+    font-weight:700;
+    color:#111;
+  }
+  .sub {
+    font-size:12px;
+    color:var(--muted);
+    margin:6px 0 12px;
+  }
+
+  /* product thumbnail row */
+  .thumb {
+    width:64px;
+    height:72px;
+    border:1px solid #ddd;
+    display:block;
+    object-fit:cover;
+    margin-bottom:12px;
+  }
+
+  /* rows */
+  .row {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+  }
+  .row.no-border { border-bottom:0; padding:6px 0; }
+
+  .row .left { color:#111; font-weight:700; font-size:14px; }
+  .row .right { color:#111; font-weight:700; font-size:14px; }
+
+  .promotions .right { color:var(--danger); font-weight:700; }
+
+  /* estimated price block (bigger, orange) */
+  .estimate-wrap {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    padding-top:10px;
+    padding-bottom:6px;
+  }
+  .estimate-label {
+    font-weight:700;
+    color:#111;
+    font-size:15px;
+  }
+  .estimate-value {
+    font-weight:700;
+    color:var(--accent);
+    font-size:28px;
+    line-height:1;
+  }
+  .saved {
+    color:var(--accent);
+    font-size:13px;
+    margin-top:6px;
+    font-weight:600;
+  }
+
+  .reward {
+    font-size:13px;
+    color:#222;
+    margin:12px 0;
+    text-align:left;
+  }
+
+  /* checkout button */
+  .checkout {
+    display:block;
+    width:100%;
+    background:#000;
+    color:#fff;
+    text-align:center;
+    padding:14px 12px;
+    border-radius:2px;
+    font-weight:700;
+    font-size:16px;
+    cursor:pointer;
+    margin:8px 0 10px;
+    letter-spacing:0.2px;
+  }
+
+  .coupon-note {
+    font-size:12px;
+    color:var(--muted);
+    text-align:center;
+    margin-top:6px;
+  }
+
+  /* small helper for slight spacing under rows like screenshot */
+  .spacer { height:6px; }
+
+  /* responsive small */
+  @media (max-width:360px){
+    :root { --container-w:92%; }
+    .estimate-value { font-size:24px; }
+  }
+
+        /* cart-section start*/
+
+        .cart-section {
+            font-family: Arial, sans-serif;
+            background: #F4F4F4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        /* ====================
+              HEADER
+        ==================== */
+        .top-header {
+            background: #fff;
+            padding: 6px 5%;
+            height: 48px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 40px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-top: -5px;
+        }
+
+        .location {
+            font-size: 12px;
+            color: #666;
+            background-color: #F6F6F6;
+            margin-top: -6px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 7px 18px;
+            gap: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .secure-checkout {
+            font-size: 14px;
+            color: green;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-left: 50.5rem;
+        }
+
+        .secure-checkout i {
+            color: white;
+            border: 1px solid green;
+            background: green;
+            height: 25px;
+            width: 25px;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+
+          /*  Banks icons ABOVE terms & centered */
+      .banks {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        order: -1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 0 10px 0 !important;
+      }
+
+      .banks img {
+        height: 22px;
+        margin: 5px;
+      }
+
+
+        /* ====================
+              BREADCUMB
+        ==================== */
+        .breadcrumb-container {
+            padding-top: 18px;
+            text-align: center !important;
+            width: 100%;
+        }
+
+        .breadcrumb {
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: #999;
+            justify-content: center !important;
+        }
+
+        .active-step {
+            color: #000;
+        }
+
+        /* ====================  MAIN CONTENT    ==================== */
+        .cart-content {
+            background: #fff;
+            width: 84.3%;
+            height: 83vh;
+            margin-left: 120px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .lhs {
+            width: 66.2%;
+            border: 1px solid red;
+            margin-right: 20px;
+        }
+
+        .top-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #FDF6F3;
+            margin-bottom: 15px;
+            font-size: 14px;
+            padding: 10px 15px;
+        }
+
+        .red-text {
+            color: rgb(188, 45, 45);
+        }
+
+        .vc-product-card {
+            display: flex;
+        }
+
+        /* Ribbon */
+        .vc-ribbon {
+            position: absolute;
+            bottom: 4px;
+            left: 35px;
+            background: #eee;
+            font-size: 11px;
+            padding: 5px 6px;
+            border-radius: 3px;
+            z-index: 999;
+        }
+
+        /* Title */
+        .vc-prod-title {
+            font-size: 12px;
+            color: #222;
+            cursor: pointer;
+        }
+
+        .vc-prod-title:hover {
+            text-decoration: underline;
+        }
+
+        /* Sold by */
+        .vc-sold-by {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 4px;
+        }
+
+        /* Color dot */
+        .vc-color-dot {
+            width: 12px;
+            height: 12px;
+            background: black;
+            border-radius: 50%;
+        }
+
+        /* Color pill */
+        .vc-color-pill {
+            padding: 2px 8px;
+            background: #f5f5f5;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .vc-color-pill:hover {
+            border-color: #000;
+        }
+
+        .vc-pill-arrow {
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        /* Prices */
+        .vc-new-price {
+            color: #d92c2c;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .vc-old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* Discount Pill */
+        .vc-discount-pill {
+            background: #f2f2f2;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        /* Qty box */
+        .vc-qty-box {
+            background: linear-gradient(#fafafa, #dcdcdc);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid #000;
+            cursor: pointer;
+            position: relative;
+            font-size: 13px;
+        }
+
+        .vc-qty-arrow {
+            margin-left: 3px;
+            font-size: 10px;
+        }
+
+        .vc-dropdown-list {
+            display: none;
+            position: absolute;
+            background: #fff;
+            border: 1px solid #aaa;
+            width: 70px;
+            height: 110px;
+            overflow-y: auto;
+            top: 28px;
+            left: 0;
+            z-index: 999;
+        }
+
+        .vc-dropdown-list div {
+            padding: 4px;
+            cursor: pointer;
+        }
+
+        .vc-dropdown-list div:hover {
+            background: #eee;
+        }
+
+        /* Favorite btn */
+        .fav-btn {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #vcFavIcon {
+            transition: 0.2s;
+        }
+
+        #vcFavIcon.filled {
+            color: #000;
+        }
+
+        /* Delete */
+        .vc-del-icon {
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        /* Make all checkboxes black + square */
+        .form-check-input {
+            width: 19px;
+            height: 19px;
+            border-radius: 0 !important;
+            border: 2px solid #000 !important;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: #000 !important;
+            border-color: #000 !important;
+        }
+
+
+
+        .rhs {
+            width: 32.5%;
+            border: 1px solid green;
+        }
+
+
+        /* cart-section end */
+
+        /* card product cart page */
+
+        .recommend-title {
+            text-align: center;
+            font-weight: 800;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        .product-card {
+            border: none;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-img.hover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .product-card:hover .product-img.hover-img {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .product-title {
+            font-size: 15px;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 6px;
+        }
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            color: #ff4500;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .discount {
+            color: #888;
+            font-size: 13px;
+            margin-left: 5px;
+        }
+
+        .cart-btn {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            border-color: #ff4500;
+            color: #ff4500;
+        }
+
+        @media (max-width: 992px) {
+            .product-img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-img {
+                height: 220px;
+            }
+
+            .price {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-img {
+                height: 180px;
+            }
+
+            .product-title {
+                font-size: 13px;
+            }
+        }
+
+        /* view more btn home page */
+        .view-more-btn {
+            border: 1px solid #000;
+            padding: 10px 40px;
+            font-weight: 600;
+            border-radius: 2px;
+            background: #fff;
+            color: #000;
+            transition: all 0.3s ease;
+        }
+
+        .view-more-btn:hover {
+            background: #0000008b;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- cart-section -->
+    <div class="cart-section">
+        <div class="top-header">
+            <div class="header-left">
+                <span class="logo">SHEIN</span>
+
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Ship to Twnhs, 2841 E Waltann Ln Unit 1
+                </div>
+            </div>
+
+            <div class="secure-checkout">
+                <i class="fas fa-lock"></i>
+                Secure Checkout
+            </div>
+        </div>
+
+        <div class="breadcrumb-container">
+            <div class="breadcrumb">
+                <span class="active-step">Cart</span> > Place Order > Pay > Order Complete
+            </div>
+        </div>
+
+        <div class="cart-content">
+            <div class="lhs">
+                <div class="top-line">
+                    <span class="black-text"><i class="fa-solid fa-check"></i>
+                        Use coupon now to save</span>
+                    <span class="red-text">$10.00</span>
+                </div>
+
+                <div class="container mt-3">
+
+                    <!-- ALL ITEMS -->
+                    <div class="d-flex align-items-center mb-3">
+                        <input type="checkbox" id="allItemsCheck" class="form-check-input me-2" checked>
+                        <span class="fw-bold" style="font-size:18px;">ALL ITEMS (1)</span>
+
+                        <img src="pic.jpeg" width="22" class="ms-2">
+                        <span class="ms-1" style="font-size:13px; color:#555;">Free Shipping</span>
+                    </div>
+
+                    <!-- SHEIN -->
+                    <div class="d-flex align-items-center mb-2">
+                        <input type="checkbox" id="sheinCheck" class="form-check-input me-2" checked>
+                        <span class="fw-bold" style="font-size:16px;">SHEIN</span>
+                    </div>
+
+                    <!-- PRODUCT CARD -->
+                    <div class="vc-product-card p-2 border rounded position-relative" id="vcProductBox">
+
+                        <!-- Almost Sold Out -->
+                        <div class="vc-ribbon">Almost Sold Out</div>
+
+                        <input type="checkbox" class="form-check-input me-2 mt-2" id="vcProdCheck" checked>
+
+                        <div class="position-relative me-2">
+                            <img src="images/1.jpg" width="95" class="rounded">
+                        </div>
+
+                        <div class="vc-prod-details flex-grow-1">
+
+                            <!-- Title -->
+                            <div class="vc-prod-title">
+                                NOSHAHI EZwear Black Slant Pocket Ripped Skinny Jeans
+                            </div>
+
+                            <!-- Sold by -->
+                            <div class="vc-sold-by">Sold by NOSHAHI EZwear</div>
+
+                            <!-- Color + Size -->
+                            <div class="d-flex align-items-center mb-1">
+                                <div class="vc-color-dot me-1"></div>
+
+                                <div class="vc-color-pill">
+                                    Black / S
+                                    <span class="vc-pill-arrow">▼</span>
+                                </div>
+                            </div>
+
+                            <!-- Price Row -->
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="vc-new-price">$16.02</div>
+                                <div class="vc-old-price">$23.69</div>
+
+                                <div class="vc-discount-pill">
+                                    Estimated -34% ▼
+                                </div>
+                            </div>
+
+                            <!-- Bottom Row -->
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+
+                                <!-- Qty -->
+                                <div class="vc-qty-box">
+                                    Qty:
+                                    <span id="vcQtyValue">1</span>
+                                    <span id="vcQtyArrow" class="vc-qty-arrow">▼</span>
+
+                                    <div class="vc-dropdown-list" id="vcDropdownList"></div>
+                                </div>
+
+                                <!-- Search + Fav -->
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                                    <div id="vcFavBtn" class="d-flex align-items-center fav-btn">
+                                        <i id="vcFavIcon" class="fa-regular fa-heart me-1"></i>
+                                        <span id="vcFavText">Favorite</span>
+                                    </div>
+                                </div>
+
+                                <!-- Delete -->
+                                <div class="vc-del-icon" id="vcDeleteProd">🗑</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="https://kit.fontawesome.com/a2e00f5b59.js" crossorigin="anonymous"></script>
+
+            </div>
+            <div class="rhs">
+                <div class="order" role="region" aria-label="Order Summary">
+
+  <h1>Order Summary</h1>
+  <p class="sub">Proceed to apply discounts and account assets then confirm the final price.</p>
+
+  <!-- product thumbnail -->
+  <img src="images/1.jpg" alt="product" class="thumb">
+
+  <!-- Retail Price -->
+  <div class="row">
+    <div class="left">Retail Price:</div>
+    <div class="right">$10.09</div>
+  </div>
+
+  <!-- Promotions -->
+  <div class="row promotions">
+    <div class="left">Promotions:</div>
+    <div class="right">- $4.15</div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- Estimated Price & Saved -->
+  <div class="estimate-wrap">
+    <div>
+      <div class="estimate-label">Estimated Price:</div>
+      <div class="saved">Saved $4.15</div>
+    </div>
+    <div class="estimate-value">$5.94</div>
+  </div>
+
+  <p class="reward">Reward <strong>5</strong> SHEIN Points<span style="font-weight:400; margin-left:6px;">?</span></p>
+
+  <!-- Checkout CTA -->
+  <button class="checkout" id="checkoutBtn">Checkout Now (1)</button>
+
+  <p class="coupon-note">Apply a Coupon Code, SHEIN Points on the next step.</p>
+
+</div>
+<div class="banks">
+            <h6>WE ACCEPT</h6>
+            <div class="row mt-4">
+              <div class="col-12 text-center payments">
+                <img src="images/cod.jpeg" alt="cash on delivary">
+                <img src="images/Visa.png" alt="Visa">
+                <img src="images/mastercard.png" alt="Mastercard">
+                <img src="images/hbl.png" alt="hbl">
+                <img src="images/jazzcash.png" alt="jazzcash">
+                <img src="images/easipaisa.png" alt="easypaisa">
+                <img src="images/paypal.png" alt="PayPal">
+                <img src="images/toss.png" alt="toss">
+                <img src="images/Applepay.png" alt="Apple Pay">
+                <img src="images/union pay.png" alt="UnionPay">
+                <img src="images/american express.png" alt="american express">
+                <img src="images/konbini.jpeg" alt="konbini">
+                <img src="images/gcash.jpeg" alt="Gcash">
+                <img src="images/cabal.png" alt="cabal">
+                <img src="images/nbp.jpeg" alt="National Bank of Pakistan">
+                <img src="images/mcb.jpeg" alt="MCB">
+                <img src="images/ubl.png" alt="UBL">
+                <img src="images/faysalbank.jpeg" alt="fasalbank">
+                <img src="images/askaribank.png" alt="askribank">
+                <img src="images/bankislami.png" alt="islamicbank">
+                <img src="images/meezan bank.jpeg" alt="meezanbank">
+                <img src="images/bankAlfalah.png" alt="alfalah">
+              </div>
+            </div>
+          </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- cart-section end -->
+
+
+    <script>
+        // ---------------------- ALL ITEMS / SHEIN / PRODUCT CHECKS ----------------------
+        const allItems = document.getElementById("allItemsCheck");
+        const sheinCheck = document.getElementById("sheinCheck");
+        const prodCheck = document.getElementById("vcProdCheck");
+
+        allItems.addEventListener("change", function () {
+            sheinCheck.checked = this.checked;
+            prodCheck.checked = this.checked;
+        });
+
+        sheinCheck.addEventListener("change", function () {
+            allItems.checked = this.checked;
+            prodCheck.checked = this.checked;
+        });
+
+        prodCheck.addEventListener("change", function () {
+            allItems.checked = this.checked;
+            sheinCheck.checked = this.checked;
+        });
+
+        // del box
+        document.getElementById("vcDeleteProd").addEventListener("click", () => {
+            document.getElementById("vcProductBox").style.display = "none";
+        });
+
+
+
+        // ---------------------- QTY DROPDOWN ----------------------
+        const arrow = document.getElementById("vcQtyArrow");
+        const list = document.getElementById("vcDropdownList");
+        const qtyValue = document.getElementById("vcQtyValue");
+
+        for (let i = 1; i <= 20; i++) {
+            let div = document.createElement("div");
+            div.innerText = i;
+            div.onclick = () => {
+                qtyValue.innerText = i;
+                list.style.display = "none";
+            };
+            list.appendChild(div);
+        }
+
+        arrow.onclick = () => {
+            list.style.display = list.style.display === "block" ? "none" : "block";
+        };
+
+
+        // ---------------------- FAVORITE HEART ----------------------
+        const favBtn = document.getElementById("vcFavBtn");
+        const favIcon = document.getElementById("vcFavIcon");
+        const favText = document.getElementById("vcFavText");
+
+        let fav = false;
+
+        favBtn.onclick = () => {
+            fav = !fav;
+
+            if (fav) {
+                favIcon.classList.replace("fa-regular", "fa-solid");
+                favIcon.classList.add("filled");
+                favText.textContent = "Favorited";
+            } else {
+                favIcon.classList.replace("fa-solid", "fa-regular");
+                favIcon.classList.remove("filled");
+                favText.textContent = "Favorite";
+            }
+        };
+        // small behaviour: copy sample estimated price to clipboard on long-press (optional)
+  document.getElementById('checkoutBtn').addEventListener('click', function(){
+    alert('Proceeding to checkout...');
+  });
+    </script>
+</body>
+
+</html>
