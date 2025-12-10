@@ -20,7 +20,6 @@
   *{box-sizing:border-box}
   body{font-family:var(--font-sans); margin:0; background:#fff; color:#222;}
 
-  /* Top */
   .top-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid #e9e9e9;background:#fff;}
   .brand{font-weight:700;font-size:20px;color:#222}
 
@@ -33,235 +32,61 @@
   .section{background:#fff;border:1px solid var(--border);padding:18px;margin-bottom:18px}
   h2.section-title{margin:0 0 6px;font-size:20px;font-weight:700}
 
-  /* shipping */
   .shipping-head{display:flex;justify-content:space-between;align-items:center}
   .change-btn{border:1px solid #d6d6d6;padding:6px 12px;background:#fff;cursor:pointer;font-size:13px}
 
   .address-box{display:flex;border:1px solid var(--border);margin-top:12px;padding:14px;align-items:flex-start;gap:14px;position:relative}
-
   .stripe{width:5px;background:linear-gradient(180deg,var(--accent1),var(--accent2),var(--accent3));border-radius:3px}
-
   .addr-text{font-size:13px;line-height:1.45}
   .addr-name{font-weight:700}
-
   .edit-address{margin-left:auto;border:1px solid #222;background:#fff;padding:6px 10px;font-size:13px;cursor:pointer}
 
-  /* product header */
   .product-header{font-size:22px;font-weight:700;margin-bottom:12px}
-
-  /* product row */
-  .product-row{
-    display:flex;
-    gap:18px;
-    padding:16px;
-    border:1px solid #eee;
-    background:#fafafa;
-  }
-
-  /* Left: Image + Price + Qty (PIC PERFECT Style) */
-  .prod-left{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    width:150px;
-  }
-
-  .prod-image{
-    width:140px;
-    height:150px;
-    background:#eee;
-    border:1px solid #ccc;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:4px;
-    overflow:hidden;
-  }
-
-  .real-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
-
-  .discount-tag{
-    position:absolute;
-    top:8px;
-    left:8px;
-    background:var(--orange);
-    color:#fff;
-    padding:4px 7px;
-    font-size:12px;
-    border-radius:2px;
-    font-weight:700;
-  }
-
-  /* price */
-  .price-under{
-    text-align:center;
-    margin-top:10px;
-  }
-
-  .price-under .new{
-    color:var(--orange);
-    font-size:18px;
-    font-weight:700;
-  }
-
-  .price-under .old{
-    text-decoration:line-through;
-    color:var(--muted);
-    font-size:14px;
-  }
-
-  /* qty center aligned */
-  .qty-box{
-    margin-top:12px;
-    display:flex;
-    justify-content:center;
-  }
-
-  .qty{
-    display:flex;
-    align-items:center;
-    border:1px solid #ccc;
-    background:#fff;
-    border-radius:4px;
-    padding:4px 6px;
-    gap:6px;
-  }
-
-  .qty button{
-    width:26px;height:26px;border:1px solid #bbb;background:#fff;font-weight:700;border-radius:3px;cursor:pointer
-  }
-
+  .product-row{display:flex;gap:18px;padding:16px;border:1px solid #eee;background:#fafafa;}
+  .prod-left{display:flex;flex-direction:column;align-items:center;width:150px;}
+  .prod-image{width:140px;height:150px;background:#eee;border:1px solid #ccc;position:relative;display:flex;justify-content:center;align-items:center;border-radius:4px;overflow:hidden;}
+  .real-img{width:100%;height:100%;object-fit:cover;}
+  .discount-tag{position:absolute;top:8px;left:8px;background:var(--orange);color:#fff;padding:4px 7px;font-size:12px;border-radius:2px;font-weight:700;}
+  .price-under{text-align:center;margin-top:10px;}
+  .price-under .new{color:var(--orange);font-size:18px;font-weight:700;}
+  .price-under .old{text-decoration:line-through;color:var(--muted);font-size:14px;}
+  .qty-box{margin-top:12px;display:flex;justify-content:center;}
+  .qty{display:flex;align-items:center;border:1px solid #ccc;background:#fff;border-radius:4px;padding:4px 6px;gap:6px;}
+  .qty button{width:26px;height:26px;border:1px solid #bbb;background:#fff;font-weight:700;border-radius:3px;cursor:pointer}
   .count{text-align:center;min-width:20px;font-weight:600}
 
-  /* Shipping method */
   .shipping-method{margin-top:14px;border:1px solid #ddd;padding:14px;background:#fafafa;}
   .shipping-method-title{font-weight:700;font-size:16px;}
-
-  /* PAYMENT METHOD */
-  .pay-option{
-    border:1px solid var(--border);
-    padding:14px;
-    margin-top:12px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    cursor:pointer;
-  }
+  .pay-option{border:1px solid var(--border);padding:14px;margin-top:12px;display:flex;align-items:center;gap:12px;cursor:pointer;}
   .pay-option input{width:18px;height:18px;cursor:pointer}
   .pay-label{font-size:15px;font-weight:600}
   .pay-logos img{height:22px;margin-right:4px}
-
   .selected{border-color:#000}
 
-  /* SUMMARY */
-  .summary{border:1px solid var(--border);padding:16px}
+  .summary{border:1px solid var(--border);padding:16px;margin-bottom:18px}
   .summary h3{margin:0 0 12px;font-size:20px;font-weight:700}
   .row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
   .order-total{font-size:21px;font-weight:800;color:var(--orange)}
 
-  /* Coupon Right */
   .input-box{margin-top:10px}
-  .input-box input{
-    width:70%;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:4px;
-  }
-  .apply-btn{
-    padding:10px 18px;
-    background:#000;
-    color:#fff;
-    border:none;
-    cursor:pointer;
-    border-radius:4px;
-  }
+  .input-box input{width:70%;padding:10px;border:1px solid #ccc;border-radius:4px;}
+  .apply-btn{padding:10px 18px;background:#000;color:#fff;border:none;cursor:pointer;border-radius:4px;}
+  .place-order{width:100%;padding:16px;background:#000;color:#fff;border:none;font-size:18px;font-weight:700;cursor:pointer;margin-top:14px;}
 
-  /* Place order */
-  .place-order{
-    width:100%;
-    padding:16px;
-    background:#000;
-    color:#fff;
-    border:none;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    margin-top:14px;
-  }
-
-  /* --- SHEIN CLUB COUPON BOX --- */
-  .club-box{
-    margin-top:18px;
-    padding:16px;
-    background:#fff7f3;
-    border:1px solid #f5d4c8;
-    border-radius:8px;
-  }
-
-  .club-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    font-size:14px;
-    font-weight:600;
-  }
-
-  .save-text{
-    margin-top:8px;
-    font-size:14px;
-  }
-
-  .club-mid{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
-    font-size:13px;
-    line-height:1.4;
-  }
-
-  .limited{
-    background:#ff4778;
-    color:#fff;
-    padding:3px 6px;
-    border-radius:4px;
-    font-size:11px;
-    display:inline-block;
-    margin-bottom:4px;
-  }
-
-  .markdown{
-    background:#f9e1d8;
-    padding:8px 12px;
-    border-radius:6px;
-    margin-top:12px;
-    font-size:13px;
-  }
-
-  .club-bottom{
-    display:flex;
-    align-items:center;
-    margin-top:12px;
-    gap:10px;
-  }
-
+  .club-box{margin-top:18px;padding:16px;background:#fff7f3;border:1px solid #f5d4c8;border-radius:8px;}
+  .club-top{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;}
+  .save-text{margin-top:8px;font-size:14px;}
+  .club-mid{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;line-height:1.4;}
+  .limited{background:#ff4778;color:#fff;padding:3px 6px;border-radius:4px;font-size:11px;display:inline-block;margin-bottom:4px;}
+  .markdown{background:#f9e1d8;padding:8px 12px;border-radius:6px;margin-top:12px;font-size:13px;}
+  .club-bottom{display:flex;align-items:center;margin-top:12px;gap:10px;}
   .club-price{font-size:20px;font-weight:700;color:#ff4b00}
   .club-old{text-decoration:line-through;color:#666}
-
-  .special-offer{
-    margin-left:auto;
-    padding:6px 10px;
-    background:black;
-    color:white;
-    font-size:13px;
-    border-radius:5px;
-    border:none;
-    cursor:pointer;
-  }
+  .special-offer{margin-left:auto;padding:6px 10px;background:black;color:white;font-size:13px;border-radius:5px;border:none;cursor:pointer;}
+/* Add spacing between SHEIN CLUB and Coupon/Gift Card box */
+.right .section:last-child {
+    margin-top: 18px; /* Adjust value as needed */
+}
 
 </style>
 </head>
@@ -277,14 +102,12 @@
 <div class="wrap">
 
   <div class="left">
-
     <!-- SHIPPING BLOCK -->
     <div class="section">
       <div class="shipping-head">
         <h2 class="section-title">Shipping Address</h2>
         <button class="change-btn">Change</button>
       </div>
-
       <div class="address-box">
         <div class="stripe"></div>
         <div class="addr-text">
@@ -299,19 +122,16 @@
     <!-- PRODUCT BOX -->
     <div class="section">
       <div class="product-header">SHEIN(<span id="count">1</span>)</div>
-
       <div class="product-row">
         <div class="prod-left">
           <div class="prod-image">
             <div class="discount-tag">-34%</div>
             <img src="images/4.webp" alt="Product" class="real-img">
           </div>
-
           <div class="price-under">
             <div class="new" id="prodPrice">$27.70</div>
             <div class="old" id="prodOldPrice">$42.19</div>
           </div>
-
           <div class="qty-box">
             <div class="qty">
               <button onclick="decrease()">-</button>
@@ -319,159 +139,126 @@
               <button onclick="increase()">+</button>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
 
     <!-- SHIPPING METHOD -->
     <div class="section">
       <h2 class="section-title">Shipping Method</h2>
-
       <div class="shipping-method">
         <div class="shipping-method-title">Standard Shipping</div>
         <div style="color:var(--muted);margin-top:6px">Estimated Delivery: Jan 10 - Jan 15</div>
         <div style="font-weight:700;margin-top:4px;color:var(--green)">FREE</div>
       </div>
-
     </div>
 
-    <!-- PAYMENT METHOD (FULL SCREENSHOT VERSION) -->
+    <!-- PAYMENT METHOD -->
     <div class="section">
       <h2 class="section-title">Payment Method</h2>
-
-      <!-- PayPal -->
       <label class="pay-option">
         <input type="radio" name="pay" />
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="22">
         <span class="pay-label">PayPal</span>
       </label>
-
-      <!-- Credit/Debit Card -->
       <label class="pay-option selected">
         <input type="radio" name="pay" checked />
         <span class="pay-label">Credit/Debit Card</span>
         <div class="pay-logos">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Mastercard-logo.svg">
+          <img src="images/mastercard.png">
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/American_Express_logo.svg">
           <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Discover_Card_logo.svg">
         </div>
       </label>
-
-      <!-- Apple Pay -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" height="22">
         <span class="pay-label">Apple Pay</span>
       </label>
-
-      <!-- Venmo -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Venmo_Logo.png" height="22">
         <span class="pay-label">Venmo</span>
       </label>
-
-      <!-- Cash App -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Cash_App_Logo.svg" height="22">
         <span class="pay-label">Cash App Pay</span>
       </label>
-
-      <!-- Google Pay -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg" height="22">
         <span class="pay-label">Google Pay</span>
       </label>
-
-      <!-- Klarna -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Klarna_Logo_black.svg" height="22">
         <span class="pay-label">Klarna</span>
       </label>
-
-      <!-- Afterpay -->
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Afterpay_logo.svg" height="22">
         <span class="pay-label">Afterpay</span>
       </label>
-
     </div>
-
   </div>
 
-  <!-- RIGHT SUMMARY -->
+  <!-- RIGHT SIDE -->
   <div class="right">
 
-    <div class="section">
-      <h3>Coupon Code</h3>
-      <div class="input-box">
-        <input type="text" placeholder="Enter coupon">
-        <button class="apply-btn">APPLY</button>
-      </div>
-
-      <h3 style="margin-top:20px">Gift Card</h3>
-      <div class="input-box">
-        <input type="text" placeholder="Gift card number">
-        <button class="apply-btn">Link</button>
-      </div>
-
-      <button class="place-order">PLACE ORDER</button>
-    </div>
-
-    <!-- ORDER SUMMARY -->
+    <!-- ORDER SUMMARY (TOP) -->
     <div class="summary">
       <h3>Order Summary</h3>
-
       <div class="row">
         <div>Retail Price: <span id="count2">1</span> Items</div>
         <div id="retail">$42.19</div>
       </div>
-
       <div class="row"><div>Shipping Fee</div><div style="color:var(--muted)">FREE</div></div>
-
       <div class="row"><div>Promotions</div><div style="color:#d33">- $14.49</div></div>
-
       <div class="row"><div>Sales Tax</div><div>$2.29</div></div>
-
       <div class="order-total">Order Total: <span id="total">$29.99</span></div>
     </div>
 
-    <!-- ⭐ ADDED: SHEIN CLUB BOX BELOW SUMMARY -->
+    <!-- SHEIN CLUB BOX (SECOND) -->
     <div class="club-box">
       <div class="club-top">
         <span>🟧 SHEIN CLUB</span>
         <span style="color:#c58f73;font-size:12px">All benefits stackable</span>
       </div>
-
       <div class="save-text">Save <strong>$2.21</strong> on this order, including credits…</div>
-
       <div class="club-mid">
         <div>
           <div class="limited">Limited</div>
           <div>3× Shipping Coupons</div>
         </div>
-
         <div>
           <div>📉 3%–10% Credit…</div>
           <div>🎁 3 Free Gifts</div>
           <div>⭐ Extra 5% OFF</div>
         </div>
       </div>
-
       <div class="markdown">Membership Markdown: $7.00</div>
-
       <div class="club-bottom">
         <span class="club-price">$2.99</span>
         <span class="club-old">$9.99</span>
         <button class="special-offer">Special Offer $7.00 OFF ></button>
       </div>
+    </div>
+
+    <!-- COUPON/GIFT CARD + PLACE ORDER (BOTTOM) -->
+    <div class="section">
+      <h3>Coupon Code</h3>
+      <div class="input-box">
+        <input type="text" placeholder="Enter coupon">
+        <button class="apply-btn">APPLY</button>
+      </div>
+      <h3 style="margin-top:20px">Gift Card</h3>
+      <div class="input-box">
+        <input type="text" placeholder="Gift card number">
+        <button class="apply-btn">Link</button>
+      </div>
+      <button class="place-order">PLACE ORDER</button>
     </div>
 
   </div>
@@ -489,18 +276,15 @@ function render(){
   document.getElementById('qty').innerText = qty;
   document.getElementById('count').innerText = qty;
   document.getElementById('count2').innerText = qty;
-
   document.getElementById('prodPrice').innerText = '$' + (unitNew * qty).toFixed(2);
   document.getElementById('prodOldPrice').innerText = '$' + (unitOld * qty).toFixed(2);
   document.getElementById('retail').innerText = '$' + (unitOld * qty).toFixed(2);
-
   const total = (unitNew * qty) - promo + tax;
   document.getElementById('total').innerText = '$' + total.toFixed(2);
 }
 
 function increase(){ qty++; render(); }
 function decrease(){ if(qty>1){ qty--; render(); } }
-
 render();
 </script>
 
