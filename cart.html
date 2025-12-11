@@ -27,6 +27,7 @@
              font-family: "Roboto", Arial, sans-serif;
     display:flex;
     justify-content:center;
+    
     /* padding:30px 10px; */
         }
 
@@ -232,8 +233,6 @@
         flex-wrap: wrap;
         order: -1 !important;
         width: 100% !important;
-        display: flex !important;
-        justify-content: center !important;
         margin: 0 0 10px 0 !important;
       }
 
@@ -265,10 +264,10 @@
 
         /* ====================  MAIN CONTENT    ==================== */
         .cart-content {
-            background: #fff;
-            width: 84.3%;
+            width: 95.3%;
             height: 83vh;
-            margin-left: 120px;
+            margin-left: 30px;
+
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: row;
@@ -448,15 +447,6 @@
             background-color: #000 !important;
             border-color: #000 !important;
         }
-
-
-
-        .rhs {
-            width: 32.5%;
-            border: 1px solid green;
-        }
-
-
         /* cart-section end */
 
         /* card product cart page */
@@ -504,7 +494,14 @@
         .card-body {
             padding: 10px;
         }
-
+        .ittem{
+            background-color: #fff;
+            height: 7vh; 
+        }
+        .ittem1{
+            background-color: #fff;
+            margin-top: 20px;
+        }
         .product-title {
             font-size: 15px;
             color: #333;
@@ -525,7 +522,7 @@
             font-weight: bold;
             font-size: 16px;
         }
-
+        
         .discount {
             color: #888;
             font-size: 13px;
@@ -591,6 +588,118 @@
             background: #0000008b;
             color: #fff;
         }
+         /* ---------- Container ---------- */
+    .container{max-width:1180px;margin:0 auto}
+
+    /* ---------- Heading (keep same font size/weight styling visually similar) ---------- */
+    .heading{ text-align:center; margin-bottom:22px }
+    .heading h2{
+      margin:0;
+      font-size:26px; /* visually similar to the screenshot */
+      letter-spacing:0.6px;
+      font-weight:700;
+    }
+
+    /* ---------- Grid for cards ---------- */
+    .cards{
+      display:flex;
+      gap:18px;
+      justify-content:center;
+      align-items:flex-start;
+      overflow-x:auto;
+      padding:14px 4px;
+    }
+
+    .card{
+      width:200px; /* consistent card width */
+      background:#fff;
+      border:1px solid #eee;
+      box-shadow:0 2px 0 rgba(0,0,0,0.02);
+      border-radius:4px;
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+
+    .img-wrap{
+      position:relative;
+      background:#fafafa;
+      height:260px; /* to match the tall images in screenshot */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .img-wrap img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* small badges on top-left / top-right */
+    .badge-left, .badge-right{
+      position:absolute;
+      left:8px;
+      top:8px;
+      background:#f6f6f6;
+      padding:4px 8px;
+      font-size:12px;
+      border-radius:3px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.05);
+    }
+    .badge-right{left:auto; right:8px}
+
+    /* orange sale strip at bottom of image */
+    .sale-strip{
+      position:absolute;
+      left:0;right:0;bottom:0;
+      background:linear-gradient(90deg,#ff6b3a,#ff7849);
+      color:#fff;
+      padding:6px 8px;
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    /* content below image */
+    .meta{padding:10px 10px 14px}
+    .title{
+      font-size:13px;
+      line-height:1.2;
+      height:34px; /* limit so title occupies same height as screenshot */
+      overflow:hidden;
+      color:#222;
+    }
+    .rating{margin-top:8px;display:flex;align-items:center;gap:8px;font-size:12px;color:#f39c12}
+    .rating .stars{color:#f39c12}
+    .price-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+    .price{font-weight:700;font-size:16px;color:#ff5a00}
+    .old-price{font-size:12px;color:#888;text-decoration:line-through}
+    .sold{font-size:12px;color:#888}
+
+    /* little cart button */
+    .cart-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:32px;height:32px;border-radius:50%;border:1px solid #eee;background:#fff;
+      box-shadow:0 1px 0 rgba(0,0,0,0.03);
+      cursor:pointer;
+    }
+
+    /* hover emphasis similar to original */
+    
+
+    /* scrollbar cleanup for horizontal row */
+    .cards::-webkit-scrollbar{height:8px}
+    .cards::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px}
+
+    /* responsive tweaks */
+    @media (max-width:760px){
+      .cards{gap:12px}
+      .card{width:170px}
+      .img-wrap{height:220px}
+    }
     </style>
 </head>
 
@@ -617,34 +726,31 @@
             <div class="breadcrumb">
                 <span class="active-step">Cart</span> > Place Order > Pay > Order Complete
             </div>
-        </div>
 
         <div class="cart-content">
             <div class="lhs">
-                <div class="top-line">
-                    <span class="black-text"><i class="fa-solid fa-check"></i>
-                        Use coupon now to save</span>
-                    <span class="red-text">$10.00</span>
-                </div>
 
                 <div class="container mt-3">
 
                     <!-- ALL ITEMS -->
-                    <div class="d-flex align-items-center mb-3">
+                    <div class="ittem">
+                        <div class="d-flex align-items-center mb-3">
                         <input type="checkbox" id="allItemsCheck" class="form-check-input me-2" checked>
-                        <span class="fw-bold" style="font-size:18px;">ALL ITEMS (1)</span>
+                        <span class="fw-bold" style="font-size:18px; margin-top: 10px; ">ALL ITEMS (1)</span>
 
-                        <img src="pic.jpeg" width="22" class="ms-2">
+                        <img src="images/1.webp" width="22" class="ms-2">
                         <span class="ms-1" style="font-size:13px; color:#555;">Free Shipping</span>
+                    </div>
                     </div>
 
                     <!-- SHEIN -->
-                    <div class="d-flex align-items-center mb-2">
+                    <div class="ittem1">
+                        <div class="d-flex align-items-center mb-2">
                         <input type="checkbox" id="sheinCheck" class="form-check-input me-2" checked>
                         <span class="fw-bold" style="font-size:16px;">SHEIN</span>
+                        
                     </div>
-
-                    <!-- PRODUCT CARD -->
+                     <!-- PRODUCT CARD -->
                     <div class="vc-product-card p-2 border rounded position-relative" id="vcProductBox">
 
                         <!-- Almost Sold Out -->
@@ -715,6 +821,7 @@
                         </div>
                     </div>
                 </div>
+                    </div>
 
                 <script src="https://kit.fontawesome.com/a2e00f5b59.js" crossorigin="anonymous"></script>
 
@@ -757,9 +864,7 @@
   <button class="checkout" id="checkoutBtn">Checkout Now (1)</button>
 
   <p class="coupon-note">Apply a Coupon Code, SHEIN Points on the next step.</p>
-
-</div>
-<div class="banks">
+  <div class="banks">
             <h6>WE ACCEPT</h6>
             <div class="row mt-4">
               <div class="col-12 text-center payments">
@@ -788,10 +893,127 @@
               </div>
             </div>
           </div>
-
             </div>
         </div>
     </div>
+     <div class="container">
+    <div class="heading">
+      <h2>You Might Like to Fill it With</h2>
+    </div>
+
+    <div class="cards" id="cards">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="img-wrap">
+          <!-- Replace the src with your own image file -->
+          <img src="/mnt/data/Capture121212.JPG" class="main-img" alt="product 1">
+          <!-- Hover image: replace path -->
+                    <div class="badge-left">trends</div>
+          <div class="badge-right">-60%</div>
+          <div class="sale-strip">
+            <div style="font-size:13px;font-weight:600">Hauliday Szn</div>
+            <div style="font-size:13px">Save $10.12</div>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="title">Easithlete Half Zip Thumb ...</div>
+          <div class="rating"><span class="stars">★ ★ ★ ★ ☆</span><span style="color:#444;font-size:12px">(800+)</span></div>
+          <div class="price-row">
+            <div>
+              <div class="price">$6.87</div>
+              <div class="sold">800+ sold</div>
+            </div>
+            <button class="cart-btn" title="Add to cart">🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="img-wrap">
+          <img src="/mnt/data/Capture121212.JPG" class="main-img" alt="product 2">
+                    <div class="badge-left">choices</div>
+          <div class="badge-right">-41%</div>
+          <div class="sale-strip"><div style="font-weight:600">#trending</div><div>Save $4.35</div></div>
+        </div>
+        <div class="meta">
+          <div class="title">INAWLY Women's Sleeveless ...</div>
+          <div class="rating"><span class="stars">★ ★ ★ ★ ☆</span><span style="color:#444;font-size:12px">(1000+)</span></div>
+          <div class="price-row">
+            <div>
+              <div class="price">$6.28</div>
+              <div class="sold">200+ sold</div>
+            </div>
+            <button class="cart-btn" title="Add to cart">🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="img-wrap">
+          <img src="/mnt/data/Capture121212.JPG" class="main-img" alt="product 3">
+                    <div class="badge-left">#1 Bestseller</div>
+          <div class="badge-right">$1.30</div>
+          <div class="sale-strip"><div style="font-weight:600">Best Seller</div><div>10k+ sold</div></div>
+        </div>
+        <div class="meta">
+          <div class="title">1pc Vintage Royal Style Thumb ...</div>
+          <div class="rating"><span class="stars">★ ★ ★ ★ ★</span><span style="color:#444;font-size:12px">(10k+)</span></div>
+          <div class="price-row">
+            <div>
+              <div class="price">$1.30</div>
+              <div class="sold">10k+ sold</div>
+            </div>
+            <button class="cart-btn" title="Add to cart">🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="img-wrap">
+          <img src="/mnt/data/Capture121212.JPG" class="main-img" alt="product 4">
+                    <div class="badge-left">choices</div>
+          <div class="badge-right">-48%</div>
+          <div class="sale-strip"><div style="font-weight:600">Hauliday Szn</div><div>Save $7.70</div></div>
+        </div>
+        <div class="meta">
+          <div class="title">Women's Loose Casual R...</div>
+          <div class="rating"><span class="stars">★ ★ ★ ★ ☆</span><span style="color:#444;font-size:12px">(400+)</span></div>
+          <div class="price-row">
+            <div>
+              <div class="price">$8.39</div>
+              <div class="sold">400+ sold</div>
+            </div>
+            <button class="cart-btn" title="Add to cart">🛒</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="img-wrap">
+          <img src="/mnt/data/Capture121212.JPG" class="main-img" alt="product 5">
+                    <div class="badge-left">choices</div>
+          <div class="badge-right">-32%</div>
+          <div class="sale-strip"><div style="font-weight:600">Sale</div><div>Save $3.20</div></div>
+        </div>
+        <div class="meta">
+          <div class="title">SHEIN LUNE Women's Casual ...</div>
+          <div class="rating"><span class="stars">★ ★ ★ ☆ ☆</span><span style="color:#444;font-size:12px">(100+)</span></div>
+          <div class="price-row">
+            <div>
+              <div class="price">$7.64</div>
+              <div class="sold">600+ sold</div>
+            </div>
+            <button class="cart-btn" title="Add to cart">🛒</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
     <!-- cart-section end -->
 
 
@@ -867,6 +1089,21 @@
   document.getElementById('checkoutBtn').addEventListener('click', function(){
     alert('Proceeding to checkout...');
   });
+   // Simple behaviour: clicking cart shows a tiny animation/alert — remove if you don't want JS.
+    document.querySelectorAll('.cart-btn').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        e.preventDefault();
+        btn.textContent='✓';
+        setTimeout(()=>btn.textContent='🛒',900);
+      });
+    });
+
+    // Optional: allow left/right arrow keys to scroll the card row horizontally
+    const cards = document.getElementById('cards');
+    window.addEventListener('keydown', e => {
+      if(e.key === 'ArrowLeft') cards.scrollBy({left:-220,behavior:'smooth'});
+      if(e.key === 'ArrowRight') cards.scrollBy({left:220,behavior:'smooth'});
+    });
     </script>
 </body>
 
