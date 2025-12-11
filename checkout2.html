@@ -57,11 +57,26 @@
 
   .shipping-method{margin-top:14px;border:1px solid #ddd;padding:14px;background:#fafafa;}
   .shipping-method-title{font-weight:700;font-size:16px;}
-  .pay-option{border:1px solid var(--border);padding:14px;margin-top:12px;display:flex;align-items:center;gap:12px;cursor:pointer;}
-  .pay-option input{width:18px;height:18px;cursor:pointer}
+
+  /* PAYMENT METHOD */
+  .pay-option{
+    padding:14px;
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    border: none !important;
+    background:#fff;
+  }
+  .pay-option input{width:18px;height:18px;cursor:pointer;}
+  .pay-option.selected{
+    border: 2px solid #000 !important;
+    border-radius:6px;
+    background:#fff;
+  }
   .pay-label{font-size:15px;font-weight:600}
   .pay-logos img{height:22px;margin-right:4px}
-  .selected{border-color:#000}
 
   .summary{border:1px solid var(--border);padding:16px;margin-bottom:18px}
   .summary h3{margin:0 0 12px;font-size:20px;font-weight:700}
@@ -83,10 +98,61 @@
   .club-price{font-size:20px;font-weight:700;color:#ff4b00}
   .club-old{text-decoration:line-through;color:#666}
   .special-offer{margin-left:auto;padding:6px 10px;background:black;color:white;font-size:13px;border-radius:5px;border:none;cursor:pointer;}
-/* Add spacing between SHEIN CLUB and Coupon/Gift Card box */
-.right .section:last-child {
-    margin-top: 18px; /* Adjust value as needed */
+.right-panel {
+    width: 360px;
+    padding: 10px 20px;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
 }
+
+.info-block {
+    margin-bottom: 22px;
+}
+
+/* GREEN TITLES — EXACT SIZE FROM YOUR SCREENSHOT */
+.info-block h3 {
+    font-size: 16px;                 /* fixed */
+    color: #2f8f48;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 0 8px 0;
+    font-weight: 600;                /* slight bold like screenshot */
+}
+
+.info-block h3 img {
+    width: 20px;                     /* fixed according to screenshot */
+    height: 20px;
+}
+
+/* PARAGRAPHS — EXACT SAME SIZE AS YOUR SCREENSHOT */
+.info-block p {
+    font-size: 13px;                 /* fixed */
+    line-height: 1.45;
+    color: #444;
+    margin: 0 0 6px 0;
+}
+
+/* LEARN MORE */
+.learn-more {
+    color: #2f8f48;
+    font-size: 13px;                 /* fixed */
+    margin-top: 4px;
+    display: inline-block;
+}
+
+/* CARD ICON STRIP */
+.pay-logos {
+    width: 210px;                    /* fixed */
+    margin-top: 10px;
+}
+
+/* PRIVACY BADGE */
+.privacy-badge {
+    width: 110px;                    /* fixed */
+    margin-top: 10px;
+}
+
 
 </style>
 </head>
@@ -97,7 +163,7 @@
   <div style="color:var(--green);font-weight:700">🔒 Secure Checkout</div>
 </div>
 
-<div class="breadcrumb">Cart &gt; Place Order &gt; Pay &gt; Order Complete</div>
+<div class="breadcrumb">Cart > Place Order > Pay > Order Complete</div>
 
 <div class="wrap">
 
@@ -126,7 +192,7 @@
         <div class="prod-left">
           <div class="prod-image">
             <div class="discount-tag">-34%</div>
-            <img src="images/4.webp" alt="Product" class="real-img">
+            <img src="images/4.webp" class="real-img">
           </div>
           <div class="price-under">
             <div class="new" id="prodPrice">$27.70</div>
@@ -161,44 +227,53 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="22">
         <span class="pay-label">PayPal</span>
       </label>
+
       <label class="pay-option selected">
         <input type="radio" name="pay" checked />
         <span class="pay-label">Credit/Debit Card</span>
         <div class="pay-logos">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg">
+          <img src="images/Visa.png">
           <img src="images/mastercard.png">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/American_Express_logo.svg">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Discover_Card_logo.svg">
+          <img src="images/credit3.png">
+          <img src="images/american express.png">
+          <img src="images/discover.png">
+          <img src="images/credit6.png">
         </div>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" height="22">
         <span class="pay-label">Apple Pay</span>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Venmo_Logo.png" height="22">
+        <img src="images/venmo.png" height="22">
         <span class="pay-label">Venmo</span>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Cash_App_Logo.svg" height="22">
+        <img src="images/cashpay.png" height="22">
         <span class="pay-label">Cash App Pay</span>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg" height="22">
+        <img src="images/gpay.png" height="22">
         <span class="pay-label">Google Pay</span>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Klarna_Logo_black.svg" height="22">
+        <img src="images/klarna.png" height="22">
         <span class="pay-label">Klarna</span>
       </label>
+
       <label class="pay-option">
         <input type="radio" name="pay">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Afterpay_logo.svg" height="22">
+        <img src="images/afterpay.png" height="22">
         <span class="pay-label">Afterpay</span>
       </label>
     </div>
@@ -207,7 +282,7 @@
   <!-- RIGHT SIDE -->
   <div class="right">
 
-    <!-- ORDER SUMMARY (TOP) -->
+    <!-- ORDER SUMMARY -->
     <div class="summary">
       <h3>Order Summary</h3>
       <div class="row">
@@ -220,7 +295,7 @@
       <div class="order-total">Order Total: <span id="total">$29.99</span></div>
     </div>
 
-    <!-- SHEIN CLUB BOX (SECOND) -->
+    <!-- SHEIN CLUB -->
     <div class="club-box">
       <div class="club-top">
         <span>🟧 SHEIN CLUB</span>
@@ -246,7 +321,7 @@
       </div>
     </div>
 
-    <!-- COUPON/GIFT CARD + PLACE ORDER (BOTTOM) -->
+    <!-- COUPON + GIFT CARD -->
     <div class="section">
       <h3>Coupon Code</h3>
       <div class="input-box">
@@ -261,9 +336,53 @@
       <button class="place-order">PLACE ORDER</button>
     </div>
 
-  </div>
+    <!-- SECURITY BOX (BOTTOM) -->
+<div class="right-panel">
+
+    <div class="info-block">
+        <h3><img src="https://img.icons8.com/color/30/000000/lock.png"> Payment Security</h3>
+        <p>
+            SHEIN is committed to protecting your payment information and only shares your
+            credit card information with our payment service providers who agreed to safeguard
+            your information.
+        </p>
+        <img class="pay-logos" src="https://i.imgur.com/eYH5F2g.png">
+    </div>
+
+    <div class="info-block">
+        <h3><img src="https://img.icons8.com/color/30/000000/privacy.png"> Security & Privacy</h3>
+        <p>
+            SHEIN’s payment processor partner stores your credit card details by using
+            industry-standard data encryption technology. SHEIN will not store your actual
+            credit card information.
+        </p>
+        <a class="learn-more" href="#">Learn more</a>
+        <br>
+        <img class="privacy-badge" src="https://i.imgur.com/r3BCmmp.png">
+    </div>
+
+    <div class="info-block">
+        <h3><img src="https://img.icons8.com/color/30/000000/shipped.png"> Secure Shipment Guarantee</h3>
+        <p>
+            Free exchanges or refunds for lost, returned, or destroyed packages.
+        </p>
+    </div>
+
+    <div class="info-block">
+        <h3><img src="https://img.icons8.com/color/30/000000/customer-support.png"> Customer Support</h3>
+        <p>
+            If you have any questions about your order, please contact our Customer Service
+            Platform on our website.
+        </p>
+    </div>
 
 </div>
+
+
+  </div>
+</div>
+
+
 
 <script>
 let qty = 1;
@@ -285,7 +404,14 @@ function render(){
 
 function increase(){ qty++; render(); }
 function decrease(){ if(qty>1){ qty--; render(); } }
-render();
+
+document.querySelectorAll('.pay-option').forEach(option => {
+  option.addEventListener('click', function() {
+    document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+    this.querySelector("input").checked = true;
+  });
+});
 </script>
 
 </body>
