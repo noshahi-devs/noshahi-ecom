@@ -194,7 +194,7 @@ body {
 /* Ribbon */
 .vc-ribbon {
   position: absolute;
-  bottom: 20px;
+  bottom: 8px;
   left: 43px;
   background: rgba(0, 0, 0, 0.41);
   color: #fff;
