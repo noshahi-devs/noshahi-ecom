@@ -18,6 +18,42 @@ prodCheck.addEventListener("change", function () {
     sheinCheck.checked = this.checked;
 });
 
+// timer Estimate -------------------
+
+function startTimer(container) {
+    let timeLeft = parseInt(container.dataset.time); // get initial time from data attribute
+
+    let timerBox = container.querySelector('.timerBox');
+    let estimatedBox = container.querySelector('.estimatedBox');
+    let vcPrice = container.querySelector('.vc-new-price');
+
+    function formatTime(sec) {
+        let hrs = String(Math.floor(sec / 3600)).padStart(2, '0');
+        let mins = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+        let secs = String(sec % 60).padStart(2, '0');
+        return `${hrs}:${mins}:${secs}`;
+    }
+
+    timerBox.textContent = formatTime(timeLeft);
+
+    let countdown = setInterval(() => {
+        timeLeft--;
+        timerBox.textContent = formatTime(timeLeft);
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            timerBox.textContent = "00:00:00";
+            estimatedBox.style.textDecoration = "line-through";
+            vcPrice.textContent = "$13.00";
+        }
+    }, 1000);
+}
+
+// Start all timers on page
+document.querySelectorAll('.timer-card').forEach(card => {
+    startTimer(card);
+});
+
 // del box
 document.getElementById("vcDeleteProd").addEventListener("click", () => {
     document.getElementById("vcProductBox").style.display = "none";
@@ -58,10 +94,8 @@ favBtn.onclick = () => {
     if (fav) {
         favIcon.classList.replace("fa-regular", "fa-solid");
         favIcon.classList.add("filled");
-        favText.textContent = "Favorited";
     } else {
         favIcon.classList.replace("fa-solid", "fa-regular");
         favIcon.classList.remove("filled");
-        favText.textContent = "Favorite";
     }
 };
