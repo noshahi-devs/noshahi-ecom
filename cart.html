@@ -13,6 +13,7 @@
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
+        /* CSS Reset and Global Styles */
         :root {
             --primary-pink: #d9487c;
             --light-pink: #fef0f4;
@@ -29,11 +30,6 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif; /* Using a common sans-serif font */
-        }
-
-        body {
-            background-color: #f5f5f5; /* Light grey background for the page */
-            padding: 20px;
         }
 
         .container {
@@ -147,16 +143,11 @@
         }
 
         /* --- Main Content Layout --- */
-        .main-content {
-            padding: 20px;
-            display: flex;
-            flex-wrap: wrap; /* Allows sections to stack on mobile */
-            gap: 20px;
-        }
+        
 
         .section {
             flex: 1 1 48%; /* Flex-grow, flex-shrink, basis. Allows two columns on desktop */
-            min-width: 280px; /* Minimum width for stacking on smaller screens */
+            min-width: 200px; /* Minimum width for stacking on smaller screens */
             border-radius: 5px;
             padding: 20px;
             border: 1px solid var(--border-color);
@@ -166,7 +157,17 @@
         /* SHEIN CLUB Section Styling */
         .shein-club-section {
             border: 1px solid var(--primary-pink); /* Subtle border change */
+            width: 50px;
         }
+        .shein-saver-section {
+            width: 100%;
+        }
+        .main-content {
+    display: flex;
+    gap: 5px;              /* sections کے درمیان space */
+    padding: 0 15px 20px;
+    box-sizing: border-box;
+}
 
         .shein-club-header {
             display: flex;
@@ -308,6 +309,7 @@
             color: var(--primary-pink);
             margin-bottom: 3px;
         }
+        
 
         .renew-button {
             display: block;
@@ -352,6 +354,137 @@
         }
 
 
+        :root {
+            --text-main: #222222;
+            --text-secondary: #757575;
+            --bg-color: #ffffff;
+            --empty-bg: #fcfcfc;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            font-family: var(--font-family);
+            display: flex;
+            justify-content: center;
+        } */
+
+        /* Main Wrapper */
+        .orders-card {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--bg-color);
+            padding: 15px 0;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Header Section */
+        .orders-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .orders-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .view-all-link {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .view-all-link::after {
+            content: '>';
+            margin-left: 5px;
+            font-size: 11px;
+        }
+
+        /* Icon Navigation */
+        .status-navigation {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .status-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .status-button svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: #333;
+            stroke-width: 1.5;
+        }
+
+        .status-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Empty State Section */
+        .empty-orders-view {
+            background-color: var(--empty-bg);
+            padding: 50px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .illustration-container {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .illustration-container::before {
+            content: '✧  .  *';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        .status-message {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .status-label {
+                font-size: 12px;
+            }
+            .orders-header h2 {
+                font-size: 16px;
+            }
+        }
 
 
 
@@ -1389,12 +1522,6 @@
             font-size: 11px;
         }
 
-        /* --- Main Content Styling --- */
-        .main-content {
-            flex-grow: 1;
-            
-            width: 100%;
-        }
     </style>
 </head>
 
@@ -1654,13 +1781,11 @@
                     <a href="#" class="sign-out-link"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                 </div>
             </div>
-            <!-- <div class="main-content">
-
-                <h1>Noshahi Developer Inc</h1>
+            <div class="main-content">
+                <!-- <h1>Noshahi Developer Inc</h1>
                 <p>Now, Work in this div</p>
-                <marquee><h3>&copy;Noshahi Developers, Inc</h3></marquee>
-            </div> -->
-             <div class="container">
+                <marquee><h3>&copy;Noshahi Developers, Inc</h3></marquee> -->
+                    <div class="container">
         <header class="header">
             <div class="user-info">
                 Hi,asadjaved2400982
@@ -1745,8 +1870,49 @@
                 </a>
             </section>
         </main>
+        <article class="orders-card">
+        <header class="orders-header">
+            <h2>My Orders</h2>
+            <a href="#" class="view-all-link">View All</a>
+        </header>
+
+        <nav class="status-navigation">
+            <button class="status-button" aria-label="Unpaid orders">
+                <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span class="status-label">Unpaid</span>
+            </button>
+            <button class="status-button" aria-label="Processing orders">
+                <svg viewBox="0 0 24 24"><path d="M21 8V21H3V8M1 3H23V8H1V3ZM10 12H14"/></svg>
+                <span class="status-label">Processing</span>
+            </button>
+            <button class="status-button" aria-label="Shipped orders">
+                <svg viewBox="0 0 24 24"><path d="M5 18H15M2 8H17L22 13V18H17M14 18V21M7 18V21"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                <span class="status-label">Shipped</span>
+            </button>
+            <button class="status-button" aria-label="Orders to review">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+                <span class="status-label">Review</span>
+            </button>
+            <button class="status-button" aria-label="Returned orders">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 12l-3-3-3 3M12 9v6"/></svg>
+                <span class="status-label">Returns</span>
+            </button>
+        </nav>
+
+        <section class="empty-orders-view">
+            <figure class="illustration-container">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1">
+                    <path d="M32 45v10M28 55h8M32 12c-4 0-6 3-6 7s3 8 3 8l-3 18h12l-3-18s3-4 3-8-2-7-6-7z" />
+                </svg>
+            </figure>
+            <p class="status-message">It is empty here :-(</p>
+        </section>
+    </article>
     </div>
+    
+            </div>
         </div>
+
     </div>
     <!-- footer -->
     <footer class="footer">
@@ -2452,16 +2618,24 @@
                 });
             });
         });
-
-        // JS is not strictly required for this static layout, but this is where 
-        // you would add functionality like:
-        // 1. Handling button clicks (e.g., Join, Renew).
-        // 2. Toggling the visibility of the "star" icon content (Coupons, Points, Wallet) 
-        //    if the eye icon was meant to hide/show balances.
-
         document.addEventListener('DOMContentLoaded', () => {
             console.log('SHEIN Profile Clone Loaded.');
             // Add your interactive JavaScript code here.
+        });
+
+        document.querySelectorAll('.status-button').forEach(item => {
+            item.addEventListener('click', () => {
+                const status = item.querySelector('.status-label').innerText;
+                console.log(`Navigating to: ${status}`);
+                
+                item.style.opacity = '0.5';
+                setTimeout(() => item.style.opacity = '1', 150);
+            });
+        });
+
+        document.querySelector('.view-all-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Redirecting to all orders...');
         });
     </script>
     <!-- Fixed Js -->
