@@ -30,15 +30,57 @@
       color: #222;
     }
 
-.top-bar {
-  max-width: 1200px;               /* 👈 CONTENT LIMIT */
-  margin: 0 auto;
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
+.top-bar-container {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
 }
+
+/* SAME WIDTH AS .wrap */
+.top-bar-inner {
+  max-width: 1180px;
+  /* margin: 0 auto; */
+  padding: 14px 18px;   /* same as .wrap */
+  display: flex;
+  align-items: center;
+ justify-content: space-between;
+}
+
+/* LEFT SIDE */
+.top-left {
+  display: flex;
+  margin-left: 150px;
+  font-size: large;
+  align-items: center;
+}
+
+.secure-checkout {
+  display: flex;            /* 👈 KEY FIX */
+  align-items: center; 
+  margin-left: 1150px;     /* 👈 icon + text same line */
+  gap: 6px;                 /* icon aur text ka gap */
+  font-size: 14px;          /* image jesa size */
+  font-weight: 700;
+  color: #2ea96e;
+  white-space: nowrap;      /* 👈 LINE BREAK BAND */
+  line-height: 1;           /* 👈 vertical spacing fix */
+}
+
+
+/* LOGO */
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* SECURE CHECKOUT */
+.secure-checkout {
+  font-weight: 700;
+  color: #2ea96e;
+}
+
+
 
 
     .brand {
@@ -56,7 +98,7 @@
 
     .breadcrumb {
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--muted);
       background: #F4F4F4;
       padding: 12px 0;
@@ -708,20 +750,20 @@
       margin: 0 auto;
     }
     
-.top-bar-container {
+/* .top-bar-container {
   width: 100%;
   background: #fff;                 /* 👈 FULL WHITE STRIP */
   border-bottom: 1px solid #e9e9e9;
-}
+} */
 
     
     /* Main page left & right spacing */
-    .wrap {
+    /* .wrap {
       max-width: 1200px;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
-    }
+    } */
 
     /* Mobile responsive spacing */
     @media (max-width: 768px) {
@@ -736,12 +778,18 @@
 
 <body>
   <!-- Top Bar -->
-  <div class="top-bar-container">
-    <div class="top-bar">
+<div class="top-bar-container">
+  <div class="top-bar-inner">
+    <div class="top-left">
       <div class="brand">SHEIN</div>
+    </div>
+
+    <div class="top-right">
       <div class="secure-checkout">🔒 Secure Checkout</div>
     </div>
   </div>
+</div>
+
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">Cart > Place Order > Pay > Order Complete</div>
