@@ -5,794 +5,34 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SHEIN Checkout — Clone (Updated)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/checkout2.css">
 
-  <style>
-    /* CSS Styles */
-    :root {
-      --muted: #777;
-      --orange: #ff7a00;
-      --green: #2ea96e;
-      --border: #e6e6e6;
-      --accent1: #1C88E5;
-      --accent2: #E6483D;
-      --accent3: #FDB52A;
-      --font-sans: Arial, Helvetica, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box
-    }
-
-    body {
-      font-family: var(--font-sans);
-      margin: 0;
-      background: #f4f4f4;
-      color: #222;
-    }
-
-.top-bar-container {
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-/* SAME WIDTH AS .wrap */
-.top-bar-inner {
-  max-width: 1180px;
-  /* margin: 0 auto; */
-  padding: 14px 18px;   /* same as .wrap */
-  display: flex;
-  align-items: center;
- justify-content: space-between;
-}
-
-/* LEFT SIDE */
-.top-left {
-  display: flex;
-  margin-left: 150px;
-  font-size: large;
-  align-items: center;
-}
-
-.secure-checkout {
-  display: flex;            /* 👈 KEY FIX */
-  align-items: center; 
-  margin-left: 1150px;     /* 👈 icon + text same line */
-  gap: 6px;                 /* icon aur text ka gap */
-  font-size: 14px;          /* image jesa size */
-  font-weight: 700;
-  color: #2ea96e;
-  white-space: nowrap;      /* 👈 LINE BREAK BAND */
-  line-height: 1;           /* 👈 vertical spacing fix */
-}
-
-
-/* LOGO */
-.brand {
-  font-size: 22px;
-  font-weight: 700;
-  color: #222;
-}
-
-/* SECURE CHECKOUT */
-.secure-checkout {
-  font-weight: 700;
-  color: #2ea96e;
-}
-
-
-
-
-    .brand {
-      font-weight: 700;
-      font-size: 20px;
-      color: #222;
-      margin-left: 0;
-    }
-
-    .secure-checkout {
-      color: var(--green);
-      font-weight: 700;
-      margin-right: 0;
-    }
-
-    .breadcrumb {
-      text-align: center;
-      font-size: 18px;
-      color: var(--muted);
-      background: #F4F4F4;
-      padding: 12px 0;
-      border-bottom: 1px solid #f1f1f1
-    }
-
-    .wrap {
-      max-width: 1180px;
-      margin: 18px auto;
-      padding: 0 18px;
-      display: flex;
-      gap: 24px
-    }
-
-    .left {
-      flex: 0 0 68%
-    }
-
-    .right {
-      flex: 0 0 32%
-    }
-
-    .section {
-      background: #fff;
-      border: 1px solid var(--border);
-      padding: 18px;
-      margin-bottom: 18px
-    }
-
-    h2.section-title {
-      margin: 0 0 6px;
-      font-size: 20px;
-      font-weight: 700
-    }
-
-    .shipping-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center
-    }
-
-    .change-btn {
-      border: 1px solid #d6d6d6;
-      padding: 6px 12px;
-      background: #fff;
-      cursor: pointer;
-      font-size: 13px
-    }
-
-    .address-box {
-      display: flex;
-      border: 1px solid var(--border);
-      margin-top: 12px;
-      padding: 14px;
-      align-items: flex-start;
-      gap: 14px;
-      position: relative
-    }
-
-    .stripe {
-      width: 5px;
-      background: linear-gradient(180deg, var(--accent1), var(--accent2), var(--accent3));
-      border-radius: 3px
-    }
-
-    .addr-text {
-      font-size: 13px;
-      line-height: 1.45
-    }
-
-    .addr-name {
-      font-weight: 700
-    }
-
-    .addr-phone {
-      color: var(--muted)
-    }
-
-    .edit-address {
-      margin-left: auto;
-      border: 1px solid #222;
-      background: #fff;
-      padding: 6px 10px;
-      font-size: 13px;
-      cursor: pointer
-    }
-
-    .product-header {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 12px
-    }
-
-    .product-row {
-      display: flex;
-      gap: 18px;
-      padding: 16px;
-      border: 1px solid #eee;
-      background: #fafafa;
-    }
-
-    .prod-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 150px;
-    }
-
-    .prod-image {
-      width: 140px;
-      height: 150px;
-      background: #eee;
-      border: 1px solid #ccc;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .real-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .discount-tag {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: var(--orange);
-      color: #fff;
-      padding: 4px 7px;
-      font-size: 12px;
-      border-radius: 2px;
-      font-weight: 700;
-    }
-
-    .price-under {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .price-under .new {
-      color: var(--orange);
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .price-under .old {
-      text-decoration: line-through;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .qty-box {
-      margin-top: 12px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .qty {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      background: #fff;
-      border-radius: 4px;
-      padding: 4px 6px;
-      gap: 6px;
-    }
-
-    .qty-btn {
-      width: 26px;
-      height: 26px;
-      border: 1px solid #bbb;
-      background: #fff;
-      font-weight: 700;
-      border-radius: 3px;
-      cursor: pointer
-    }
-
-    .count {
-      text-align: center;
-      min-width: 20px;
-      font-weight: 600
-    }
-
-    .shipping-method {
-      margin-top: 14px;
-      border: 1px solid #ddd;
-      padding: 14px;
-      background: #fafafa;
-    }
-
-    .shipping-method-title {
-      font-weight: 700;
-      font-size: 16px;
-    }
-
-    .delivery-estimate {
-      color: var(--muted);
-      margin-top: 6px
-    }
-
-    .shipping-cost {
-      font-weight: 700;
-      margin-top: 4px;
-      color: var(--green)
-    }
-
-    .pay-option {
-      padding: 14px;
-      margin-top: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      border: 1px solid #ddd;
-      background: #fff;
-      width: 100%;
-      text-align: left;
-      border-radius: 4px;
-    }
-
-    .pay-option input {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    .pay-option.selected {
-      border: 2px solid #000 !important;
-      border-radius: 6px;
-      background: #fff;
-    }
-
-    .pay-label {
-      font-size: 15px;
-      font-weight: 600
-    }
-
-    .pay-logos img {
-      height: 22px;
-      margin-right: 4px
-    }
-
-    .summary {
-      border: 1px solid var(--border);
-      padding: 16px;
-      margin-bottom: 18px;
-      background: #fff;
-    }
-
-    .summary h3 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      font-weight: 700
-    }
-
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      font-size: 14px
-    }
-
-    .free-text {
-      color: var(--muted)
-    }
-
-    .promo-text {
-      color: #d33
-    }
-
-    .order-total {
-      font-size: 21px;
-      font-weight: 800;
-      color: var(--orange);
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid #eee;
-    }
-
-    .input-box {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .input-box input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .apply-btn {
-      padding: 10px 18px;
-      background: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    .place-order {
-      width: 100%;
-      padding: 16px;
-      background: #000;
-      color: #fff;
-      border: none;
-      font-size: 18px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 14px;
-    }
-
-    .club-box {
-      margin-top: 18px;
-      padding: 16px;
-      background: #fff7f3;
-      border: 1px solid #f5d4c8;
-      border-radius: 8px;
-    }
-
-    .club-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .benefits-text {
-      color: #c58f73;
-      font-size: 12px
-    }
-
-    .save-text {
-      margin-top: 8px;
-      font-size: 14px;
-    }
-
-    .club-mid {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .limited {
-      background: #ff4778;
-      color: #fff;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-size: 11px;
-      display: inline-block;
-      margin-bottom: 4px;
-    }
-
-    .markdown {
-      background: #f9e1d8;
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin-top: 12px;
-      font-size: 13px;
-    }
-
-    .club-bottom {
-      display: flex;
-      align-items: center;
-      margin-top: 12px;
-      gap: 10px;
-    }
-
-    .club-price {
-      font-size: 20px;
-      font-weight: 700;
-      color: #ff4b00
-    }
-
-    .club-old {
-      text-decoration: line-through;
-      color: #666
-    }
-
-    .special-offer {
-      margin-left: auto;
-      padding: 6px 10px;
-      background: black;
-      color: white;
-      font-size: 13px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .right-panel {
-      width: 100%;
-      padding: 10px 0;
-      background: #ffffff;
-      font-family: Arial, sans-serif;
-    }
-
-    .info-block {
-      margin-bottom: 22px;
-    }
-
-    .info-block h3 {
-      font-size: 16px;
-      color: #2f8f48;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin: 0 0 8px 0;
-      font-weight: 600;
-    }
-
-    .info-block h3 img {
-      width: 20px;
-      height: 20px;
-    }
-
-    .info-block p {
-      font-size: 13px;
-      line-height: 1.45;
-      color: #444;
-      margin: 0 0 6px 0;
-    }
-
-    .learn-more {
-      color: #2f8f48;
-      font-size: 13px;
-      margin-top: 4px;
-      display: inline-block;
-    }
-
-    .pay-logos {
-      width: 210px;
-      margin-top: 10px;
-    }
-
-    .privacy-badge {
-      width: 110px;
-      margin-top: 10px;
-    }
-
-    /* Modal Styles */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(3px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .modal-box {
-      width: 600px;
-      max-width: 95%;
-      background: #fff;
-      border-radius: 6px;
-      padding: 30px 35px;
-      position: relative;
-      animation: fadeIn 0.25s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .close-modal {
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .modal-title {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 25px;
-    }
-
-    .add-new {
-      color: #1c88e5;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
-
-    .address-card {
-      display: flex;
-      gap: 14px;
-      border: 1px solid #ddd;
-      padding: 14px;
-      border-radius: 6px;
-      margin-top: 10px;
-      position: relative;
-    }
-
-    .addr-info {
-      font-size: 14px;
-      line-height: 1.45;
-    }
-
-    .addr-info .name {
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .addr-info .phone {
-      color: #666;
-      margin-left: 3px;
-    }
-
-    .edit-link {
-      position: absolute;
-      right: 12px;
-      bottom: 12px;
-      font-size: 13px;
-      color: #1c88e5;
-      cursor: pointer;
-    }
-
-    /* Edit Address Modal */
-    .edit-modal {
-      display: none;
-      position: fixed;
-      z-index: 10000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.55);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .edit-modal-content {
-      background: #fff;
-      width: 90%;
-      max-width: 420px;
-      padding: 20px;
-      border-radius: 10px;
-      animation: fadeIn .3s;
-      font-family: Arial;
-    }
-
-    .edit-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-
-    .edit-modal-header h2 {
-      font-size: 20px;
-      margin: 0;
-    }
-
-    .edit-close {
-      font-size: 26px;
-      cursor: pointer;
-      color: #666;
-    }
-
-    .edit-modal label {
-      font-size: 14px;
-      font-weight: 600;
-      margin-top: 10px;
-      display: block;
-    }
-
-    .edit-modal input,
-    .edit-modal select {
-      width: 100%;
-      margin-top: 5px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-    }
-
-    .form-row {
-      display: flex;
-      gap: 10px;
-    }
-
-    .form-col {
-      flex: 1;
-    }
-
-    .radio-group {
-      margin-top: 6px;
-      display: flex;
-      gap: 15px;
-    }
-
-    .save-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 12px;
-      background: #000;
-      color: #fff;
-      border: 0;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .save-btn:hover {
-      background: #333;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    
-    /* NEW: Layout fixes to match image exactly */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-/* .top-bar-container {
-  width: 100%;
-  background: #fff;                 /* 👈 FULL WHITE STRIP */
-  border-bottom: 1px solid #e9e9e9;
-} */
-
-    
-    /* Main page left & right spacing */
-    /* .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    } */
-
-    /* Mobile responsive spacing */
-    @media (max-width: 768px) {
-      .wrap {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-  </style>
 
 </head>
 
 <body>
   <!-- Top Bar -->
-<div class="top-bar-container">
-  <div class="top-bar-inner">
-    <div class="top-left">
-      <div class="brand">SHEIN</div>
+
+  <div class="top-header">
+    <div class="header-left">
+      <span class="logo">SHEIN</span>
+
+      <!-- <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          Ship to Twnhs, 2841 E Waltann Ln Unit 1
+        </div> -->
     </div>
 
-    <div class="top-right">
-      <div class="secure-checkout">🔒 Secure Checkout</div>
+    <div class="secure-checkout">
+      <i class="fas fa-lock"></i>
+      Secure Checkout
     </div>
   </div>
-</div>
 
 
   <!-- Breadcrumb -->
-  <div class="breadcrumb">Cart > Place Order > Pay > Order Complete</div>
+  <div class="breadcrumb">Cart > <span>Place Order</span> > Pay > Order Complete</div>
 
   <!-- Main Content -->
   <div class="wrap">
@@ -811,7 +51,7 @@
             <div style="margin-top:6px">Tsa Laiw</div>
             <div style="margin-top:4px">Bridgeport WEST VIRGINIA United States 26335-1418</div>
           </div>
-          <button class="edit-address" id="editAddressBtn">Edit</button>
+          <button class="edit-address" id="editAddressBtn">Edit Address</button>
         </div>
       </div>
 
@@ -822,7 +62,8 @@
           <div class="prod-left">
             <div class="prod-image">
               <div class="discount-tag">-34%</div>
-              <div style="width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;">
+              <div
+                style="width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;">
                 <img src="images/1.webp" alt="">
               </div>
             </div>
@@ -839,11 +80,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Shipping Method -->
-      <div class="section">
-        <h2 class="section-title">Shipping Method</h2>
         <div class="shipping-method">
           <div class="shipping-method-title">STANDARD SHIPPING</div>
           <div class="delivery-estimate">Estimated Delivery: Dec 29 - Jan 7 (within 10 business days)</div>
@@ -851,61 +87,91 @@
         </div>
       </div>
 
+      <!-- Shipping Method -->
+      <!-- <div class="section">
+        <h2 class="section-title">Shipping Method</h2>
+
+      </div> -->
+
       <!-- Payment Method -->
       <div class="section">
         <h2 class="section-title">Payment Method</h2>
         <label class="pay-option">
           <input type="radio" name="pay" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="22" alt="PayPal">
+          <img src="images/paypal.png" height="22" alt="PayPal">
           <span class="pay-label">PayPal</span>
         </label>
 
         <label class="pay-option selected">
           <input type="radio" name="pay" checked />
+          <img src="images/My Wallet.webp" height="22" alt="PayPal">
           <span class="pay-label">Credit/Debit Card</span>
           <div class="pay-logos">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" height="22" alt="Visa">
+            <img src="images/Visa.png" height="22" alt="Visa">
+            <img src="images/mastercard.png" height="22" alt="Visa">
+            <img src="images/credit3.png" height="22" alt="Visa">
+            <img src="images/american express.png" height="22" alt="Visa">
           </div>
         </label>
 
         <label class="pay-option">
           <input type="radio" name="pay">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" height="22" alt="Apple">
+          <img src="images/Applepay.png" height="22" alt="Apple">
           <span class="pay-label">Apple Pay</span>
+          <img src="images/Visa.png" height="22" alt="Visa">
+            <img src="images/mastercard.png" height="22" alt="Visa">
+            <img src="images/credit3.png" height="22" alt="Visa">
+            <img src="images/american express.png" height="22" alt="Visa">
         </label>
         <label class="pay-option">
-  <input type="radio" name="pay">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_Pay_Logo.svg" height="22">
-  <span class="pay-label">Google Pay</span>
-</label>
+          <input type="radio" name="pay">
+          <img src="images/venmo.png" height="18">
+          <span class="pay-label">Venomo</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/cashpay.png" height="18">
+          <span class="pay-label">Cash App Pay</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/google.png" height="22">
+          <span class="pay-label">Google Pay</span>
+        </label>
 
-<label class="pay-option">
-  <input type="radio" name="pay">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Klarna_logo_black.svg" height="18">
-  <span class="pay-label">Klarna (Pay in 4)</span>
-</label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/klarna.png" height="18">
+          <span class="pay-label">Klarna (Pay in 4)</span>
+        </label>
 
-<label class="pay-option">
-  <input type="radio" name="pay">
-  <span class="pay-label">Afterpay / Clearpay</span>
-</label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/afterpay.png" height="18">
+          <span class="pay-label">Afterpay</span>
+        </label>
 
-<label class="pay-option">
-  <input type="radio" name="pay">
-  <span class="pay-label">Cash on Delivery (COD)</span>
-</label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/affirm.png" height="18">
+          <span class="pay-label">Afirm</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/zip.png" height="18">
+          <span class="pay-label">zip</span>
+        </label>
 
       </div>
     </div>
 
     <!-- Right Column -->
     <div class="right">
-      <!-- Order Summary -->
       <div class="summary">
         <h3>Order Summary</h3>
         <div class="row">
           <div>Retail Price: <span id="count2">1</span> Items</div>
-          <div id="retail">$18.79</div>
+          <div id="retail">$10.47</div>
         </div>
         <div class="row">
           <div>Shipping Fee</div>
@@ -916,17 +182,26 @@
           <div class="free-text">FREE</div>
         </div>
         <div class="row">
-          <div>Promotions</div>
+          <div>Coupons</div>
           <div class="promo-text">- $8.32</div>
+        </div>
+        <div class="row">
+          <div>Promotions</div>
+          <div class="promo-text">- $5.5</div>
         </div>
         <div class="row">
           <div>Sales Tax</div>
           <div id="tax">$1.91</div>
         </div>
+        <div class="row">
+          <div >Order</div>
+          <div id="total"><span id="total">$15.47</span></div>
+        </div>
+        <!-- <div class="row"></div>
         <div class="order-total">Order Total: <span id="total">$15.47</span></div>
+        <div class="promo-text">- $5.5</div> -->
       </div>
 
-      <!-- SHEIN Club -->
       <div class="club-box">
         <div class="club-top">
           <span>🟧 SHEIN CLUB</span>
@@ -952,7 +227,6 @@
         </div>
       </div>
 
-      <!-- Coupon & Gift Card -->
       <div class="section">
         <h3>Coupon Code</h3>
         <div class="input-box">
@@ -970,7 +244,6 @@
         </div>
       </div>
 
-      <!-- Security Info -->
       <div class="right-panel">
         <div class="info-block">
           <h3><img src="https://img.icons8.com/color/30/000000/lock.png" alt="Lock"> Payment Security</h3>
