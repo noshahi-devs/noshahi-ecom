@@ -40,10 +40,13 @@
     <div class="left">
       <!-- Shipping Address -->
       <div class="section">
-        <div class="shipping-head">
-          <h2 class="section-title">Shipping Address</h2>
-          <button class="change-btn" id="openModalBtn">Change</button>
-        </div>
+      <div class="shipping-head">
+         <h2 class="section-title">Shipping Address</h2>
+  <button class="change-btn" id="openModalBtn">
+    Change <span class="arrow">›</span>
+         </button>
+      </div>
+
         <div class="address-box">
           <div class="stripe"></div>
           <div class="addr-text">
@@ -56,36 +59,53 @@
       </div>
 
       <!-- Product -->
-      <div class="section">
-        <div class="product-header">SHEIN(<span id="count">1</span>)</div>
-        <div class="product-row">
-          <div class="prod-left">
-            <div class="prod-image">
-              <div class="discount-tag">-34%</div>
-              <div
-                style="width: 100%; height: 100%; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;">
-                <img src="images/1.webp" alt="">
-              </div>
-            </div>
-            <div class="price-under">
-              <div class="new" id="prodPrice">$10.47</div>
-              <div class="old" id="prodOldPrice">$18.79</div>
-            </div>
-            <div class="qty-box">
-              <div class="qty">
-                <button class="qty-btn" id="decreaseBtn">-</button>
-                <div class="count" id="qty">1</div>
-                <button class="qty-btn" id="increaseBtn">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="shipping-method">
-          <div class="shipping-method-title">STANDARD SHIPPING</div>
-          <div class="delivery-estimate">Estimated Delivery: Dec 29 - Jan 7 (within 10 business days)</div>
-          <div class="shipping-cost">$3.89</div>
+<div class="section">
+
+  <!-- HEADER -->
+  <div class="product-header">
+    <span>SHEIN(<span id="count">1</span>)</span>
+    <button class="shein-toggle">›</button>
+  </div>
+
+  <!-- PRODUCT -->
+  <div class="product-row">
+    <div class="prod-left">
+
+      <!-- IMAGE -->
+      <div class="prod-image">
+        <div class="discount-tag">-34%</div>
+        <img src="images/1.webp" alt="" class="real-img">
+      </div>
+
+      <!-- PRICE (NEW + OLD INLINE) -->
+      <div class="price-under">
+        <span class="new" id="prodPrice">$10.47</span>
+        <span class="old" id="prodOldPrice">$18.79</span>
+      </div>
+
+      <!-- QTY -->
+      <div class="qty-box">
+        <div class="qty">
+          <button id="decreaseBtn">−</button>
+          <div class="count" id="qty">1</div>
+          <button id="increaseBtn">+</button>
         </div>
       </div>
+
+    </div>
+  </div>
+
+  <!-- SHIPPING -->
+  <div class="shipping-method">
+    <div class="shipping-method-title">STANDARD SHIPPING</div>
+    <div class="delivery-estimate">
+      Estimated Delivery: Dec 29 - Jan 7 (within 10 business days)
+    </div>
+    <div class="shipping-cost">$3.89</div>
+  </div>
+
+</div>
+
 
       <!-- Shipping Method -->
       <!-- <div class="section">
@@ -504,6 +524,18 @@
 
     // Initialize
     render();
+    document.querySelector('.plus').addEventListener('click', () => {
+  qty++;
+  render();
+});
+
+document.querySelector('.minus').addEventListener('click', () => {
+  if (qty > 1) {
+    qty--;
+    render();
+  }
+});
+
   </script>
 
 </body>
