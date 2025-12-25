@@ -359,6 +359,9 @@
 
 
     .pay-option {
+        display: flex;
+        flex-direction: ;
+        
         padding: 14px;
         margin-top: 12px;
         display: flex;
@@ -391,7 +394,7 @@
 
     .pay-logos img {
         height: 22px;
-        margin-right: 4px
+        margin-right: 4px;
     }
 
     .summary {
@@ -548,53 +551,63 @@
         cursor: pointer;
     }
 
-    .right-panel {
-        width: 100%;
-        padding: 10px 0;
-        background: #ffffff;
-        font-family: Arial, sans-serif;
-    }
+.right-panel {
+    width: 100%;
+    padding: 12px 0;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    .info-block {
-        margin-bottom: 22px;
-    }
+.info-block {
+    margin-bottom: 20px;
+}
 
-    .info-block h3 {
-        font-size: 16px;
-        color: #2f8f48;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin: 0 0 8px 0;
-        font-weight: 600;
-    }
+.info-block h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2ea96e;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
 
-    .info-block h3 img {
-        width: 20px;
-        height: 20px;
-    }
+.info-block h3 img {
+    width: 18px;
+    height: 18px;
+}
 
-    .info-block p {
-        font-size: 13px;
-        line-height: 1.45;
-        color: #444;
-        margin: 0 0 6px 0;
-    }
+.info-block p {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #555;
+    margin: 0;
+}
 
-    .learn-more {
-        color: #2f8f48;
-        font-size: 13px;
-        margin-top: 4px;
-        display: inline-block;
-    }
+.learn-more {
+    font-size: 12.5px;
+    color: #2ea96e;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 4px;
+}
 
-    .pay-logos {
-        width: 210px;
-        margin-top: 10px;
-    }
+.pay-logos {
+    width: 40px;
+    height: 40px;
+    margin-top: 8px;
+}
+
+.privacy-badge {
+    width: 100px;
+    margin-top: 8px;
+}
+
+
 
     .privacy-badge {
-        width: 110px;
+        width: 40px;
+        height: 40px;
         margin-top: 10px;
     }
 
