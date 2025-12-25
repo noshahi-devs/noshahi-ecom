@@ -13,505 +13,190 @@
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
-        /* CSS Reset and Global Styles */
-        :root {
-            --primary-pink: #d9487c;
-            --light-pink: #fef0f4;
-            --text-dark: #333;
-            --text-light: #555;
-            --border-color: #eee;
-            --accent-orange: #ff9900;
-            --shein-saver-purple: #8e44ad;
-            --section-bg-light: #fff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif; /* Using a common sans-serif font */
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--section-bg-light);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding-bottom: 20px;
-        }
-
-        /* --- Header Section --- */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        .user-info span {
-            /* Styling for the level/status badge */
-            margin-left: 10px;
-            background-color: #f7e07a;
-            color: var(--accent-orange);
-            font-size: 0.8em;
-            padding: 3px 8px;
-            border-radius: 50px;
-            font-weight: 900;
-        }
-
-        .profile-link {
-            font-size: 0.9em;
-            color: var(--text-light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            line-height: 1; /* Aligns text and arrow */
-        }
-
-        .profile-link::after {
-            /* Simple right arrow symbol */
-            content: ' >';
-            margin-left: 5px;
-            font-weight: bold;
-        }
-
-        /* --- Nav Icons Section --- */
-        .nav-icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    padding: 20px 10px;
-}
-
-/* Nav item */
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.9em;
-    flex: 1;
-    cursor: pointer;
-}
-
-/* ICON PLACEHOLDER */
-.icon-placeholder {
-    font-size: 18px;
-    margin-bottom: 6px;
-    height: 24px;
-    width: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* REAL ICON (hidden by default) */
-.icon-placeholder i {
-    display: none;
-    font-size: 18px;
-}
-
-/* STAR TEXT */
-.icon-placeholder span {
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-/* Gift card icon */
-.gift-card .icon-placeholder {
-    border: 2px solid #000;
-    width: 22px;
-    height: 16px;
-    position: relative;
-}
-
-.gift-card .icon-placeholder::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #000;
-    top: -3px;
-    right: -3px;
-}
-
-/* Eye icon */
-.eye-icon {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-        
-
-        
-
-        /* --- Main Content Layout --- */
-        
-
-        .section {
-            flex: 1 1 48%; /* Flex-grow, flex-shrink, basis. Allows two columns on desktop */
-            min-width: 200px; /* Minimum width for stacking on smaller screens */
-            border-radius: 5px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            background-color: var(--section-bg-light);
-        }
-
-        /* SHEIN CLUB Section Styling */
-        .shein-club-section {
-            border: 1px solid var(--primary-pink); /* Subtle border change */
-            width: 50px;
-        }
-        .shein-saver-section {
-            width: 100%;
-        }
-        .main-content {
-    display: flex;
-    gap: 5px;              /* sections کے درمیان space */
-    padding: 0 15px 20px;
-    box-sizing: border-box;
-}
-
-        .shein-club-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        .shein-club-icon {
-            /* Placeholder for the 'S' icon */
-            background-color: var(--primary-pink);
-            color: white;
-            padding: 5px 8px;
-            border-radius: 50%;
-            font-size: 1em;
-            margin-right: 8px;
-            font-weight: 900;
-        }
-
-        .shein-club-header span {
-            color: var(--primary-pink);
-            font-size: 1.2em;
-        }
-
-        .shein-club-benefits {
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            color: var(--text-light);
-        }
-
-        .club-offers {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .club-offer-item {
-            flex: 1;
-            padding: 15px 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            text-align: center;
-            font-size: 0.9em;
-            line-height: 1.4;
-            background-color: var(--light-pink);
-            cursor: pointer;
-        }
-        
-        /* Specific styling for coupon/percentage display */
-        .club-offer-item strong {
-            display: block;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-
-        .shipping-coupon strong {
-            color: var(--primary-pink);
-        }
-
-        .extra-off strong {
-            color: var(--primary-pink);
-        }
-
-        .join-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #fbe6ec; /* Lighter pink background */
-            color: var(--primary-pink);
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 0.95em;
-        }
-
-        /* SHEIN SAVER Section Styling */
-        .shein-saver-section {
-            background-color: var(--light-pink); /* Background matches the image */
-            border: none;
-        }
-
-        .shein-saver-header {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: var(--shein-saver-purple);
-            margin-bottom: 10px;
-        }
-
-        .shein-saver-header span {
-            color: var(--primary-pink);
-        }
-
-        .shein-saver-total {
-            font-size: 0.9em;
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        .saver-coupons {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Allows coupons to wrap on small screens */
-        }
-
-        .saver-coupon-item {
-            flex: 1;
-            min-width: 80px; /* Ensure some width on tiny screens */
-            padding: 15px 5px;
-            border: 1px dashed var(--primary-pink);
-            border-radius: 5px;
-            text-align: center;
-            font-size: 0.85em;
-            line-height: 1.3;
-            position: relative;
-            background-color: var(--section-bg-light); /* White background inside pink box */
-            cursor: pointer;
-        }
-        
-        /* The 'x' multiplier on some coupons */
-        .saver-coupon-item .multiplier {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 0.7em;
-            color: var(--primary-pink);
-            font-weight: bold;
-        }
-
-        .saver-coupon-item strong {
-            display: block;
-            font-size: 1.2em;
-            font-weight: 900;
-            color: var(--primary-pink);
-            margin-bottom: 3px;
-        }
-        
-
-        .renew-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-pink);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-size: 0.95em;
-            background: linear-gradient(to right, #e87b9f, var(--primary-pink)); /* Gradient look */
-        }
-
-        /* --- Media Queries for Responsiveness (Mobile First) --- */
-
-        /* Desktop/Tablet styles (for screens wider than ~600px) */
-        @media (min-width: 600px) {
-            .nav-icons {
-                /* On desktop, remove the bottom border to match the image context */
-                border-bottom: none;
-                padding: 30px 0;
-            }
-
-            .main-content {
-                flex-direction: row; /* Ensure side-by-side layout */
-                flex-wrap: nowrap; /* Prevent wrapping on large screens */
-                padding: 0 20px 20px; /* Adjust padding after the header/nav */
-            }
-
-            .section {
-                flex-basis: 50%; /* Explicitly set the basis for the two main columns */
-            }
-
-            .saver-coupons {
-                /* On desktop, make sure coupons align nicely */
-                flex-wrap: nowrap;
-            }
-        }
-
 
         :root {
-            --text-main: #222222;
-            --text-secondary: #757575;
-            --bg-color: #ffffff;
-            --empty-bg: #fcfcfc;
-            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --bg-gray: #F7F7F7;
+            --text-black: #222222;
+            --text-gray: #767676;
+            --pink-bg: #FFF0F3;
+            --gold-bg: #FBF3EB;
+            --border-gray: #EEEEEE;
         }
-
-        /* body {
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            font-family: var(--font-family);
-            display: flex;
-            justify-content: center;
-        } */
-
-        /* Main Wrapper */
-        .orders-card {
-            width: 100%;
-            max-width: 600px;
-            background-color: var(--bg-color);
-            padding: 15px 0;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        /* Header Section */
-        .orders-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            margin-bottom: 25px;
-        }
-
-        .orders-header h2 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .view-all-link {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .view-all-link::after {
-            content: '>';
-            margin-left: 5px;
-            font-size: 11px;
-        }
-
-        /* Icon Navigation */
-        .status-navigation {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
-
-        .status-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-
-        .status-button svg {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: #333;
-            stroke-width: 1.5;
-        }
-
-        .status-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        /* Empty State Section */
-        .empty-orders-view {
-            background-color: var(--empty-bg);
-            padding: 50px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .illustration-container {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        .illustration-container::before {
-            content: '✧  .  *';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            color: #ccc;
-            font-size: 12px;
-        }
-
-        .status-message {
-            color: #999;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 480px) {
-            .status-label {
-                font-size: 12px;
-            }
-            .orders-header h2 {
-                font-size: 16px;
-            }
-        }
-
-
-
 
 
         body {
+            
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #fff;
             color: #333;
+        }
+
+
+        .container {
+            width: 1000px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+
+        /* Left Column */
+        .header-section {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .username {
+            font-weight: 700;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .s0-badge {
+            background: #E0E0E0;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-item h3 { margin: 0; font-size: 16px; letter-spacing: 1px; }
+        .stat-item p { margin: 5px 0 0; font-size: 13px; color: var(--text-gray); }
+
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .card {
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid transparent;
+        }
+
+        .club-card { background-color: var(--gold-bg); border-color: #F3E5D8; }
+        .saver-card { background-color: var(--pink-bg); border-color: #FDE2E8; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .coupon-grid {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .coupon-box {
+            background: white;
+            padding: 10px 5px;
+            text-align: center;
+            flex: 1;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px dashed #DDD;
+        }
+
+        .coupon-box strong { display: block; font-size: 13px; }
+
+        .action-btn {
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .gold-btn { background: #F7E9DE; color: #8B5E3C; }
+        .pink-btn { background: #FFEAEE; color: #E12C5B; }
+
+        /* Orders Section */
+        .orders-section {
+            background: white;
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .order-icons {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .order-item i { font-size: 22px; margin-bottom: 10px; display: block; }
+        .order-item span { font-size: 12px; color: var(--text-black); }
+
+        /* Right Column */
+        .right-col { display: flex; flex-direction: column; gap: 15px; }
+
+        .side-box {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+        }
+
+        .cs-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .cs-grid i { font-size: 20px; margin-bottom: 8px; display: block; }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-gray);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .recent-img {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .recent-img img {
+            width: 80px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 2px;
         }
 
         /*=============== Header Open========== */
@@ -1191,10 +876,13 @@
         /* Responsive Design for max-width: 767px (Mobile Devices)*/
         @media (max-width: 767px) {
 
-
+            html,
             body {
                 overflow-x: hidden !important;
                 background: #F7F8FA;
+            }
+
+            body {
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: flex-start;
@@ -1535,6 +1223,12 @@
             font-size: 11px;
         }
 
+        /* --- Main Content Styling --- */
+        .main-content {
+            flex-grow: 1;
+            border: 3px solid red;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -1795,149 +1489,90 @@
                 </div>
             </div>
             <div class="main-content">
-                <!-- <h1>Noshahi Developer Inc</h1>
-                <p>Now, Work in this div</p>
-                <marquee><h3>&copy;Noshahi Developers, Inc</h3></marquee> -->
-                    <div class="container">
-        <header class="header">
+                <div class="container">
+    <div class="left-col">
+        <div class="header-section">
             <div class="user-info">
-                Hi,asadjaved2400982
-                <span>W 50</span>
+                <div class="username">
+                    Hi, asadjaved2400982 <span class="s0-badge"><i class="fa-solid fa-crown"></i> S0</span>
+                </div>
+                <div style="font-size: 13px; color: #767676;">My Profile <i class="fa-solid fa-chevron-right"></i></div>
             </div>
-            
-            <a href="#" class="profile-link">My Profile</a>
-        </header>
 
-        <nav class="nav-icons">
-    <div class="eye-icon" id="toggleEye">👁</div>
+            <div class="stats-bar">
+                <div class="stat-item"><h3>***</h3><p>Coupons</p></div>
+                <div class="stat-item"><h3>***</h3><p>Points</p></div>
+                <div class="stat-item"><h3>***</h3><p>Wallet</p></div>
+                <div class="stat-item"><i class="fa-regular fa-envelope-open" style="font-size: 18px;"></i><p>Gift Card</p></div>
+            </div>
 
-    <div class="nav-item">
-        <div class="icon-placeholder">
-            <span>***</span>
-            <i class="fa-solid fa-ticket"></i>
-        </div>
-        <span>Coupons</span>
-    </div>
-
-    <div class="nav-item">
-        <div class="icon-placeholder">
-            <span>***</span>
-            <i class="fa-solid fa-star"></i>
-        </div>
-        <span>Points</span>
-    </div>
-
-    <div class="nav-item">
-        <div class="icon-placeholder">
-            <span>***</span>
-            <i class="fa-solid fa-wallet"></i>
-        </div>
-        <span>Wallet</span>
-    </div>
-
-    <div class="nav-item gift-card">
-        <div class="icon-placeholder">
-            <span>***</span>
-        </div>
-        <span>Gift Card</span>
-    </div>
-</nav>
-
-
-        <main class="main-content">
-            
-            <section class="section shein-club-section">
-                <div class="shein-club-header">
-                    <span class="shein-club-icon">S</span> 
-                    <span>SHEIN CLUB</span>
-                </div>
-                
-                <p class="shein-club-benefits">Join to get **2+ benefits**</p>
-
-                <div class="club-offers">
-                    <div class="club-offer-item shipping-coupon">
-                        <strong>x1</strong>
-                        Shipping Coupon
+            <div class="benefit-cards">
+                <div class="card club-card">
+                    <div class="card-header">
+                        <span style="font-weight: 800; font-size: 14px; color: #8B5E3C;">S SHEIN CLUB</span>
                     </div>
-                    <div class="club-offer-item extra-off">
-                        <strong>%</strong>
-                        Extra 5% OFF
+                    <p style="font-size: 12px; margin: 5px 0;">Join to get 2+ benefits</p>
+                    <div class="coupon-grid">
+                        <div class="coupon-box"><strong>x1</strong>Shipping Coupon</div>
+                        <div class="coupon-box"><i class="fa-solid fa-percent"></i><br>Extra 5% OFF</div>
                     </div>
+                    <button class="action-btn gold-btn">Join for $0.10 (31-days)</button>
                 </div>
 
-                <a href="#" class="join-button">
-                    Join for **$0.10** (31-days)
-                </a>
-            </section>
-
-            <section class="section shein-saver-section">
-                <h3 class="shein-saver-header">SHEIN <span>Saver</span></h3>
-                <p class="shein-saver-total">Total 11 coupons</p>
-
-                <div class="saver-coupons">
-                    <div class="saver-coupon-item">
-                        <strong>30% OFF</strong>
-                        Orders $49.00+
+                <div class="card saver-card">
+                    <div class="card-header">
+                        <span style="font-weight: 800; font-size: 14px; color: #E12C5B;">SHEIN Saver</span>
                     </div>
-                    <div class="saver-coupon-item">
-                        <strong>$5.00 OFF</strong>
-                        Orders $10.00+
+                    <p style="font-size: 12px; margin: 5px 0;">Total 11 coupons</p>
+                    <div class="coupon-grid">
+                        <div class="coupon-box"><strong>30% OFF</strong>Orders $49.00+</div>
+                        <div class="coupon-box"><strong>$5.00 OFF</strong>Orders $10.00+</div>
+                        <div class="coupon-box"><strong>20% OFF<sup>x3</sup></strong>Orders $49.00+</div>
                     </div>
-                    <div class="saver-coupon-item">
-                        <span class="multiplier">x3</span>
-                        <strong>20% OFF</strong>
-                        Orders $49.00+
-                    </div>
+                    <button class="action-btn pink-btn">Renew now</button>
                 </div>
-
-                <a href="#" class="renew-button">
-                    Renew now
-                </a>
-            </section>
-        </main>
-        <article class="orders-card">
-        <header class="orders-header">
-            <h2>My Orders</h2>
-            <a href="#" class="view-all-link">View All</a>
-        </header>
-
-        <nav class="status-navigation">
-            <button class="status-button" aria-label="Unpaid orders">
-                <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                <span class="status-label">Unpaid</span>
-            </button>
-            <button class="status-button" aria-label="Processing orders">
-                <svg viewBox="0 0 24 24"><path d="M21 8V21H3V8M1 3H23V8H1V3ZM10 12H14"/></svg>
-                <span class="status-label">Processing</span>
-            </button>
-            <button class="status-button" aria-label="Shipped orders">
-                <svg viewBox="0 0 24 24"><path d="M5 18H15M2 8H17L22 13V18H17M14 18V21M7 18V21"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-                <span class="status-label">Shipped</span>
-            </button>
-            <button class="status-button" aria-label="Orders to review">
-                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
-                <span class="status-label">Review</span>
-            </button>
-            <button class="status-button" aria-label="Returned orders">
-                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 12l-3-3-3 3M12 9v6"/></svg>
-                <span class="status-label">Returns</span>
-            </button>
-        </nav>
-
-        <section class="empty-orders-view">
-            <figure class="illustration-container">
-                <svg viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1">
-                    <path d="M32 45v10M28 55h8M32 12c-4 0-6 3-6 7s3 8 3 8l-3 18h12l-3-18s3-4 3-8-2-7-6-7z" />
-                </svg>
-            </figure>
-            <p class="status-message">It is empty here :-(</p>
-        </section>
-    </article>
-    </div>
-    
             </div>
         </div>
 
+        <div class="orders-section">
+            <div class="section-title">
+                My Orders <span style="font-weight: normal; font-size: 12px; color: #767676; margin-top: 20px;">View All <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+            <div class="order-icons">
+                <div class="order-item"><i class="fa-regular fa-credit-card"></i><span>Unpaid</span></div>
+                <div class="order-item"><i class="fa-regular fa-calendar-check"></i><span>Processing</span></div>
+                <div class="order-item"><i class="fa-solid fa-truck-fast"></i><span>Shipped</span></div>
+                <div class="order-item"><i class="fa-regular fa-comment-dots"></i><span>Review</span></div>
+                <div class="order-item"><i class="fa-solid fa-arrow-right-to-bracket"></i><span>Returns</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="side-box">
+            <h4 style="margin-top: 0; margin-bottom: 20px;">Customer Service</h4>
+            <div class="cs-grid">
+                <div><i class="fa-regular fa-envelope"></i>My Message</div>
+                <div><i class="fa-regular fa-pen-to-square"></i>Service Records</div>
+            </div>
+        </div>
+
+        <div class="side-box">
+            <div class="list-item">Wishlist <span style="font-weight: normal; font-size: 12px; color: #767676;">0 item <i class="fa-solid fa-chevron-right"></i></span></div>
+            <div class="list-item">Following <span style="font-weight: normal; font-size: 12px; color: #767676;">0 item <i class="fa-solid fa-chevron-right"></i></span></div>
+            
+            <div style="margin-top: 20px;">
+                <div class="section-title">Recently Viewed <span style="font-weight: normal; font-size: 12px; color: #767676;">More <i class="fa-solid fa-chevron-right"></i></span></div>
+                <div class="recent-img">
+                    <img src="product1.webp" alt="Product">
+                    <img src="product2.webp" alt="Product">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
     </div>
     <!-- footer -->
     <footer class="footer">
@@ -2643,51 +2278,23 @@
                 });
             });
         });
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('SHEIN Profile Clone Loaded.');
-            // Add your interactive JavaScript code here.
-        });
 
-        document.querySelectorAll('.status-button').forEach(item => {
-            item.addEventListener('click', () => {
-                const status = item.querySelector('.status-label').innerText;
-                console.log(`Navigating to: ${status}`);
-                
-                item.style.opacity = '0.5';
-                setTimeout(() => item.style.opacity = '1', 150);
-            });
-        });
+        // Logic for toggling the 'eye' icon (privacy mode) often found in these dashboards
+    // Based on the '***' values in the screenshot
+    const stats = document.querySelectorAll('.stat-item h3');
+    let hidden = true;
 
-        document.querySelector('.view-all-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Redirecting to all orders...');
-        });
-
-        const eye = document.getElementById("toggleEye");
-let visible = false;
-
-eye.addEventListener("click", () => {
-    const icons = document.querySelectorAll(".icon-placeholder");
-
-    visible = !visible;
-
-    icons.forEach(icon => {
-        const star = icon.querySelector("span");
-        const realIcon = icon.querySelector("i");
-
-        if (realIcon) {
-            if (visible) {
-                star.style.display = "none";
-                realIcon.style.display = "block";
-            } else {
-                star.style.display = "block";
-                realIcon.style.display = "none";
-            }
+    // This simulates the toggle functionality if an eye icon were clicked
+    function toggleVisibility() {
+        if(hidden) {
+            stats[0].innerText = "12"; // Example values
+            stats[1].innerText = "450";
+            stats[2].innerText = "$0.00";
+        } else {
+            stats.forEach(s => s.innerText = "***");
         }
-    });
-
-    eye.textContent = visible ? "👁" : "👁";
-});
+        hidden = !hidden;
+    }
     </script>
     <!-- Fixed Js -->
     <!-- Bootstrap JS -->
