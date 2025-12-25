@@ -87,60 +87,76 @@
 
         /* --- Nav Icons Section --- */
         .nav-icons {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 0;
-            text-align: center;
-            color: var(--text-light);
-            border-bottom: 1px solid var(--border-color);
-            position: relative; /* To position the eye icon */
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 20px 10px;
+}
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.9em;
-            flex: 1; /* Distribute space evenly */
-        }
+/* Nav item */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+    flex: 1;
+    cursor: pointer;
+}
 
-        .nav-item .icon-placeholder {
-            font-size: 1.5em; /* Placeholder for the actual icon */
-            margin-bottom: 5px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark); /* Color for the asterisks */
-        }
+/* ICON PLACEHOLDER */
+.icon-placeholder {
+    font-size: 18px;
+    margin-bottom: 6px;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .gift-card .icon-placeholder {
-            /* Styling for the Gift Card icon box to match the image */
-            border: 2px solid var(--text-dark);
-            width: 20px;
-            height: 15px;
-            position: relative;
-            margin-bottom: 11px;
-        }
+/* REAL ICON (hidden by default) */
+.icon-placeholder i {
+    display: none;
+    font-size: 18px;
+}
 
-        .gift-card .icon-placeholder::after {
-            content: '';
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: var(--text-dark);
-            top: -2px;
-            right: -2px;
-        }
+/* STAR TEXT */
+.icon-placeholder span {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-        .eye-icon {
-            /* Position the eye icon from the original image */
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5em;
-            color: var(--text-light);
-        }
+/* Gift card icon */
+.gift-card .icon-placeholder {
+    border: 2px solid #000;
+    width: 22px;
+    height: 16px;
+    position: relative;
+}
+
+.gift-card .icon-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #000;
+    top: -3px;
+    right: -3px;
+}
+
+/* Eye icon */
+.eye-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+        
+
+        
 
         /* --- Main Content Layout --- */
         
@@ -1175,13 +1191,10 @@
         /* Responsive Design for max-width: 767px (Mobile Devices)*/
         @media (max-width: 767px) {
 
-            html,
+
             body {
                 overflow-x: hidden !important;
                 background: #F7F8FA;
-            }
-
-            body {
                 flex-direction: column !important;
                 align-items: center !important;
                 justify-content: flex-start;
@@ -1796,28 +1809,40 @@
         </header>
 
         <nav class="nav-icons">
-            <div class="eye-icon" aria-hidden="true">&#x1F441;</div>
+    <div class="eye-icon" id="toggleEye">👁</div>
 
-            <div class="nav-item">
-                <div class="icon-placeholder">***</div>
-                <span>Coupons</span>
-            </div>
+    <div class="nav-item">
+        <div class="icon-placeholder">
+            <span>***</span>
+            <i class="fa-solid fa-ticket"></i>
+        </div>
+        <span>Coupons</span>
+    </div>
 
-            <div class="nav-item">
-                <div class="icon-placeholder">***</div>
-                <span>Points</span>
-            </div>
+    <div class="nav-item">
+        <div class="icon-placeholder">
+            <span>***</span>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <span>Points</span>
+    </div>
 
-            <div class="nav-item">
-                <div class="icon-placeholder">***</div>
-                <span>Wallet</span>
-            </div>
+    <div class="nav-item">
+        <div class="icon-placeholder">
+            <span>***</span>
+            <i class="fa-solid fa-wallet"></i>
+        </div>
+        <span>Wallet</span>
+    </div>
 
-            <div class="nav-item gift-card">
-                <div class="icon-placeholder"></div>
-                <span>Gift Card</span>
-            </div>
-        </nav>
+    <div class="nav-item gift-card">
+        <div class="icon-placeholder">
+            <span>***</span>
+        </div>
+        <span>Gift Card</span>
+    </div>
+</nav>
+
 
         <main class="main-content">
             
@@ -2637,6 +2662,32 @@
             e.preventDefault();
             alert('Redirecting to all orders...');
         });
+
+        const eye = document.getElementById("toggleEye");
+let visible = false;
+
+eye.addEventListener("click", () => {
+    const icons = document.querySelectorAll(".icon-placeholder");
+
+    visible = !visible;
+
+    icons.forEach(icon => {
+        const star = icon.querySelector("span");
+        const realIcon = icon.querySelector("i");
+
+        if (realIcon) {
+            if (visible) {
+                star.style.display = "none";
+                realIcon.style.display = "block";
+            } else {
+                star.style.display = "block";
+                realIcon.style.display = "none";
+            }
+        }
+    });
+
+    eye.textContent = visible ? "👁" : "👁";
+});
     </script>
     <!-- Fixed Js -->
     <!-- Bootstrap JS -->
