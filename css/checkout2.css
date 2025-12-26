@@ -394,7 +394,7 @@
 
     .pay-logos img {
         height: 22px;
-        margin-right: 4px;
+        margin-right: 10px;
     }
 
     .summary {
@@ -440,10 +440,18 @@
         gap: 8px;
         align-items: center;
     }
+    .input-box1 input{
+         flex:1;
+        padding: 10px;
+        width: 240px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
     .input-box input {
-        flex: 1;
+        /* flex: 5; */
         padding: 10px;
+        width: 100px;
         border: 1px solid #ccc;
         border-radius: 4px;
     }

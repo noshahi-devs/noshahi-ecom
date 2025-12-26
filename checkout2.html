@@ -122,17 +122,19 @@
           <span class="pay-label">PayPal</span>
         </label>
 
-        <label class="pay-option selected">
-          <input type="radio" name="pay" checked />
-          <img src="images/My Wallet.webp" height="22" alt="PayPal">
+       <label class="pay-option selected">
+          <input type="radio" name="pay" checked>
+          <img src="images/My Wallet.webp" height="22" alt="Card">
           <span class="pay-label">Credit/Debit Card</span>
-          <div class="pay-logos">
-            <img src="images/Visa.png" height="22" alt="Visa">
-            <img src="images/mastercard.png" height="22" alt="Visa">
-            <img src="images/credit3.png" height="22" alt="Visa">
-            <img src="images/american express.png" height="22" alt="Visa">
-          </div>
-        </label>
+
+  <!-- <div class="pay-logos">
+    <img src="images/Visa.png" alt="Visa">
+    <img src="images/mastercard.png" alt="Mastercard">
+    <img src="images/american express.png" alt="Amex">
+    <img src="images/discover.png" alt="Discover">
+  </div> -->
+       </label>
+
 
         <label class="pay-option">
           <input type="radio" name="pay">
@@ -249,13 +251,14 @@
 
       <div class="section">
         <h3>Coupon Code</h3>
-        <div class="input-box">
+        <div class="input-box1">
           <input type="text" placeholder="" id="couponInput">
           <button class="apply-btn" id="applyCouponBtn">APPLY</button>
         </div>
         <h3 style="margin-top:20px">Gift Card</h3>
         <div class="input-box">
-          <input type="text" placeholder="0000 0000 0000 0000" id="giftCardInput">
+          <input type="password" placeholder="0000 0000 0000 0000" id="giftCardInput">
+          <input type="password" placeholder="0000 0000 0000 0000" id="giftCardInput">
           <button class="apply-btn" id="linkGiftCardBtn">Link</button>
         </div>
         <button class="place-order" id="placeOrderBtn">PLACE ORDER</button>
