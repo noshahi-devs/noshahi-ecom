@@ -350,58 +350,75 @@
   </div>
 
   <!-- Edit Address Modal (Edit Button) -->
-  <div id="editAddressModal" class="edit-modal">
-    <div class="edit-modal-content">
-      <!-- Header -->
-      <div class="edit-modal-header">
-        <h2>Edit Shipping Address</h2>
-        <span class="edit-close" id="closeEditModalBtn">&times;</span>
-      </div>
+ <div id="editAddressModal" class="edit-modal">
+  <div class="edit-modal-content">
+    <div class="edit-modal-header">
+      <h2>Shipping Address</h2>
+      <span class="edit-close" id="closeEditModalBtn">&times;</span>
+    </div>
 
-      <!-- Form -->
-      <form id="addressForm">
-        <label>Full Name</label>
-        <input type="text" placeholder="Ahmad Ashraf" required>
-
-        <label>Phone Number</label>
-        <input type="text" placeholder="8157446992" required>
-
-        <label>Address Line 1</label>
-        <input type="text" placeholder="Tsa Laiw" required>
-
-        <label>Address Line 2</label>
-        <input type="text" placeholder="(Optional)">
-
-        <div class="form-row">
-          <div class="form-col">
-            <label>City</label>
-            <input type="text" placeholder="Bridgeport" required>
-          </div>
-
-          <div class="form-col">
-            <label>Postal Code</label>
-            <input type="text" placeholder="26335" required>
-          </div>
-        </div>
-
-        <label>Country</label>
+    <form id="addressForm">
+      <div class="input-container">
+        <label>Location*</label>
         <select required>
           <option>United States</option>
-          <option>Pakistan</option>
-          <option>India</option>
-          <option>UAE</option>
         </select>
+      </div>
 
-        <label>Address Type</label>
-        <div class="radio-group">
-          <label><input type="radio" name="type" checked> Home</label>
-          <label><input type="radio" name="type"> Office</label>
+      <div class="form-row">
+        <div class="form-col input-container">
+          <label>First Name*</label>
+          <input type="text" value="Ahmad" required>
         </div>
+        <div class="form-col input-container">
+          <label>Last Name*</label>
+          <input type="text" value="Ashraf" required>
+        </div>
+      </div>
 
-        <button type="submit" class="save-btn">Save Changes</button>
-      </form>
-    </div>
+      <div class="phone-wrapper">
+        <div class="country-prefix">US +1</div>
+        <div class="input-container flex-grow">
+          <label>Phone Number*</label>
+          <input type="text" value="7125277355" required>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label>Address Line 1*</label>
+        <textarea required>4009 Porter Farm Rd</textarea>
+      </div>
+
+      <div class="input-container">
+        <label>Address Line 2</label>
+        <textarea placeholder="Building/Apartment/Suite no, Unit, Floor, etc (optional)"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col input-container">
+          <label>State/Province*</label>
+          <select required><option>TEXAS</option></select>
+        </div>
+        <div class="form-col input-container">
+          <label>City*</label>
+          <select required><option>Georgetown</option></select>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label>Post/Zip Code*</label>
+        <input type="text" value="78628-2587" required>
+      </div>
+
+      <div class="make-default">
+        <input type="checkbox" id="defaultCheck">
+        <label for="defaultCheck" style="display:inline; font-weight:normal; margin-left:8px;">Make Default</label>
+      </div>
+
+      <button type="submit" class="save-btn">SAVE</button>
+    </form>
   </div>
+</div>
 
   <script>
     // JavaScript Code

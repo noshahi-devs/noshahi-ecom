@@ -360,7 +360,6 @@
 
     .pay-option {
         display: flex;
-        flex-direction: ;
         
         padding: 14px;
         margin-top: 12px;
@@ -715,93 +714,136 @@
 
     /* Edit Address Modal */
     .edit-modal {
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.55);
-        justify-content: center;
-        align-items: center;
-    }
+    display: flex; /* alignment check karne ke liye flex rakha hai */
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
 
-    .edit-modal-content {
-        background: #fff;
-        width: 90%;
-        max-width: 420px;
-        padding: 20px;
-        border-radius: 10px;
-        animation: fadeIn .3s;
-        font-family: Arial;
-    }
+.edit-modal-content {
+    background: #fff;
+    width: 95%;
+    max-width: 650px;
+    padding: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
 
-    .edit-modal-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 15px;
-    }
+.edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
 
-    .edit-modal-header h2 {
-        font-size: 20px;
-        margin: 0;
-    }
+.edit-modal-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
 
-    .edit-close {
-        font-size: 26px;
-        cursor: pointer;
-        color: #666;
-    }
+/* Input Group Styling */
+.input-container {
+    border: 1px solid #e5e5e5;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    position: relative;
+}
 
-    .edit-modal label {
-        font-size: 14px;
-        font-weight: 600;
-        margin-top: 10px;
-        display: block;
-    }
+.input-container label {
+    display: block;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
 
-    .edit-modal input,
-    .edit-modal select {
-        width: 100%;
-        margin-top: 5px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 15px;
-    }
+.input-container input, 
+.input-container select, 
+.input-container textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    padding: 2px 0;
+    background: transparent;
+}
 
-    .form-row {
-        display: flex;
-        gap: 10px;
-    }
+.input-container textarea {
+    height: 40px;
+    resize: none;
+}
 
-    .form-col {
-        flex: 1;
-    }
+/* Row Layout */
+.form-row {
+    display: flex;
+    gap: 15px;
+}
 
-    .radio-group {
-        margin-top: 6px;
-        display: flex;
-        gap: 15px;
-    }
+.form-col {
+    flex: 1;
+}
 
-    .save-btn {
-        width: 100%;
-        margin-top: 20px;
-        padding: 12px;
-        background: #000;
-        color: #fff;
-        border: 0;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
+/* Phone Section */
+.phone-wrapper {
+    display: flex;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 15px;
+}
 
-    .save-btn:hover {
-        background: #333;
-    }
+.country-prefix {
+    padding: 15px;
+    background: #f7f7f7;
+    border-right: 1px solid #e5e5e5;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+    border: none !important;
+    margin-bottom: 0 !important;
+}
+
+/* Checkbox */
+.make-default {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Save Button */
+.save-btn {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background: #222;
+}
+
+.edit-close {
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+}
 
     @keyframes fadeIn {
         from {
