@@ -2,132 +2,1458 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHEIN Cart - Empty</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Font Awesome for icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <!-- Logo -->
-    <link rel="icon" href="images/logo.png" type="image/x-icon">
-    <!-- link css -->
-    <style>
-        /* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/checkout2.css">
+  <Style>
+    /* CSS Styles */
+    :root {
+      --muted: #777;
+      --orange: #ff7a00;
+      --green: #2ea96e;
+      --border: #e6e6e6;
+      --accent1: #1C88E5;
+      --accent2: #E6483D;
+      --accent3: #FDB52A;
+      --font-sans: Arial, Helvetica, sans-serif;
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #FFFFFF;
-}
+    /* * {
+        box-sizing: border-box
+    } */
 
-/* empty-cart-section start*/
+    body {
+      font-family: var(--font-sans);
+      margin: 0;
+      background: #f4f4f4;
+      color: #222;
+    }
 
-.empty-cart-section {
-    font-family: Arial, sans-serif;
-    background: #F4F4F4;
-    min-height: 65vh;
-    display: flex;
-    flex-direction: column;
-    color: #333;
-}
+    .top-bar-container {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #e6e6e6;
+    }
 
-/* ====================
-              HEADER
-        ==================== */
-.top-header {
-    background: #fff;
-    padding: 6px 5%;
-    height: 48px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
+    /* SAME WIDTH AS .wrap */
+    .top-bar-inner {
+      max-width: 1180px;
+      /* margin: 0 auto; */
+      padding: 14px 18px;
+      /* same as .wrap */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: 40px;
-    flex-wrap: wrap;
-}
+    /* LEFT SIDE */
+    .top-left {
+      display: flex;
+      margin-left: 150px;
+      font-size: 100px;
+      align-items: center;
+    }
 
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    margin-top: -5px;
-}
-.secure-checkout {
-    font-size: 14px;
-    color: green;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-left: 68rem;
-}
+    .top-left-brand {
+      font-size: 100px;
+    }
 
-.secure-checkout i {
-    color: white;
-    border: 1px solid green;
-    background: green;
-    height: 25px;
-    width: 25px;
-    padding: 5px;
-    border-radius: 50px;
-}
 
-/* ====================
-              BREADCUMB
-        ==================== */
-.breadcrumb-container {
-    padding-top: 18px;
-    text-align: center !important;
-    width: 100%;
-}
+    .brand {
+      font-weight: 700;
+      font-size: 20px;
+      color: #222;
+      margin-left: 0;
+    }
 
-.breadcrumb {
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #999;
-    justify-content: center !important;
-}
+    .top-header {
+      background: #fff;
+      padding: 6px 5%;
+      height: 48px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.active-step {
-    color: #000;
-}
-    </style>
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-left: 40px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin-top: -5px;
+      margin-left: 50px;
+    }
+
+
+    .secure-checkout {
+      font-size: 14px;
+      color: green;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-left: 1095px;
+    }
+
+    .secure-checkout i {
+      color: white;
+      border: 1px solid green;
+      background: green;
+      /* height: 25px;
+        width: 25px; */
+      padding: 5px;
+      border-radius: 50px;
+    }
+
+    .breadcrumb {
+      text-align: center;
+      font-size: 18px;
+      color: var(--muted);
+      background: #F4F4F4;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f1f1
+    }
+
+    .breadcrumb span {
+      color: #000;
+      font-weight: 300;
+    }
+
+    .wrap {
+      max-width: 100%;
+      /* border: 1px solid red; */
+      display: flex;
+      gap: 24px
+    }
+
+    .left {
+      /* border: 2px solid yellow; */
+      padding-left: 170px;
+      width: 897px;
+
+    }
+
+    .right {
+      /* border: 2px solid rgb(70, 28, 138); */
+      width: 430px;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin-bottom: 18px
+    }
+
+    h2.section-title {
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 700
+    }
+
+    .shipping-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .change-btn {
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 400;
+      color: #222;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .change-btn:hover {
+      text-decoration: underline;
+    }
+
+    .change-btn .arrow {
+      font-size: 16px;
+      color: #999;
+      line-height: 1;
+    }
+
+    .address-box {
+      display: flex;
+      border: 1px solid var(--border);
+      margin-top: 12px;
+      padding: 14px;
+      align-items: flex-start;
+      gap: 14px;
+      position: relative
+    }
+
+    .stripe {
+      width: 5px;
+      background: linear-gradient(180deg, var(--accent1), var(--accent2), var(--accent3));
+      border-radius: 3px
+    }
+
+    .addr-text {
+      font-size: 13px;
+      line-height: 1.45
+    }
+
+    .addr-name {
+      font-weight: 700
+    }
+
+    .addr-phone {
+      color: var(--muted)
+    }
+
+    .edit-address {
+      margin-left: auto;
+      border: 1px solid #222;
+      background: #fff;
+      padding: 5px 8px;
+      margin-top: 15px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* HEADER WITH RIGHT ARROW */
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .shein-toggle {
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      cursor: pointer;
+      color: #999;
+      line-height: 1;
+    }
+
+    /* PRODUCT ROW */
+    .product-row {
+      display: flex;
+      gap: 18px;
+      padding: 16px;
+      border: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    /* IMAGE */
+    .prod-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .prod-image {
+      width: 80px;
+      height: 90px;
+      background: #eee;
+      border: 1px solid #ccc;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .real-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .discount-tag {
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      background: var(--orange);
+      color: #fff;
+      padding: 3px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+
+    /* PRICE INLINE */
+    .price-under {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .price-under .new {
+      color: var(--orange);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .price-under .old {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    /* QTY — SHEIN STYLE */
+    .qty-box {
+      margin-top: 12px;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e5e5e5;
+      border-radius: 999px;
+      padding: 2px 10px;
+      background: #fff;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: #222;
+      width: 20px;
+      height: 20px;
+    }
+
+    .count {
+      min-width: 16px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* SHIPPING */
+    .shipping-method {
+      margin-top: 14px;
+      border: 1px solid #ddd;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .shipping-method-title {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .delivery-estimate {
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .shipping-cost {
+      font-weight: 700;
+      margin-top: 4px;
+      color: var(--green);
+    }
+
+
+    .pay-option {
+      display: flex;
+
+      padding: 14px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+
+      background: #fff;
+      width: 100%;
+      text-align: left;
+      border-radius: 4px;
+    }
+
+    .pay-option input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .pay-option.selected {
+      border: 2px solid #000 !important;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .pay-label {
+      font-size: 15px;
+      font-weight: 600
+    }
+
+    .pay-logos img {
+      height: 22px;
+      margin-right: 10px;
+    }
+
+    .summary {
+      border: 1px solid var(--border);
+      padding: 16px;
+      margin-bottom: 18px;
+      background: #fff;
+    }
+
+    .summary h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 14px
+    }
+
+    .free-text {
+      color: var(--muted)
+    }
+
+    .promo-text {
+      color: #d33
+    }
+
+    .order-total {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--orange);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .input-box {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .input-box1 input {
+      flex: 1;
+      padding: 10px;
+      width: 240px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .input-box input {
+      /* flex: 5; */
+      padding: 10px;
+      width: 100px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .apply-btn {
+      padding: 10px 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .place-order {
+      width: 100%;
+      padding: 16px;
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+
+    .club-box {
+      margin-top: 18px;
+      padding: 16px;
+      background: #fff7f3;
+      border: 1px solid #f5d4c8;
+      border-radius: 8px;
+    }
+
+    .club-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .benefits-text {
+      color: #c58f73;
+      font-size: 12px
+    }
+
+    .save-text {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .club-mid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .limited {
+      background: #ff4778;
+      color: #fff;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .markdown {
+      background: #f9e1d8;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .club-bottom {
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+      gap: 10px;
+    }
+
+    .club-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ff4b00
+    }
+
+    .club-old {
+      text-decoration: line-through;
+      color: #666
+    }
+
+    .special-offer {
+      margin-left: auto;
+      padding: 6px 10px;
+      background: black;
+      color: white;
+      font-size: 13px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .right-panel {
+      width: 100%;
+      padding: 12px 0;
+      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .info-block {
+      margin-bottom: 20px;
+    }
+
+    .info-block h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2ea96e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .info-block h3 img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .info-block p {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: #555;
+      margin: 0;
+    }
+
+    .learn-more {
+      font-size: 12.5px;
+      color: #2ea96e;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .pay-logos {
+      width: 40px;
+      height: 40px;
+      margin-top: 8px;
+    }
+
+    .privacy-badge {
+      width: 100px;
+      margin-top: 8px;
+    }
+
+
+
+    .privacy-badge {
+      width: 40px;
+      height: 40px;
+      margin-top: 10px;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(3px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-box {
+      width: 600px;
+      max-width: 95%;
+      background: #fff;
+      border-radius: 6px;
+      padding: 30px 35px;
+      position: relative;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .modal-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .add-new {
+      color: #1c88e5;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .address-card {
+      display: flex;
+      gap: 14px;
+      border: 1px solid #ddd;
+      padding: 14px;
+      border-radius: 6px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .addr-info {
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .addr-info .name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .addr-info .phone {
+      color: #666;
+      margin-left: 3px;
+    }
+
+    .edit-link {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      font-size: 13px;
+      color: #1c88e5;
+      cursor: pointer;
+    }
+
+    /* Edit Address Modal */
+    .edit-modal {
+      display: flex;
+      /* alignment check karne ke liye flex rakha hai */
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .edit-modal-content {
+      background: #fff;
+      width: 95%;
+      max-width: 650px;
+      padding: 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .edit-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .edit-modal-header h2 {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Input Group Styling */
+    .input-container {
+      border: 1px solid #e5e5e5;
+      padding: 8px 12px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .input-container label {
+      display: block;
+      font-size: 12px;
+      color: #8c8c8c;
+      margin-bottom: 2px;
+      font-weight: normal;
+    }
+
+    .input-container input,
+    .input-container select,
+    .input-container textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #222;
+      padding: 2px 0;
+      background: transparent;
+    }
+
+    .input-container textarea {
+      height: 40px;
+      resize: none;
+    }
+
+    /* Row Layout */
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-col {
+      flex: 1;
+    }
+
+    /* Phone Section */
+    .phone-wrapper {
+      display: flex;
+      border: 1px solid #e5e5e5;
+      margin-bottom: 15px;
+    }
+
+    .country-prefix {
+      padding: 15px;
+      background: #f7f7f7;
+      border-right: 1px solid #e5e5e5;
+      font-size: 14px;
+      color: #666;
+      display: flex;
+      align-items: center;
+    }
+
+    .flex-grow {
+      flex-grow: 1;
+      border: none !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Checkbox */
+    .make-default {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Save Button */
+    .save-btn {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .save-btn:hover {
+      background: #222;
+    }
+
+    .edit-close {
+      font-size: 28px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* NEW: Layout fixes to match image exactly */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Mobile responsive spacing */
+    @media (max-width: 768px) {
+      .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </Style>
+
 </head>
 
 <body>
-    <!-- empty-cart-section -->
-    <div class="empty-cart-section">
-        <div class="top-header">
-            <div class="header-left">
-                <span class="logo">SHEIN</span>
+  <!-- Top Bar -->
 
-            </div>
+  <div class="top-header">
+    <div class="header-left">
+      <span class="logo">SHEIN</span>
 
-            <div class="secure-checkout">
-                <i class="fas fa-lock"></i>
-                Secure Checkout
-            </div>
+      <!-- <div class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          Ship to Twnhs, 2841 E Waltann Ln Unit 1
+        </div> -->
+    </div>
+
+    <div class="secure-checkout">
+      <i class="fas fa-lock"></i>
+      Secure Checkout
+    </div>
+  </div>
+
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">Cart > <span>Place Order</span> > Pay > Order Complete</div>
+
+  <!-- Main Content -->
+  <div class="wrap">
+    <!-- Left Column -->
+    <div class="left">
+      <!-- Shipping Address -->
+      <div class="section">
+        <div class="shipping-head">
+          <h2 class="section-title">Shipping Address</h2>
+          <button class="change-btn" id="openModalBtn">
+            Change <span class="arrow">›</span>
+          </button>
         </div>
 
-        <div class="breadcrumb-container">
-            <div class="breadcrumb">
-                 Cart ><span class="active-step"> Place Order </span> > Pay > Order Complete
-            </div>
+        <div class="address-box">
+          <div class="stripe"></div>
+          <div class="addr-text">
+            <div><span class="addr-name">Ahmad Ashraf</span> <span class="addr-phone">8157446992</span></div>
+            <div style="margin-top:6px">Tsa Laiw</div>
+            <div style="margin-top:4px">Bridgeport WEST VIRGINIA United States 26335-1418</div>
+          </div>
+          <button class="edit-address" id="editAddressBtn">Edit Address</button>
         </div>
+      </div>
+
+      <!-- Product -->
+      <div class="section">
+
+        <!-- HEADER -->
+        <div class="product-header">
+          <span>SHEIN(<span id="count">1</span>)</span>
+          <button class="shein-toggle">›</button>
+        </div>
+
+        <!-- PRODUCT -->
+        <div class="product-row">
+          <div class="prod-left">
+
+            <!-- IMAGE -->
+            <div class="prod-image">
+              <div class="discount-tag">-34%</div>
+              <img src="images/1.webp" alt="" class="real-img">
+            </div>
+
+            <!-- PRICE (NEW + OLD INLINE) -->
+            <div class="price-under">
+              <span class="new" id="prodPrice">$10.47</span>
+              <span class="old" id="prodOldPrice">$18.79</span>
+            </div>
+
+            <!-- QTY -->
+            <div class="qty-box">
+              <div class="qty">
+                <button id="decreaseBtn">−</button>
+                <div class="count" id="qty">1</div>
+                <button id="increaseBtn">+</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SHIPPING -->
+        <div class="shipping-method">
+          <div class="shipping-method-title">STANDARD SHIPPING</div>
+          <div class="delivery-estimate">
+            Estimated Delivery: Dec 29 - Jan 7 (within 10 business days)
+          </div>
+          <div class="shipping-cost">$3.89</div>
+        </div>
+
+      </div>
+
+
+      <!-- Shipping Method -->
+      <!-- <div class="section">
+        <h2 class="section-title">Shipping Method</h2>
+
+      </div> -->
+
+      <!-- Payment Method -->
+      <div class="section">
+        <h2 class="section-title">Payment Method</h2>
+        <label class="pay-option">
+          <input type="radio" name="pay" />
+          <img src="images/paypal.png" height="22" alt="PayPal">
+          <span class="pay-label">PayPal</span>
+        </label>
+
+        <label class="pay-option selected">
+          <input type="radio" name="pay" checked>
+          <img src="images/My Wallet.webp" height="22" alt="Card">
+          <span class="pay-label">Credit/Debit Card</span>
+
+          <!-- <div class="pay-logos">
+    <img src="images/Visa.png" alt="Visa">
+    <img src="images/mastercard.png" alt="Mastercard">
+    <img src="images/american express.png" alt="Amex">
+    <img src="images/discover.png" alt="Discover">
+  </div> -->
+        </label>
+
+
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/Applepay.png" height="22" alt="Apple">
+          <span class="pay-label">Apple Pay</span>
+          <img src="images/Visa.png" height="22" alt="Visa">
+          <img src="images/mastercard.png" height="22" alt="Visa">
+          <img src="images/credit3.png" height="22" alt="Visa">
+          <img src="images/american express.png" height="22" alt="Visa">
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/venmo.png" height="18">
+          <span class="pay-label">Venomo</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/cashpay.png" height="18">
+          <span class="pay-label">Cash App Pay</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/google.png" height="22">
+          <span class="pay-label">Google Pay</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/klarna.png" height="18">
+          <span class="pay-label">Klarna (Pay in 4)</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/afterpay.png" height="18">
+          <span class="pay-label">Afterpay</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/affirm.png" height="18">
+          <span class="pay-label">Afirm</span>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="pay">
+          <img src="images/zip.png" height="18">
+          <span class="pay-label">zip</span>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right">
+      <div class="summary">
+        <h3>Order Summary</h3>
+        <div class="row">
+          <div>Retail Price: <span id="count2">1</span> Items</div>
+          <div id="retail">$10.47</div>
+        </div>
+        <div class="row">
+          <div>Shipping Fee</div>
+          <div id="shippingFee">$3.89</div>
+        </div>
+        <div class="row">
+          <div>On-Time Delivery Guarantee</div>
+          <div class="free-text">FREE</div>
+        </div>
+        <div class="row">
+          <div>Coupons</div>
+          <div class="promo-text">- $8.32</div>
+        </div>
+        <div class="row">
+          <div>Promotions</div>
+          <div class="promo-text">- $3.5</div>
+        </div>
+        <div class="row">
+          <div>Sales Tax</div>
+          <div id="tax">$1.91</div>
+        </div>
+        <div class="row">
+          <div>Order</div>
+          <div id="total"><span id="total">$15.47</span></div>
+        </div>
+        <!-- <div class="row"></div>
+        <div class="order-total">Order Total: <span id="total">$15.47</span></div>
+        <div class="promo-text">- $5.5</div> -->
+      </div>
+
+      <div class="club-box">
+        <div class="club-top">
+          <span>🟧 SHEIN CLUB</span>
+          <span class="benefits-text">All benefits stackable</span>
+        </div>
+        <div class="save-text">Save $0.52 after joining ></div>
+        <div class="club-mid">
+          <div>
+            <div class="limited">Limited</div>
+            <div>3× Shipping Coupons</div>
+          </div>
+          <div>
+            <div>📉 3%–10% Credit…</div>
+            <div>🎁 3 Free Gifts</div>
+            <div>⭐ Extra 5% OFF</div>
+          </div>
+        </div>
+        <div class="markdown">Membership Markdown: $7.00</div>
+        <div class="club-bottom">
+          <span class="club-price">$2.99</span>
+          <span class="club-old">$9.99</span>
+          <button class="special-offer">Special Offer $7.00 OFF ></button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Coupon Code</h3>
+        <div class="input-box1">
+          <input type="text" placeholder="" id="couponInput">
+          <button class="apply-btn" id="applyCouponBtn">APPLY</button>
+        </div>
+        <h3 style="margin-top:20px">Gift Card</h3>
+        <div class="input-box">
+          <input type="password" placeholder="0000 0000 0000 0000" id="giftCardInput">
+          <input type="password" placeholder="0000 0000 0000 0000" id="giftCardInput">
+          <button class="apply-btn" id="linkGiftCardBtn">Link</button>
+        </div>
+        <button class="place-order" id="placeOrderBtn">PLACE ORDER</button>
+        <div style="text-align: center; margin-top: 10px; font-size: 12px; color: #666;">
+          By continuing, you agree to SHEIN Terms & Conditions.
+        </div>
+      </div>
+
+      <div class="right-panel">
+
+        <div class="info-block">
+          <h3>
+            <img
+              src="https://img.ltwebstatic.com/v4/p/ccc/2025/06/06/6e/17491816359f5e357363c7b48c0ce07d8bc6b3aa42.png">
+            Payment Security
+          </h3>
+          <p>
+            SHEIN is committed to protecting your payment information and only shares your
+            credit card information with our payment service providers who agreed to safeguard
+            your information.
+          </p>
+          <img class="pay-logos" src="images/payment security.png" src="images/payment security 1.png"
+            src="images/payment security 2.png" src="images/payment security 4.png" alt="Payment Methods">
+        </div>
+
+        <div class="info-block">
+          <h3>
+            <img
+              src="https://img.ltwebstatic.com/v4/p/ccc/2025/06/06/20/17491816536978ffa7622b582c0eabf63278bbf56d.png">
+            Security & Privacy
+          </h3>
+          <p>
+            SHEIN's payment processor partner stores your credit card details by using
+            industry-standard data encryption technology. SHEIN will not store your actual
+            credit card information.
+          </p>
+          <a class="learn-more" href="#">Learn more ›</a><br>
+          <img class="privacy-badge" src="images/privacy.png">
+        </div>
+
+        <div class="info-block">
+          <h3>
+            <img
+              src="https://img.ltwebstatic.com/v4/p/ccc/2025/06/06/e8/17491816077f7e40106a6b24452ff4fd3db9ff55a3.png">
+            Secure Shipment Guarantee
+          </h3>
+          <p>
+            Free exchanges or refunds for lost, returned, or destroyed packages.
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>
+            <img
+              src="	https://img.ltwebstatic.com/v4/p/ccc/2025/06/06/53/17491814778791e7f0b72a9bf38e077f18b597b127.png">
+            Customer Support
+          </h3>
+          <p>
+            If you have any questions about your order, please contact our Customer Service
+            Platform on our website.
+          </p>
+        </div>
+
+      </div>
 
     </div>
-    <!-- empty-cart-section end -->
+  </div>
 
+  <!-- Address Selection Modal (Change Button) -->
+  <div id="addressModal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="close-modal" id="closeModalBtn">✕</div>
+      <div class="modal-title">Shipping Address</div>
+      <div class="add-new" id="addNewAddressBtn">+ Add New Address</div>
+      <div class="address-card">
+        <div class="stripe"></div>
+        <div class="addr-info">
+          <div>
+            <span class="name">Ahmad Ashraf</span>
+            <span class="phone">8157446992</span>
+          </div>
+          <div style="margin-top:5px;">Tsa Laiw</div>
+          <div style="margin-top:4px;">Bridgeport WEST VIRGINIA United States 26335-1418</div>
+        </div>
+        <div class="edit-link" id="editModalAddressBtn">edit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Address Modal (Edit Button) -->
+  <div id="editAddressModal" class="edit-modal">
+    <div class="edit-modal-content">
+      <div class="edit-modal-header">
+        <h2>Shipping Address</h2>
+        <span class="edit-close" id="closeEditModalBtn">&times;</span>
+      </div>
+
+      <form id="addressForm">
+        <div class="input-container">
+          <label>Location*</label>
+          <select required>
+            <option>United States</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col input-container">
+            <label>First Name*</label>
+            <input type="text" value="Ahmad" required>
+          </div>
+          <div class="form-col input-container">
+            <label>Last Name*</label>
+            <input type="text" value="Ashraf" required>
+          </div>
+        </div>
+
+        <div class="phone-wrapper">
+          <div class="country-prefix">US +1</div>
+          <div class="input-container flex-grow">
+            <label>Phone Number*</label>
+            <input type="text" value="7125277355" required>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <label>Address Line 1*</label>
+          <textarea required>4009 Porter Farm Rd</textarea>
+        </div>
+
+        <div class="input-container">
+          <label>Address Line 2</label>
+          <textarea placeholder="Building/Apartment/Suite no, Unit, Floor, etc (optional)"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col input-container">
+            <label>State/Province*</label>
+            <select required>
+              <option>TEXAS</option>
+            </select>
+          </div>
+          <div class="form-col input-container">
+            <label>City*</label>
+            <select required>
+              <option>Georgetown</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <label>Post/Zip Code*</label>
+          <input type="text" value="78628-2587" required>
+        </div>
+
+        <div class="make-default">
+          <input type="checkbox" id="defaultCheck">
+          <label for="defaultCheck" style="display:inline; font-weight:normal; margin-left:8px;">Make Default</label>
+        </div>
+
+        <button type="submit" class="save-btn">SAVE</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript Code
+    let qty = 1;
+    const unitNew = 10.47;
+    const unitOld = 18.79;
+    const promo = 8.32;
+    const shipping = 3.89;
+    const tax = 1.91;
+
+    // DOM Elements
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const editAddressBtn = document.getElementById('editAddressBtn');
+    const addNewAddressBtn = document.getElementById('addNewAddressBtn');
+    const editModalAddressBtn = document.getElementById('editModalAddressBtn');
+    const increaseBtn = document.getElementById('increaseBtn');
+    const decreaseBtn = document.getElementById('decreaseBtn');
+    const applyCouponBtn = document.getElementById('applyCouponBtn');
+    const linkGiftCardBtn = document.getElementById('linkGiftCardBtn');
+    const placeOrderBtn = document.getElementById('placeOrderBtn');
+
+    // Modal Elements
+    const addressModal = document.getElementById('addressModal');
+    const editAddressModal = document.getElementById('editAddressModal');
+    const closeEditModalBtn = document.getElementById('closeEditModalBtn');
+
+    const payOptions = document.querySelectorAll('.pay-option');
+
+    // Update all displayed values
+    function render() {
+      document.getElementById('qty').innerText = qty;
+      document.getElementById('count').innerText = qty;
+      document.getElementById('count2').innerText = qty;
+      document.getElementById('prodPrice').innerText = '$' + (unitNew * qty).toFixed(2);
+      document.getElementById('prodOldPrice').innerText = '$' + (unitOld * qty).toFixed(2);
+      document.getElementById('retail').innerText = '$' + (unitOld * qty).toFixed(2);
+      document.getElementById('shippingFee').innerText = '$' + (shipping * qty).toFixed(2);
+      const total = (unitNew * qty) + (shipping * qty) - promo + tax;
+      document.getElementById('total').innerText = '$' + total.toFixed(2);
+    }
+
+    // Quantity functions
+    function increase() {
+      qty++;
+      render();
+    }
+
+    function decrease() {
+      if (qty > 1) {
+        qty--;
+        render();
+      }
+    }
+
+    // Modal functions
+    function openAddressModal() {
+      addressModal.style.display = 'flex';
+    }
+
+    function closeAddressModal() {
+      addressModal.style.display = 'none';
+    }
+
+    function openEditModal() {
+      editAddressModal.style.display = 'flex';
+    }
+
+    function closeEditModal() {
+      editAddressModal.style.display = 'none';
+    }
+
+    // Event Listeners
+    openModalBtn.addEventListener('click', openAddressModal);
+    closeModalBtn.addEventListener('click', closeAddressModal);
+    editAddressBtn.addEventListener('click', openEditModal);
+    closeEditModalBtn.addEventListener('click', closeEditModal);
+
+    addNewAddressBtn.addEventListener('click', () => {
+      alert('Add new address functionality would go here');
+    });
+
+    editModalAddressBtn.addEventListener('click', () => {
+      closeAddressModal();
+      openEditModal();
+    });
+
+    increaseBtn.addEventListener('click', increase);
+    decreaseBtn.addEventListener('click', decrease);
+
+    applyCouponBtn.addEventListener('click', () => {
+      const coupon = document.getElementById('couponInput').value;
+      if (coupon) {
+        alert(`Coupon "${coupon}" applied! (This is a demo)`);
+      } else {
+        alert('Please enter a coupon code');
+      }
+    });
+
+    linkGiftCardBtn.addEventListener('click', () => {
+      const giftCard = document.getElementById('giftCardInput').value;
+      if (giftCard) {
+        alert(`Gift card "${giftCard}" linked! (This is a demo)`);
+      } else {
+        alert('Please enter a gift card number');
+      }
+    });
+
+    placeOrderBtn.addEventListener('click', () => {
+      alert('Order placed successfully! (This is a demo)');
+    });
+
+    // Payment option selection
+    payOptions.forEach(option => {
+      option.addEventListener('click', function () {
+        payOptions.forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        this.querySelector("input").checked = true;
+      });
+    });
+
+    // Close modals when clicking outside
+    addressModal.addEventListener('click', (e) => {
+      if (e.target === addressModal) {
+        closeAddressModal();
+      }
+    });
+
+    editAddressModal.addEventListener('click', (e) => {
+      if (e.target === editAddressModal) {
+        closeEditModal();
+      }
+    });
+
+    // Form submission for edit modal
+    document.getElementById("addressForm").onsubmit = function (e) {
+      e.preventDefault();
+      alert("Address Updated Successfully!");
+      closeEditModal();
+    }
+
+    // Initialize
+    render();
+    document.querySelector('.plus').addEventListener('click', () => {
+      qty++;
+      render();
+    });
+
+    document.querySelector('.minus').addEventListener('click', () => {
+      if (qty > 1) {
+        qty--;
+        render();
+      }
+    });
+
+  </script>
 
 </body>
 
