@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHEIN Order Summary</title>
+    <link rel="stylesheet" href="cartcheckout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="summary-container">
+        <section class="order-card">
+            <h2 class="title">Order Summary</h2>
+            <p class="subtitle">Proceed to apply discounts and account assets then confirm the final price.</p>
+            
+            <div class="product-thumb">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=150" alt="Product">
+                    <div class="check-badge">✓</div>
+                    <div class="sold-out-overlay">Almost Sold Out</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <span class="label-bold">Retail Price:</span>
+                <span class="value-bold">$25.98</span>
+            </div>
+            <div class="row promo">
+                <span>Promotions:</span>
+                <span class="red-text">-$7.80 <span class="arrow">⌵</span></span>
+            </div>
+            <div class="row coupon">
+                <span>Coupon: <span class="timer-box">02 : 14 : 18</span></span>
+                <span class="red-text">-$8.00 <span class="arrow">⌵</span></span>
+            </div>
+            <p class="disclaimer">This is an estimated price, the actual price after discount will be calculated at checkout.</p>
+            
+            <hr class="divider">
+
+            <div class="row estimated">
+                <span class="label-bold">Estimated Price:</span>
+                <span class="total-price">$10.18</span>
+            </div>
+            <div class="saved-amount">Saved $15.80</div>
+            <div class="reward-points">Reward <span class="orange-text">10</span> SHEIN Points <span class="info-icon">?</span></div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+                <span class="btn-main-text">Checkout Now (2)</span>
+                <!-- <span class="btn-sub-text">⌛ Almost sold out!</span> -->
+            </button>
+            <p class="footer-note">Apply a Coupon Code, SHEIN Points on the next step.</p>
+        </section>
+
+        <section class="payment-card">
+            <h3 class="payment-title">We Accept</h3>
+            <div class="payment-grid">
+                <div class="pay-logo"><img src="images/Visa.png" alt="Visa"></div>
+                <div class="pay-logo"><img src="images/mastercard.png" alt="Mastercard"></div>
+                <div class="pay-logo bg-black"><img src="images/credit3.png" alt="Mastercard Alt"></div>
+                <div class="pay-logo"><img src="images/american express.png" alt="Amex"></div>
+                <div class="pay-logo border"><img src="images/discover.png" alt=""></div>
+                <div class="pay-logo bg-blue"><img src="images/credit6.png" alt="Diners"></div>
+                
+                <div class="pay-logo bg-light-blue"><img src="images/paypal.png" alt="Paypal"></div>
+                <div class="pay-logo border"><img src="images/afterpay.png" alt=""></div>
+                <div class="pay-logo klarna"><img src="images/klarna.png" alt=""></div>
+                <div class="pay-logo border"><img src="images/Applepay.png" alt="Apple Pay"></div>
+                <div class="pay-logo border"><img src="images/gpay.png" alt="Google Pay"></div>
+                <div class="pay-logo border"><img src="images/venmo.png" alt="Venomo"></div>
+
+                <div class="pay-logo bg-green"><img src="images/cashpay.png" alt="Cshpay"></div>
+                <div class="pay-logo border"><img src="images/affirm.png" alt=""></div>
+                <div class="pay-logo bg-black-zip"><img src="images/zip.png" alt=""></div>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    // Mimic click feedback
+    checkoutBtn.addEventListener('click', () => {
+        checkoutBtn.style.opacity = '0.8';
+        setTimeout(() => { checkoutBtn.style.opacity = '1'; }, 100);
+        console.log("Navigating to payment step...");
+    });
+});
+    </script>
+</body>
+</html>
