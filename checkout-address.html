@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHEIN Checkout Mockup</title>
+    <style>
+        /* --- General Styles --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px 0;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Header/Checkout Steps --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkout-steps a {
+            text-decoration: none;
+            color: #777;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .checkout-steps span {
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .secure-checkout {
+            color: green;
+            font-size: 14px;
+        }
+
+        /* --- Main Content Layout --- */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 30px;
+        }
+
+        .shipping-section {
+            flex: 2; /* Takes up about 2/3 of the space */
+            padding-right: 40px;
+        }
+
+        .coupon-section {
+            flex: 1; /* Takes up about 1/3 of the space */
+            min-width: 300px;
+            padding-left: 20px;
+            border-left: 1px solid #eee;
+        }
+
+        /* --- Form Styling --- */
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="tel"], .select-dropdown {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+            font-size: 14px;
+        }
+        
+        .select-dropdown {
+            appearance: none; /* Remove default arrow */
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23333" d="M4.5 6l3.5 4 3.5-4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            cursor: pointer;
+        }
+
+        .required::after {
+            content: '*';
+            color: red;
+            margin-left: 2px;
+        }
+
+        /* Specific styles for phone number and address finder */
+        .phone-input {
+            display: flex;
+        }
+
+        .phone-input .country-code {
+            width: 60px;
+            flex-shrink: 0;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #eee;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .address-finder {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .address-finder span {
+            margin-right: 10px;
+            color: #777;
+        }
+
+        .address-finder input {
+            border: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .address-line-subtext {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .address-line-textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 50px;
+            font-size: 14px;
+        }
+
+        /* --- Coupon/Gift Card Section --- */
+        .coupon-box, .gift-card-box {
+            display: flex;
+            margin-bottom: 10px;
+            gap: 5px;
+        }
+
+        .coupon-box input, .gift-card-box input {
+            flex-grow: 1;
+        }
+
+        .coupon-apply, .gift-card-apply {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            color: #000;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .gift-card-box .input-group {
+            display: flex;
+            gap: 5px;
+            flex-grow: 1;
+        }
+        
+        .gift-card-box .input-group input {
+            width: 50%; /* Distribute space between Card Number and PIN */
+        }
+        
+        .gift-card-info {
+            font-size: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .gift-card-info span {
+            margin-right: 5px;
+        }
+        
+        .view-more {
+            display: block;
+            text-align: right;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .continue-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #333; /* Darker than the image for contrast */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 3px;
+            opacity: 0.7; /* Match the grayed-out look */
+            margin-bottom: 10px;
+        }
+
+        .terms-text {
+            font-size: 11px;
+            color: #777;
+            text-align: center;
+        }
+        
+        .terms-text a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* --- Security Sections --- */
+        .security-section {
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .security-section h3 {
+            color: green;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .security-section h3 span {
+            margin-right: 5px;
+        }
+        
+        .security-logos img {
+            height: 20px;
+            margin-right: 5px;
+            opacity: 0.8;
+        }
+        
+        .security-text {
+            font-size: 12px;
+            color: #777;
+            line-height: 1.4;
+        }
+        
+        .security-text a {
+            color: #333;
+        }
+
+        /* Placeholder Icons (using unicode for simplicity) */
+        .icon-lock::before { content: '🔒'; margin-right: 5px; }
+        .icon-search::before { content: '🔍'; }
+        .icon-info::before { content: 'ⓘ'; }
+        .icon-shield::before { content: '🛡'; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="checkout-steps">
+                <a href="#">Cart</a>
+                <span>&gt;</span>
+                <a href="#">Place Order</a>
+                <span>&gt;</span>
+                <a href="#">Pay</a>
+                <span>&gt;</span>
+                <a href="#">Order Complete</a>
+            </div>
+            <div class="secure-checkout">
+                <span class="icon-lock"></span>Secure Checkout
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="shipping-section">
+                <h2>Shipping Address</h2>
+                
+                <form id="shippingForm">
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 100%;">
+                            <label for="location" class="required">Location</label>
+                            <select id="location" class="select-dropdown">
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First Name</label>
+                            <input type="text" id="firstName" name="firstName">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="required">Last Name</label>
+                            <input type="text" id="lastName" name="lastName">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 100%;">
+                            <label for="phone" class="required">Phone Number</label>
+                            <div class="phone-input">
+                                <span class="country-code">US +1</span>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="address-finder">
+                        <span class="icon-search"></span>
+                        <input type="text" placeholder="ADDRESS FINDER: Search by postcode, street or address">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 100%;">
+                            <label for="addressLine1" class="required">Address Line 1</label>
+                            <textarea id="addressLine1" name="addressLine1" class="address-line-textarea"></textarea>
+                            <div class="address-line-subtext">Street name and street number, company name.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 100%;">
+                            <label for="addressLine2">Address Line 2</label>
+                            <textarea id="addressLine2" name="addressLine2" class="address-line-textarea"></textarea>
+                            <div class="address-line-subtext">Building/Apartment/Suite no, Unit, Floor, etc (optional)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="state" class="required">State</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="required">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip" class="required">ZIP Code</label>
+                            <input type="text" id="zip" name="zip">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="coupon-section">
+                <h3>Coupon Code</h3>
+                <div class="coupon-box">
+                    <input type="text" placeholder="Coupon Code">
+                    <button class="coupon-apply">APPLY</button>
+                </div>
+
+                <h3>Gift Card <span class="icon-info"></span></h3>
+                <div class="gift-card-box">
+                    <div class="input-group">
+                        <input type="text" placeholder="Card Number">
+                        <input type="text" placeholder="PIN">
+                    </div>
+                    <button class="gift-card-apply">Apply</button>
+                </div>
+                
+                <a href="#" class="view-more">View More</a>
+                
+                <button class="continue-btn" onclick="continueToPayment()">CONTINUE</button>
+                
+                <p class="terms-text">
+                    By placing this order you agree to SHEIN's 
+                    <a href="#">Terms and Conditions</a> and 
+                    <a href="#">Privacy Policy</a>
+                </p>
+                
+                <hr>
+
+                <div class="security-section">
+                    <h3><span class="icon-shield"></span>Payment Security</h3>
+                    <p class="security-text">
+                        SHEIN is committed to protecting your payment information and only shares your credit card information with our payment service providers who agreed to safeguard your information.
+                    </p>
+                    <div class="security-logos">
+                        <img src="https://via.placeholder.com/40x15?text=VISA" alt="Visa Placeholder">
+                        <img src="https://via.placeholder.com/40x15?text=ID+Check" alt="ID Check Placeholder">
+                        <img src="https://via.placeholder.com/40x15?text=SafeKey" alt="SafeKey Placeholder">
+                        <img src="https://via.placeholder.com/40x15?text=JCB" alt="JCB Placeholder">
+                        <img src="https://via.placeholder.com/40x15?text=Mastercard" alt="Mastercard Placeholder">
+                        <img src="https://via.placeholder.com/40x15?text=Amex" alt="Amex Placeholder">
+                    </div>
+                </div>
+
+                <div class="security-section">
+                    <h3><span class="icon-shield"></span>Security & Privacy</h3>
+                    <p class="security-text">
+                        SHEIN's payment processor partner stores your credit card details by using industry-standard data encryption technology. SHEIN will not store your actual credit card information.
+                    </p>
+                    <p class="security-text"><a href="#">Learn more ></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function continueToPayment() {
+            // Placeholder for form validation and navigation logic
+            alert('Navigation to Payment Page would occur here.');
+            // Example: const firstName = document.getElementById('firstName').value;
+            // Add actual form submission/navigation logic here
+        }
+        
+        // Example for adding dynamic behavior (e.g., showing a message on input focus)
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstNameInput = document.getElementById('firstName');
+            if (firstNameInput) {
+                firstNameInput.addEventListener('focus', () => {
+                    // console.log('User is entering first name...');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
