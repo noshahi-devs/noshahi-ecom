@@ -1,254 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shipping Address Form</title>
-    <style>
-        /* CSS STYLES */
-        :root {
-            --border-color: #e0e0e0;
-            --text-main: #000000;
-            --text-placeholder: #999999;
-            --accent-green: #007d5c;
-            --bg-body: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping Address Form</title>
+<style>
+    :root {
+        --border-color: #e0e0e0;
+        --text-main: #000000;
+        --text-placeholder: #999999;
+        --accent-green: #007d5c;
+        --bg-body: #ffffff;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        body {
-            background-color: var(--bg-body);
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
+    body {
+        background-color: var(--bg-body);
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 850px;
-        }
+    .container {
+        width: 100%;
+        max-width: 850px;
+    }
 
-        h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--text-main);
-        }
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: var(--text-main);
+    }
 
-        /* Generic field styling */
-        .field-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
+    .field-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
 
-        input[type="text"], 
-        input[type="tel"], 
-        select, 
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            font-size: 14px;
-            color: var(--text-main);
-            outline: none;
-            border-radius: 0; /* Boxy look per image */
-        }
+    input[type="text"], 
+    input[type="tel"], 
+    select, 
+    textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--border-color);
+        font-size: 14px;
+        color: var(--text-main);
+        outline: none;
+        border-radius: 0;
+        background-color: #fff;
+    }
 
-        input::placeholder, textarea::placeholder {
-            color: var(--text-placeholder);
-        }
+    input::placeholder, textarea::placeholder {
+        color: var(--text-placeholder);
+    }
 
-        /* Special Field: Dropdowns with labels inside */
-        .dropdown-field {
-            padding-top: 22px; /* Make room for the label */
-        }
+    /* Floating label */
+    .field-group label {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        font-size: 12px;
+        color: #666;
+        pointer-events: none;
+        transition: 0.2s all;
+    }
 
-        .field-label-inside {
-            position: absolute;
-            top: 8px;
-            left: 15px;
-            font-size: 11px;
-            color: #666;
-            z-index: 1;
-        }
+    .field-group input:focus + label,
+    .field-group input:not(:placeholder-shown) + label {
+        top: -8px;
+        left: 12px;
+        font-size: 11px;
+        background: #fff;
+        padding: 0 4px;
+        color: var(--accent-green);
+    }
 
-        /* Two column rows */
+    .row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .row .field-group {
+        flex: 1;
+    }
+
+    .phone-container {
+        display: flex;
+        border: 1px solid var(--border-color);
+        margin-bottom: 20px;
+    }
+
+    .country-prefix {
+        padding: 12px 15px;
+        border-right: 1px solid var(--border-color);
+        font-size: 14px;
+        color: #555;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        min-width: 80px;
+    }
+
+    .phone-container input {
+        border: none;
+        margin: 0;
+    }
+
+    .search-group {
+        position: relative;
+    }
+
+    .search-group input {
+        padding-left: 45px;
+        font-style: italic;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-placeholder);
+        font-size: 16px;
+    }
+
+    .address-label {
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    textarea {
+        height: 65px;
+        resize: none;
+    }
+
+    .form-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-links a {
+        color: #666;
+        margin-left: 15px;
+        text-decoration: underline;
+    }
+
+    .security-section {
+        margin-top: 25px;
+        color: var(--accent-green);
+    }
+
+    .security-title {
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .security-desc {
+        font-size: 11px;
+        color: #666;
+        margin-top: 5px;
+        line-height: 1.4;
+    }
+
+    .save-btn {
+        background-color: #000;
+        color: #fff;
+        width: 220px;
+        padding: 15px;
+        border: none;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        display: block;
+        margin: 40px auto 0;
+        letter-spacing: 1px;
+    }
+
+    .select-container {
+        position: relative;
+    }
+
+    .select-container::after {
+        content: '⌄';
+        position: absolute;
+        right: 15px;
+        bottom: 12px;
+        font-size: 18px;
+        color: #999;
+        pointer-events: none;
+    }
+    /* Disable floating behavior for address fields */
+.no-float label {
+  position: static;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.no-float textarea {
+  height: 80px; /* image ke zyada close */
+}
+/* Label-less fields alignment fix */
+.no-label input,
+.no-label select {
+  height: 44px;
+}
+
+/* Dropdown arrow center align */
+.select-container::after {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    @media (max-width: 600px) {
         .row {
-            display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 0;
         }
-
-        .row .field-group {
-            flex: 1;
-        }
-
-        /* Phone Number Group */
-        .phone-container {
-            display: flex;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-        }
-
-        .country-prefix {
-            padding: 12px 15px;
-            border-right: 1px solid var(--border-color);
-            font-size: 14px;
-            color: #555;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            min-width: 80px;
-        }
-
-        .phone-container input {
-            border: none;
-            margin-bottom: 0;
-        }
-
-        /* Address Finder */
-        .search-group {
-            position: relative;
-        }
-
-        .search-group input {
-            padding-left: 45px;
-            font-style: italic;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-placeholder);
-            font-size: 16px;
-        }
-
-        /* Address Textareas */
-        .address-label {
-            font-size: 13px;
-            color: #555;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        textarea {
-            height: 65px;
-            resize: none;
-            display: block;
-        }
-
-        /* Footer links and checkbox */
         .form-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            margin-top: 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
         }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .footer-links {
+            margin-left: 0;
         }
-
         .footer-links a {
-            color: #666;
-            margin-left: 15px;
-            text-decoration: underline;
+            margin-left: 0;
+            margin-right: 15px;
         }
-
-        /* Security section */
-        .security-section {
-            margin-top: 25px;
-            color: var(--accent-green);
-        }
-
-        .security-title {
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .security-desc {
-            font-size: 11px;
-            color: #666;
-            margin-top: 5px;
-            line-height: 1.4;
-        }
-
-        /* Save Button */
         .save-btn {
-            background-color: #000;
-            color: #fff;
-            width: 220px;
-            padding: 15px;
-            border: none;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            display: block;
-            margin: 40px auto 0;
-            letter-spacing: 1px;
+            width: 100%;
         }
-
-        /* Dropdown arrow custom style */
-        .select-container {
-            position: relative;
-        }
-
-        .select-container::after {
-            content: '⌄';
-            position: absolute;
-            right: 15px;
-            bottom: 12px;
-            font-size: 18px;
-            color: #999;
-            pointer-events: none;
-        }
-
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-        }
-
-        /* Responsiveness */
-        @media (max-width: 600px) {
-            .row {
-                flex-direction: column;
-                gap: 0;
-            }
-            .form-footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            .footer-links {
-                margin-left: 0;
-            }
-            .footer-links a {
-                margin-left: 0;
-                margin-right: 15px;
-            }
-            .save-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-
 <div class="container">
     <h1>Shipping Address</h1>
-
     <form id="shippingForm">
         <div class="field-group select-container">
             <span class="field-label-inside">Location*</span>
@@ -259,50 +278,68 @@
 
         <div class="row">
             <div class="field-group">
-                <input type="text" placeholder="First Name*" required>
+                <input type="text" id="firstName" placeholder=" " required>
+                <label for="firstName">First Name*</label>
             </div>
+
             <div class="field-group">
-                <input type="text" placeholder="Last Name*" required>
+                <input type="text" id="lastName" placeholder=" " required>
+                <label for="lastName">Last Name*</label>
             </div>
         </div>
 
         <div class="phone-container">
             <div class="country-prefix">US +1</div>
-            <input type="tel" placeholder="Phone Number*" style="flex:1" required>
+            <input type="tel" placeholder="Phone Number*" required>
         </div>
 
         <div class="field-group search-group">
-            <span class="search-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px;"></svg></span>
+            <span class="search-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"></svg>
+            </span>
             <input type="text" placeholder="ADDRESS FINDER: Search by postcode, street or address">
         </div>
 
-        <div class="field-group">
-            <label class="address-label">Address Line 1*</label>
-            <textarea placeholder="Street name and street number, company name." required></textarea>
-        </div>
+<div class="field-group no-float">
+  <label class="address-label" for="address1">Address Line 1*</label>
+  <textarea
+    id="address1"
+    placeholder="Street name and street number, company name."
+    required
+  ></textarea>
+</div>
 
-        <div class="field-group">
-            <label class="address-label">Address Line 2</label>
-            <textarea placeholder="Building/Apartment/Suite no, Unit, Floor, etc (optional)"></textarea>
-        </div>
+<div class="field-group no-float">
+  <label class="address-label" for="address2">Address Line 2</label>
+  <textarea
+    id="address2"
+    placeholder="Building/Apartment/Suite no, Unit, Floor, etc (optional)"
+  ></textarea>
+</div>
+
 
         <div class="row">
-            <div class="field-group select-container">
-                <span class="field-label-inside">State/Province*</span>
-                <select class="dropdown-field" required>
-                    <option value="" disabled selected>Please Choose Your State/Province</option>
-                    <option value="AL">Alabama</option>
-                    <option value="CA">California</option>
-                    <option value="NY">New York</option>
-                    </select>
-            </div>
-            <div class="field-group">
-                <input type="text" placeholder="City*" required style="margin-top: 0px; height: 100%;">
-            </div>
-        </div>
+  <!-- State / Province -->
+  <div class="field-group select-container no-label">
+    <select required>
+      <option value="" disabled selected>State/Province*</option>
+      <option value="AL">Alabama</option>
+      <option value="CA">California</option>
+      <option value="NY">New York</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+  <input type="text" id="city" placeholder=" " required>
+  <label for="city">City*</label>
+</div>
+
+</div>
+
 
         <div class="field-group">
-            <input type="text" placeholder="Post/Zip Code*" required>
+            <input type="text" id="zip" placeholder=" " required>
+            <label for="zip">Post/Zip Code*</label>
         </div>
 
         <div class="form-footer">
@@ -328,6 +365,9 @@
         <button type="submit" class="save-btn">SAVE</button>
     </form>
 </div>
+</body>
+</html>
+
 
 <script>
     // JAVASCRIPT
